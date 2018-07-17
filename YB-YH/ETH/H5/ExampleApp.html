@@ -1,0 +1,88 @@
+
+
+<script src="dist/keythereum.js" type="text/javascript"></script>
+<script src="dist/bundle.js" type="text/javascript"></script>
+<script src="dist/ethereumjs.js" type="text/javascript"></script>
+<script src="dist/bn.js" type="text/javascript"></script>
+
+<script>
+    window.onerror = function(err) {
+    }
+
+function connectWebViewJavascriptBridge(callback) {
+    if (window.WebViewJavascriptBridge) {
+        callback(WebViewJavascriptBridge)
+    } else {
+        document.addEventListener('WebViewJavascriptBridgeReady', function() {
+                                  callback(WebViewJavascriptBridge)
+                                  }, false)
+    }
+}
+
+function createAccount(data){
+    var newAccountpwd = data;
+    var params = { keyBytes: 32, ivBytes: 16 };
+    var dk = keythereum.create(params)
+    var options = {
+        kdf: "scrypt",
+        cipher: "aes-128-ctr",
+        kdfparams: {
+            n: 4,
+            r : 8,
+            p : 1,
+            dklen: 32
+        }
+    };
+    var keyObject = keythereum.dump(newAccountpwd, dk.privateKey, dk.salt, dk.iv, options);
+    return JSON.stringify(keyObject);
+}
+
+//获取私钥
+function getPrivate(password,account){
+
+    var keyObject = JSON.parse(account);
+    var privatekey = keythereum.recover(password,keyObject);
+    var newKey = JSON.parse(JSON.stringify(privatekey));
+    return shuzuTo16Str(newKey.data);
+}
+function shuzuTo16Str(as){
+    var rtnStr = '';
+    for(j = 0,len=as.length; j < len; j++) {
+        if  (as[j] < 16){
+            rtnStr +="0"
+        }
+        rtnStr += as[j].toString(16);
+    }
+    return rtnStr;
+}
+//签名
+function getSign(data,key){
+    let { sign, verify, unsign } = window.ethereumjs_tx_sign;
+    var out = sign(data,  '0x' + key);
+    var newout = JSON.parse(JSON.stringify(out));
+    return out.rawTx;
+}
+
+
+function Yangyang(bridge) {
+    bridge.init(function(message, responseCallback) {
+                })
+        //获取明文账户
+    bridge.registerHandler('createAccount', function(data, responseCallback) {
+            var keyObject = createAccount(data);  //    明文
+            responseCallback(keyObject);
+    });
+      //获取秘钥
+     bridge.registerHandler('createKey', function(data, responseCallback) {                                                                  responseCallback(getPrivate(data.password,data.account));
+    });
+    //签名
+      bridge.registerHandler('createSign', function(data, responseCallback) {
+      responseCallback(getSign(data.data,data.key));
+    })
+
+}
+connectWebViewJavascriptBridge(function(bridge) {
+                               Yangyang(bridge);
+                               })
+    </script>
+

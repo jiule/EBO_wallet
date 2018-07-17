@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>TABBAR_IMAGE_NAME</key>
+		<string>首页</string>
+		<key>TABBAR_IMAGE_SELECTED</key>
+		<string>xb_syh</string>
+		<key>TABBAR_IMAGE_NORMAL</key>
+		<string>xb_syl</string>
+		<key>NAVBAR_TITLE_IMAGE_NAME</key>
+		<string></string>
+		<key>CLASS_NAME</key>
+		<string>ShouViewController</string>
+	</dict>
+	<dict>
+		<key>TABBAR_IMAGE_NAME</key>
+		<string>精品游戏</string>
+		<key>TABBAR_IMAGE_SELECTED</key>
+		<string>xb_yxh</string>
+		<key>TABBAR_IMAGE_NORMAL</key>
+		<string>xb_yxl</string>
+		<key>NAVBAR_TITLE_IMAGE_NAME</key>
+		<string>精品游戏</string>
+		<key>CLASS_NAME</key>
+		<string>GameJNViewController</string>
+	</dict>
+	<dict>
+		<key>TABBAR_IMAGE_NAME</key>
+		<string>行情</string>
+		<key>TABBAR_IMAGE_SELECTED</key>
+		<string>xb_hqh</string>
+		<key>TABBAR_IMAGE_NORMAL</key>
+		<string>xb_hql</string>
+		<key>NAVBAR_TITLE_IMAGE_NAME</key>
+		<string>行情</string>
+		<key>CLASS_NAME</key>
+		<string>MarketViewController</string>
+	</dict>
+	<dict>
+		<key>TABBAR_IMAGE_NAME</key>
+		<string>我的</string>
+		<key>TABBAR_IMAGE_SELECTED</key>
+		<string>xb_grh</string>
+		<key>TABBAR_IMAGE_NORMAL</key>
+		<string>xb_grl</string>
+		<key>NAVBAR_TITLE_IMAGE_NAME</key>
+		<string>个人</string>
+		<key>CLASS_NAME</key>
+		<string>WodeViewController</string>
+	</dict>
+</array>
+</plist>
