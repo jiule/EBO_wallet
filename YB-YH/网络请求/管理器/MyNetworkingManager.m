@@ -242,4 +242,80 @@ XMGSingletoM
 {
     return nil;
 }
++ (void)DDResqust:(NSString *)URLString
+  withRequestType:(requestMode)rtype
+   encryptionType:(Encryption_TYPE)etype
+   withparameters:(nullable nullable id)parameters
+           withVC:(UIViewController *)vc
+         progress:(void (^)(NSProgress * _Nonnull))progress
+          success:(void (^)(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject))success
+          failure:(void (^)(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error))failure{
+    [MyActivityIndicatorViewManager showActivityIndicatorViewWithName:@"数据加载中...." Style:0 vc:vc];
+    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    if (![[MyNetworkingManager sharedInstance] readWithUrl:URLString]) {
+        if (rtype == GET) {
+            [manager GET:URL(URLString) parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+                progress(downloadProgress);
+            } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                id responseDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+                [MyActivityIndicatorViewManager remove];
+                if ([responseDict[@"code"] intValue] == 1) {
+                    //成功
+                    success(task,responseDict[@"data"]);
+                }else if([responseDict[@"code"] intValue] == 0){
+                    [MYAlertController showTitltle:responseDict[@"msg"]];
+                    failure(task, responseDict[@"code"]);
+                }
+                else{
+                    [MYAlertController showTitltle:responseDict[@"msg"]];
+                    failure(task, responseDict[@"code"]);
+                }
+                
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                [MyActivityIndicatorViewManager remove];
+                NSLog(@"error====%@",error);
+                failure(task,error);
+            }];
+        }
+        else if (rtype == POST){
+            [manager POST:URL(URLString) parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+                progress(downloadProgress);
+            } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                id responseDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+                [MyActivityIndicatorViewManager remove];
+                if ([responseDict[@"code"] intValue] == 1) {
+                    //成功
+                    success(task,responseDict[@"data"]);
+                }else if([responseDict[@"code"] intValue] == 0){
+                    [MYAlertController showTitltle:responseDict[@"msg"]];
+                    failure(task, responseDict[@"code"]);
+                }
+                else{
+                    [MYAlertController showTitltle:responseDict[@"msg"]];
+                    failure(task, responseDict[@"code"]);
+                }
+                
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                [MyActivityIndicatorViewManager remove];
+                NSLog(@"error====%@",error);
+                failure(task,error);
+            }];
+            
+        }
+        
+    }
+}
++ (void)DDPOSTResqust:(NSString *)URLString
+       withparameters:(nullable nullable id)parameters
+               withVC:(UIViewController *)vc
+             progress:(void (^)(NSProgress * _Nonnull))progress
+              success:(void (^)(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject))success
+              failure:(void (^)(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error))failure{
+    [MyNetworkingManager DDResqust:URLString withRequestType:POST encryptionType:0 withparameters:parameters withVC:vc progress:progress success:success failure:failure];
+}
++(void)handleCode:(NSInteger)code{
+    
+}
+
 @end
