@@ -201,6 +201,7 @@
 		18FED02120C141B7008E4BE4 /* NavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FED01E20C141B7008E4BE4 /* NavView.m */; };
 		18FED02420C14370008E4BE4 /* MIPickerimage.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FED02320C1436F008E4BE4 /* MIPickerimage.m */; };
 		18FED02720C143AE008E4BE4 /* MIHelpr.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FED02620C143AE008E4BE4 /* MIHelpr.m */; };
+		FF58CB258EF5D9B8B456857A /* libPods-YB-YH.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F81540C3128317C261518E75 /* libPods-YB-YH.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -595,6 +596,9 @@
 		18FED02320C1436F008E4BE4 /* MIPickerimage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPickerimage.m; sourceTree = "<group>"; };
 		18FED02520C143AE008E4BE4 /* MIHelpr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIHelpr.h; sourceTree = "<group>"; };
 		18FED02620C143AE008E4BE4 /* MIHelpr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIHelpr.m; sourceTree = "<group>"; };
+		A4653356825552DCFDA6A14D /* Pods-YB-YH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YB-YH.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YB-YH/Pods-YB-YH.debug.xcconfig"; sourceTree = "<group>"; };
+		C2428BAC5D79D18835E188E2 /* Pods-YB-YH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YB-YH.release.xcconfig"; path = "Pods/Target Support Files/Pods-YB-YH/Pods-YB-YH.release.xcconfig"; sourceTree = "<group>"; };
+		F81540C3128317C261518E75 /* libPods-YB-YH.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YB-YH.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -607,6 +611,7 @@
 				1845851120E31A1A0060DF5F /* Foundation.framework in Frameworks */,
 				1845850F20E31A150060DF5F /* UIKit.framework in Frameworks */,
 				1845850D20E31A100060DF5F /* WebKit.framework in Frameworks */,
+				FF58CB258EF5D9B8B456857A /* libPods-YB-YH.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,6 +694,7 @@
 				1845851020E31A1A0060DF5F /* Foundation.framework */,
 				1845850E20E31A150060DF5F /* UIKit.framework */,
 				1845850C20E31A100060DF5F /* WebKit.framework */,
+				F81540C3128317C261518E75 /* libPods-YB-YH.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1326,6 +1332,7 @@
 				18FECEDE20C0ED92008E4BE4 /* Assets.xcassets */,
 				18FECED320C0ED8C008E4BE4 /* Products */,
 				1845850B20E31A100060DF5F /* Frameworks */,
+				6F84D715E2CBC910914DDF21 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1818,6 +1825,15 @@
 			path = "自定义导航栏view";
 			sourceTree = "<group>";
 		};
+		6F84D715E2CBC910914DDF21 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A4653356825552DCFDA6A14D /* Pods-YB-YH.debug.xcconfig */,
+				C2428BAC5D79D18835E188E2 /* Pods-YB-YH.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1825,6 +1841,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18FECEE820C0ED92008E4BE4 /* Build configuration list for PBXNativeTarget "YB-YH" */;
 			buildPhases = (
+				C33026EE1ECD88171A5B25B2 /* [CP] Check Pods Manifest.lock */,
 				18FECECE20C0ED8C008E4BE4 /* Sources */,
 				18FECECF20C0ED8C008E4BE4 /* Frameworks */,
 				18FECED020C0ED8C008E4BE4 /* Resources */,
@@ -1895,6 +1912,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C33026EE1ECD88171A5B25B2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YB-YH-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		18FECECE20C0ED8C008E4BE4 /* Sources */ = {
@@ -2219,6 +2257,7 @@
 		};
 		18FECEE920C0ED92008E4BE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4653356825552DCFDA6A14D /* Pods-YB-YH.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Guan Wei (JG36ZDYAY6)";
@@ -2242,6 +2281,7 @@
 		};
 		18FECEEA20C0ED92008E4BE4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2428BAC5D79D18835E188E2 /* Pods-YB-YH.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Tianjin E-bone Digital Technology Co.,Ltd. (M5CU4A6R6T)";
