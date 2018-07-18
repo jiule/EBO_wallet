@@ -21,7 +21,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 //    self.window.rootViewController = [[ViewController alloc]init];
 //    [self.window makeKeyAndVisible];
-    NSLog(@"aaaaaaaabbbbbbbbbbbbbdddddddd");
+    NSLog(@"aaaaaaaabbbbbbbbbbbbbddddddddccccccccccc");
     [[RootViewController sharedInstance]chooseRootViewControllerWithwindow:self.window];
     return YES;
 }
