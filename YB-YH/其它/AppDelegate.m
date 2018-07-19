@@ -16,13 +16,16 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 //    self.window.rootViewController = [[ViewController alloc]init];
 //    [self.window makeKeyAndVisible];
+<<<<<<< HEAD
     NSLog(@"aaaaaaaabbbbbbbbbbbbbdddddddd交换机1234444");
     NSLog(@"丹丹");
+=======
+    NSLog(@"aaaaaaaabbbbbbbbbbbbbdddddddd交换机1234444丹丹");
+>>>>>>> d855ea703b1914a968a8c1d718a4138aec8d6eff
     [[RootViewController sharedInstance]chooseRootViewControllerWithwindow:self.window];
     return YES;
 }
