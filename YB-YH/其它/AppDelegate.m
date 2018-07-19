@@ -21,12 +21,10 @@
 //    self.window.rootViewController = [[ViewController alloc]init];
 //    [self.window makeKeyAndVisible];
     NSLog(@"aaaaaaaabbbbbbbbbbbbbdddddddd交换机1234444");
-<<<<<<< HEAD
     NSLog(@"丹丹1"); 
     NSLog(@"aaaaaaaabbbbbbbbbbbbbdddddddd交换机1234444丹丹");
-=======
     NSLog(@"丹丹");
->>>>>>> 970eba82d1d1a9fba5f314e8e795ab5fbf875579
+
     [[RootViewController sharedInstance]chooseRootViewControllerWithwindow:self.window];
     return YES;
 }
