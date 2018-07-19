@@ -22,7 +22,7 @@
 //    [self.window makeKeyAndVisible];
     NSLog(@"aaaaaaaabbbbbbbbbbbbbdddddddd交换机1234444");
     NSLog(@"丹丹");
-    NSLog(@"aaaaaaaabbbbbbbbbbbbbdddddddd交换机1234444丹丹");
+    NSLog(@"aaaaaaaabbbbbbbbbbbbbdddddddd交换机");
     [[RootViewController sharedInstance]chooseRootViewControllerWithwindow:self.window];
     return YES;
 }
