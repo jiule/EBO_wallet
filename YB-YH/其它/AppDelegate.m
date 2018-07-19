@@ -22,6 +22,7 @@
 //    [self.window makeKeyAndVisible];
     NSLog(@"aaaaaaaabbbbbbbbbbbbbdddddddd交换机1234444");
     NSLog(@"丹丹");
+    NSLog(@"ccccccccc");
     [[RootViewController sharedInstance]chooseRootViewControllerWithwindow:self.window];
     return YES;
 }
