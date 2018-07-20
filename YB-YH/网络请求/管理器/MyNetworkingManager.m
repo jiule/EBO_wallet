@@ -238,8 +238,7 @@ XMGSingletoM
 }
 #pragma clang diagnostic pop
 
-+(id)dispatchUrl:(NSString *)url  HTTPBody:(NSString *)Body
-{
++(id)dispatchUrl:(NSString *)url  HTTPBody:(NSString *)Body{
     return nil;
 }
 + (void)DDResqust:(NSString *)URLString
@@ -308,7 +307,7 @@ XMGSingletoM
 }
 + (void)DDPOSTResqust:(NSString *)URLString
        withparameters:(nullable nullable id)parameters
-               withVC:(UIViewController *)vc
+               withVC:(UIViewController * _Nullable)vc
              progress:(void (^)(NSProgress * _Nonnull))progress
               success:(void (^)(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject))success
               failure:(void (^)(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error))failure{

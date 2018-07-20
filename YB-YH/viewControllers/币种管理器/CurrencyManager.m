@@ -34,7 +34,7 @@ XMGSingletoM
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
 
     }];
-    [CurrencyManager downWithBiswap];
+    [CurrencyManager exchangeProportion];
 
 }
 
@@ -177,19 +177,29 @@ XMGSingletoM
     }
     return nil;
 }
-
-//获取币种的互换比例
-+(void)downWithBiswap
-{
-    //获取用户币种绑定情况
-    [MyNetworkingManager POST:@"/transfer/wallet/getEBOProportion" withparameters:@{@"coin_name":@"eth"} progress:^(NSProgress * _Nonnull progree) {    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        id responseDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-      //  [MyUserDefaultsManager  setJNObject:responseDict forkey:[MyUserDefaultsManager readCoinTypes]];  //保存到本地
-        [CurrencyManager sharedInstance].portionModel = [[ProportionModel alloc]initWithDict:responseDict[@"data"]];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-
-    }];
-
+/**
+ 获取币种的互换比例
+ */
++(void)exchangeProportion{
+    [CurrencyManager exchangeProportion:nil];
 }
 
+/**
+ 获取币种的互换比例
+
+ @param model 返回最新的比例model
+ */
++(void)exchangeProportion:(void (^)(ProportionModel * ))model{
+    [MyNetworkingManager DDPOSTResqust:@"/transfer/wallet/getEBOProportion" withparameters:@{@"coin_name":@"eth"} withVC:nil progress:^(NSProgress * _Nonnull progree) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary * dic = (NSDictionary *)responseObject;
+        //  [MyUserDefaultsManager  setJNObject:responseDict forkey:[MyUserDefaultsManager readCoinTypes]];  //保存到本地
+        [CurrencyManager sharedInstance].portionModel = [[ProportionModel alloc]initWithDict:dic];
+        if (model) {
+            model([CurrencyManager sharedInstance].portionModel);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+}
 @end

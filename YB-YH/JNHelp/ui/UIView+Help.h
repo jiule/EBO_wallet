@@ -105,6 +105,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  转圈
  */
 -(void)circles;
+-(void)oneCircles;
 @end
 
 @interface UIView (Underscore)
@@ -175,6 +176,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)addSpacingWithColor:(UIColor *)color y:(CGFloat)y height:(CGFloat)height;
 //渐变颜色
 -(void)addJianbianWithColor:(UIColor *)downColor upColor:(UIColor *)upColor;
+-(void)creatLineOnRelativeView:(UIView *)relativeView offSet:(CGFloat)offset;
 
 @end
 

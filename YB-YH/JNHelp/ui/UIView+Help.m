@@ -152,6 +152,16 @@
     animation.repeatCount = 500;
     [self.layer addAnimation:animation forKey:nil];
 }
+-(void)oneCircles{
+    CABasicAnimation * animation = [CABasicAnimation  animationWithKeyPath:@"transform.rotation.z"];
+    animation.fromValue = [NSNumber numberWithFloat:0.f];
+    animation.toValue = [NSNumber numberWithFloat:M_PI * 2];
+    animation.duration = 1;
+    animation.autoreverses = NO;
+    animation.fillMode = kCAFillModeForwards;
+    animation.repeatCount = 1;
+    [self.layer addAnimation:animation forKey:nil];
+}
 
 @end
 
@@ -254,7 +264,19 @@
     gradientLayer.frame = self.bounds;
     [self.layer addSublayer:gradientLayer];
 }
-
+#pragma mark 画一条线
+-(void)creatLineOnRelativeView:(UIView *)relativeView offSet:(CGFloat)offset{
+    UILabel * line = [UILabel new];
+    line.backgroundColor = COLOR_B6;
+    [relativeView.superview addSubview:line];
+    
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.centerX.equalTo(self);
+        make.height.mas_equalTo(1);
+        make.top.equalTo(relativeView.mas_bottom).offset(offset);
+    }];
+    
+}
 @end
 
 @interface UIView ()

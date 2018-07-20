@@ -72,7 +72,7 @@
 
     [_downView addSubview:JnButtonColorIndexSize(CGRectMake(SCREEN_WIDTH - JN_HH(110), JN_HH(200), JN_HH(45), JN_HH(20)), @"注册", JN_HH(15.5), COLOR_T1, _downView.backgroundColor, 2, self, @selector(retrieveClick), 2)];
 
-    _iponeField.text = @"15322222221";
+    _iponeField.text = @"15399999999";
     _passWordField.text = @"qqqqqq";
 }
 

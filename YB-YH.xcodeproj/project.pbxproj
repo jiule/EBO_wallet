@@ -201,6 +201,9 @@
 		18FED02120C141B7008E4BE4 /* NavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FED01E20C141B7008E4BE4 /* NavView.m */; };
 		18FED02420C14370008E4BE4 /* MIPickerimage.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FED02320C1436F008E4BE4 /* MIPickerimage.m */; };
 		18FED02720C143AE008E4BE4 /* MIHelpr.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FED02620C143AE008E4BE4 /* MIHelpr.m */; };
+		840494352101723E002B0F52 /* BaseBodyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 840494342101723E002B0F52 /* BaseBodyVC.m */; };
+		84049438210173ED002B0F52 /* DDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84049437210173ED002B0F52 /* DDViewController.m */; };
+		84CE332A21005FDB00731FF5 /* UIKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CE332821005FDB00731FF5 /* UIKitAdditions.m */; };
 		FF58CB258EF5D9B8B456857A /* libPods-YB-YH.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F81540C3128317C261518E75 /* libPods-YB-YH.a */; };
 /* End PBXBuildFile section */
 
@@ -596,6 +599,12 @@
 		18FED02320C1436F008E4BE4 /* MIPickerimage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPickerimage.m; sourceTree = "<group>"; };
 		18FED02520C143AE008E4BE4 /* MIHelpr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIHelpr.h; sourceTree = "<group>"; };
 		18FED02620C143AE008E4BE4 /* MIHelpr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIHelpr.m; sourceTree = "<group>"; };
+		840494332101723E002B0F52 /* BaseBodyVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseBodyVC.h; sourceTree = "<group>"; };
+		840494342101723E002B0F52 /* BaseBodyVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseBodyVC.m; sourceTree = "<group>"; };
+		84049436210173ED002B0F52 /* DDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDViewController.h; sourceTree = "<group>"; };
+		84049437210173ED002B0F52 /* DDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDViewController.m; sourceTree = "<group>"; };
+		84CE332721005FDB00731FF5 /* UIKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKitAdditions.h; sourceTree = "<group>"; };
+		84CE332821005FDB00731FF5 /* UIKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKitAdditions.m; sourceTree = "<group>"; };
 		A4653356825552DCFDA6A14D /* Pods-YB-YH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YB-YH.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YB-YH/Pods-YB-YH.debug.xcconfig"; sourceTree = "<group>"; };
 		C2428BAC5D79D18835E188E2 /* Pods-YB-YH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YB-YH.release.xcconfig"; path = "Pods/Target Support Files/Pods-YB-YH/Pods-YB-YH.release.xcconfig"; sourceTree = "<group>"; };
 		F81540C3128317C261518E75 /* libPods-YB-YH.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YB-YH.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1134,6 +1143,8 @@
 				18A3D70020D1FEE6002A3B5C /* 首页 */,
 				18A3D70B20D24630002A3B5C /* 交易订单 */,
 				18A3D71520D27101002A3B5C /* 订单详情 */,
+				84049436210173ED002B0F52 /* DDViewController.h */,
+				84049437210173ED002B0F52 /* DDViewController.m */,
 			);
 			path = "行情";
 			sourceTree = "<group>";
@@ -1367,6 +1378,7 @@
 				18FECEF720C0F7FC008E4BE4 /* JNViewHelp.h */,
 				18FECEF420C0F7BD008E4BE4 /* JNHelp.h */,
 				18FECEF520C0F7BD008E4BE4 /* JNHelp.m */,
+				84CE332421005FDB00731FF5 /* UIKit */,
 				18FECF0020C10FC9008E4BE4 /* 参数配置 */,
 				18FECF3D20C13B3A008E4BE4 /* Helpr */,
 				18FECF3920C13AEA008E4BE4 /* Permissions */,
@@ -1806,6 +1818,8 @@
 			children = (
 				18FED01C20C141B7008E4BE4 /* BaseViewController.h */,
 				18FED01B20C141B7008E4BE4 /* BaseViewController.m */,
+				840494332101723E002B0F52 /* BaseBodyVC.h */,
+				840494342101723E002B0F52 /* BaseBodyVC.m */,
 				18290C6120C696C300394F8A /* BaseScrollViewController.h */,
 				18290C6220C696C300394F8A /* BaseScrollViewController.m */,
 				188E8A7E20D0C6C7009F253C /* BaseBgimgeViewController.h */,
@@ -1832,6 +1846,15 @@
 				C2428BAC5D79D18835E188E2 /* Pods-YB-YH.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		84CE332421005FDB00731FF5 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				84CE332721005FDB00731FF5 /* UIKitAdditions.h */,
+				84CE332821005FDB00731FF5 /* UIKitAdditions.m */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2009,11 +2032,13 @@
 				18FED02120C141B7008E4BE4 /* NavView.m in Sources */,
 				1803DED720DB3A74007B3461 /* RollSaomaViewController.m in Sources */,
 				188E8A8320D0F2B3009F253C /* RealnameButton.m in Sources */,
+				84CE332A21005FDB00731FF5 /* UIKitAdditions.m in Sources */,
 				189B4C6920EDC42B00B1BB3C /* GameViewCell.m in Sources */,
 				18FECFFA20C140B3008E4BE4 /* UIImageView+AFNetworking.m in Sources */,
 				18FECFF620C140B3008E4BE4 /* MJRefreshComponent.m in Sources */,
 				18A3D70320D202A7002A3B5C /* MarketView.m in Sources */,
 				18FECFE420C140B3008E4BE4 /* UIScrollView+MJRefresh.m in Sources */,
+				84049438210173ED002B0F52 /* DDViewController.m in Sources */,
 				18FECFF320C140B3008E4BE4 /* MJRefreshHeader.m in Sources */,
 				18944F4420F43E8E005601E2 /* RegisteredObj.m in Sources */,
 				18D0D36120E077A7001ADFC8 /* JNGraphModel.m in Sources */,
@@ -2113,6 +2138,7 @@
 				188E8A5C20D0BA4A009F253C /* KeFuViewController.m in Sources */,
 				18FECED720C0ED8C008E4BE4 /* AppDelegate.m in Sources */,
 				18B30AA420C53F2D00213243 /* WodeViewController.m in Sources */,
+				840494352101723E002B0F52 /* BaseBodyVC.m in Sources */,
 				18FED00720C140B3008E4BE4 /* MYXML.m in Sources */,
 				18290C6320C696C300394F8A /* BaseScrollViewController.m in Sources */,
 				18FECF4020C13B3A008E4BE4 /* Helpr.m in Sources */,
@@ -2273,8 +2299,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = hk.ebo.www.wallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cc427f67-d0af-43ba-850b-e35107fa1530";
-				PROVISIONING_PROFILE_SPECIFIER = dev;
+				PROVISIONING_PROFILE = "74191b38-dfa7-499d-bb03-d4060772ca4f";
+				PROVISIONING_PROFILE_SPECIFIER = "ebogame-dev";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;

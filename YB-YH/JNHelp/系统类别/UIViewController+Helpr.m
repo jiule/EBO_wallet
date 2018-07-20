@@ -24,6 +24,7 @@ static AFNetworkReachabilityManager * manager;
     Method viewDisappearl = class_getInstanceMethod([UIViewController class], @selector(viewWillDisappear:));
     Method HK_viewDisappear = class_getInstanceMethod([UIViewController class], @selector(HK_viewWillDisappear:));
     method_exchangeImplementations(viewDisappearl, HK_viewDisappear);  //交换成功
+    
 #endif
 }
 

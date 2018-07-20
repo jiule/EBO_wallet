@@ -38,5 +38,6 @@
 #import "NSDictionary+Helpr.h"
 
 #import "FileManager.h"
+#import "UIKitAdditions.h"
 
 #endif /* JNViewHelp_h */

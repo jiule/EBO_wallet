@@ -87,7 +87,7 @@ XMGSingletoH
  */
 + (void)DDPOSTResqust:(NSString *)URLString
        withparameters:(nullable nullable id)parameters
-               withVC:(UIViewController *)vc
+               withVC:(UIViewController * _Nullable)vc
              progress:(void (^)(NSProgress * _Nonnull))progress
               success:(void (^)(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject))success
               failure:(void (^)(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error))failure;

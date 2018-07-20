@@ -15,112 +15,345 @@
 #import "MaeketCurveView.h"
 #import "MarketCurveModel.h"
 
-@interface MarketViewController ()<JNBaseViewDelegate>
+#define exchangeStr @"最低兑换数量100"
+#define ETH @"ETH"
+
+@interface MarketViewController ()<JNBaseViewDelegate , UITextFieldDelegate>
 {
-    MaeketCurveView * _curveView;
+    
 
     UIButton *  _selBtn;
-
-    UILabel * _ccsLabel ;  //CCS交易 后面的label
-
-    UIView * _downScrollView;
     int _max;
 
 }
-
-@property(nonatomic,retain)  MarketSlidingView * slidingView;
-
-@property(nonatomic,retain)UIView * downView;
+XH_ATTRIBUTE(retain, MaeketCurveView, curveView);
+XH_ATTRIBUTE(strong, UITextField, numTf);
+XH_ATTRIBUTE(strong, UITextField, exchangeNumTf);
+XH_ATTRIBUTE(strong, UILabel, upLab);
+XH_ATTRIBUTE(strong, UILabel, downLb);
+XH_ATTRIBUTE(strong, UILabel, valuationLb);
+XH_ATTRIBUTE(strong, UIImageView, changeImv);
+XH_ATTRIBUTE(strong, UILabel, lab1);
 @end
 
 @implementation MarketViewController
 
--(MarketSlidingView *)slidingView
-{
-    if (!_slidingView) {
-        self.slidingView = [MarketSlidingView showWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, JN_HH(60)) index:0 sliding:^(float index) {
-            // 看看选中的按钮的tag
-            MarketView * etView1 = (MarketView *)[self->_downScrollView viewWithTag:self->_selBtn.tag + 100];
-            if (etView1) {
-                [etView1 setTextnum:self->_max * index];
-            }
-        }];
-                [self.view addSubview:_slidingView ];
+-(UITextField *)numTf{
+    if (!_numTf) {
+        _numTf = JnTextFiled(CGRectZero, [NSString stringWithFormat:@"%@%@",BI_A0,exchangeStr], 0);
+        _numTf.layer.borderColor = COLOR_B6.CGColor;
+        _numTf.backgroundColor = COLOR_B6;
+        _numTf.delegate = self;
+        [_numTf setKeyboardType:UIKeyboardTypeDecimalPad];
     }
-    return _slidingView;
+    return _numTf;
+}
+-(UITextField *)exchangeNumTf{
+    if (!_exchangeNumTf) {
+        _exchangeNumTf = JnTextFiled(CGRectZero, @"请输入数量", 0);
+        _exchangeNumTf.layer.borderColor = COLOR_B6.CGColor;
+        _exchangeNumTf.backgroundColor = COLOR_B6;
+        _exchangeNumTf.delegate = self;
+        [_exchangeNumTf setKeyboardType:UIKeyboardTypeDecimalPad];
+    }
+    return _exchangeNumTf;
+}
+-(UILabel *)valuationLb{
+    if (!_valuationLb) {
+        _valuationLb = [UIKitAdditions labelWithBlackText:@"￥0.0" fontSize:0];
+    }
+    return _valuationLb;
+}
+-(UIImageView *)changeImv{
+    if (!_changeImv) {
+        _changeImv =  [UIKitAdditions imageViewWithImageName:@"hq_qiehuan"];
+    }
+    return _changeImv;
+}
+-(UILabel *)upLab{
+    if (!_upLab) {
+        _upLab = [UIKitAdditions labelWithBlackText:BI_A0 fontSize:0];
+        _upLab.textAlignment = NSTextAlignmentRight;
+    }
+    return _upLab;
+}
+-(UILabel *)downLb{
+    if (!_downLb) {
+        _downLb = [UIKitAdditions labelWithBlackText:ETH fontSize:0];
+    }
+    return _downLb;
 }
 
--(void)createNavView
-{
+-(void)createNavView{
     [super createNavView];
     [self.navView addDividingLine];
     [self.navView setStyle:3];
     [self.navView.rightButton setBackgroundImage:MYimageNamed(@"hq_dingdan") forState:0];
 }
 
--(void)Initialize
-{
+-(void)Initialize{
     [super Initialize ];
     _max = 100000;
 }
 
--(void)createView
-{
+-(void)createView{
     [super createView];
+    self.bodyView.backgroundColor = COLOR_WHITE;
+    
+    _curveView = [[MaeketCurveView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, JN_HH(150)) curveModels:nil higt:600];
+    _curveView.backgroundColor = COLOR_WHITE;
+    [self.bodyView addSubview:_curveView];
+    self.lab1 = [UILabel new];
+    self.lab1.backgroundColor = COLOR_B6;
+    [self.bodyView addSubview:self.lab1];
+    [self.lab1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.curveView.mas_bottom);
+        make.left.centerX.equalTo(self.bodyView);
+        make.height.mas_equalTo(20);
+    }];
+    
 
-    self.view.backgroundColor = COLOR_B5;
+    UILabel * lab = [UIKitAdditions labelWithBlackText:[NSString stringWithFormat:@"%@/ETH兑换",BI_A0] fontSize:0];
+    [self.bodyView addSubview:lab];
+    [lab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.lab1.mas_bottom).offset(20);
+        make.left.equalTo(self.bodyView).offset(JNVIEW_X0);
+    }];
+    [self.bodyView creatLineOnRelativeView:lab offSet:20];
+    
+    UILabel * lab11 = [UIKitAdditions labelWithBlackText:@"输入数量" fontSize:0];
+    [self.bodyView addSubview:lab11];
+    [lab11 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(lab);
+        make.top.equalTo(lab.mas_bottom).offset(50);
+    }];
 
-    _curveView = [[MaeketCurveView alloc]initWithFrame:CGRectMake(0, self.nav_h, SCREEN_WIDTH, JN_HH(150)) curveModels:nil higt:600];
-    [self.view addSubview:_curveView];
-
-    float h = self.nav_h + JN_HH(150);
-
-    _downView = JnUIView(CGRectMake(0, h, SCREEN_WIDTH, SCREEN_HEIGHT), COLOR_WHITE);
-    [self.view addSubview:_downView];
-
-//    UIImageView * bgImageView = JnImageView(CGRectMake(0,0, SCREEN_WIDTH, JN_HH(97)), MYimageNamed(@""));
-//    bgImageView.userInteractionEnabled = YES ;
-//    [_downView addSubview: bgImageView];
-
-    [_downView addSubview:JnLabelType(CGRectMake(JNVIEW_X0, 0, JN_HH(100), JN_HH(30)), UILABEL_4, BI_A0STR(@"交易"), 0)];
-    _ccsLabel = JnLabelType(CGRectMake(JNVIEW_X(63), 0, SCREEN_WIDTH - JNVIEW_W(63), JN_HH(30)), UILABEL_6, BI_A0STR(@"/ETH"), 2 );
-    _ccsLabel.textColor = COLOR_A3;
-    [_downView addSubview:_ccsLabel];
-
-    _downScrollView = JnUIView(CGRectMake(0, JN_HH(70), SCREEN_WIDTH * 2, _downView.height - JN_HH(97)), COLOR_H3);
-    [_downView addSubview:_downScrollView];
-
-    NSArray * array = @[@"我要买",@"我要卖"];
-    for (int i = 0 ; i < array.count; i++) {
-        UIButton * btn = JnButtonTextType(CGRectMake(SCREEN_WIDTH / array.count * i, JN_HH(30), SCREEN_WIDTH / array.count, JN_HH(40)), array[i], 1, self, @selector(btnClick:));
-        [btn setBackgroundColor:COLOR_WHITE];
-        btn.tag = 100 + i ;
-        [_downView addSubview:btn];
-
-        [btn setTitleColor:COLOR_WHITE forState:UIControlStateSelected];
-        if (i == 0) {
-            btn.selected = YES;
-            _selBtn = btn;
-              [btn setBackgroundColor:COLOR_A1];
-        }else {
-            [self addBtn:btn];
-        }
-
-        MarketView * etView = [[MarketView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH * i, 0, SCREEN_WIDTH, _downScrollView.height) style:i + 1 ];
-        etView.delegate = self;
-        etView.tag = 200 +i;
-        etView.max = _max;
-        [_downScrollView addSubview:etView];
-    }
-
+    
+    [self.bodyView addSubview:self.upLab];
+    [self.upLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.bodyView).offset(-20);
+        make.top.equalTo(lab11);
+    }];
+    
+    [self.bodyView addSubview:self.numTf];
+    [self.numTf mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(lab11.mas_right).offset(20);
+        make.right.equalTo(self.upLab.mas_left).offset(-20);
+        make.height.mas_equalTo(40);
+        make.centerY.equalTo(lab11);
+    }];
+    
+    UIButton * btn2 = [UIKitAdditions buttonSetImage:@"hq_qiehuanxia" target:self selector:@selector(change)];
+    [self.bodyView addSubview:btn2];
+    [btn2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.upLab.mas_bottom);
+        make.width.height.mas_equalTo(JN_HH(44));
+        make.right.equalTo(self.bodyView).offset(-10);
+    }];
+    [btn2 addSubview:self.changeImv];
+    [self.changeImv mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.centerX.centerY.equalTo(btn2);
+    }];
+    
+    UILabel * lab2 = [UIKitAdditions labelWithBlackText:@"兑换数量" fontSize:0];
+    [self.bodyView addSubview:lab2];
+    [lab2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(lab);
+        make.top.equalTo(btn2.mas_bottom);
+    }];
+    
+    [self.bodyView addSubview:self.downLb];
+    [self.downLb mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.upLab);
+        make.top.equalTo(lab2);
+    }];
+    
+    [self.bodyView addSubview:self.exchangeNumTf];
+    [self.exchangeNumTf mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(lab2.mas_right).offset(20);
+        make.right.equalTo(self.downLb.mas_left).offset(-20);
+        make.height.equalTo(self.numTf);
+        make.centerY.equalTo(lab2);
+    }];
+    
+    UILabel * lab3 = [UIKitAdditions labelWithBlackText:@"估值" fontSize:0];
+    [self.bodyView addSubview:lab3];
+    [lab3 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(lab);
+        make.top.equalTo(self.exchangeNumTf.mas_bottom).offset(20);
+    }];
+    
+    [self.bodyView addSubview:self.valuationLb];
+    [self.valuationLb mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.numTf);
+        make.top.equalTo(lab3);
+    }];
+    
+    UIButton * btn = [UIKitAdditions buttonWithText:@"兑换" backGroundColor:nil textColor:COLOR_A1 fontSize:0 target:self selector:@selector(valuationClick)];
+    [self.bodyView addSubview:btn];
+    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.bodyView);
+        make.top.equalTo(self.valuationLb.mas_bottom).offset(20);
+        make.width.mas_equalTo(150);
+        make.height.mas_equalTo(40);
+    }];
+    JNViewStyle(btn, JN_HH(15), COLOR_A1, 1);
+    
+    UIButton * btn1 = [UIKitAdditions buttonWithText:@"兑换比例历史记录" backGroundColor:nil textColor:COLOR_A1 fontSize:0 target:self selector:@selector(historyClick)];
+    [self.bodyView addSubview:btn1];
+    [btn1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.bodyView).offset(-20);
+        make.top.equalTo(btn.mas_bottom).offset(20);
+        make.width.mas_equalTo(150);
+        make.height.mas_equalTo(40);
+    }];
 }
-
--(void)downDatas
-{
+#pragma mark 兑换按钮点击了
+-(void)valuationClick{
+    //ob_coin to币种ID   src_coin from币种ID  cost_ob to币种数量  cost_src  from币种数量
+    if ([self.upLab.text isEqualToString:ETH]) {
+        //ETH  - EBO
+        [MyNetworkingManager DDPOSTResqust:@"/transfer/Transfer/maketxinfo" withparameters:@{@"value":self.numTf.text,@"coin_species":[CurrencyManager readspeciesWithName:BI_A1]} withVC:self progress:^(NSProgress * _Nonnull progre) {
+            
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [IPhoneAlectView showWithAlect:^(BOOL isAlect , NSString * password) {
+                if (isAlect) {
+                    NSString * str = [MyUserDefaultsManager JNobjectForKey:[MyUserDefaultsManager readAddressSign]];
+                    NSLog(@"str===========%@",str);
+                    if (str) {
+                        [ETHManager createSignWithKey:str data:responseObject responseCallback:^(id responseta) {
+                            NSLog(@"%@",responseta);
+                            [MyNetworkingManager DDPOSTResqust:@"/transfer/Transfer/changeCoin" withparameters:@{@"src_coin":[CurrencyManager readspeciesWithName:BI_A1],@"cost_src":self.numTf.text,@"ob_coin":[CurrencyManager readspeciesWithName:BI_A0],@"cost_ob":self.exchangeNumTf.text,@"txsign":responseta,@"transpwd":password,@"txfee1":@"0.00008",@"txfee2":@"0.00005"} withVC:self progress:^(NSProgress * _Nonnull progre) {
+                            } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                [MYAlertController showTitltle:@"兑换成功" vc:self];
+                            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                
+                            }];
+                        }];
+                    }else {
+                        [MYAlertController showTitltle:@"当前设备不能签名,请导入加密文件" selButton:^(MYAlertController *AlertController, int index) {
+                            if (index == 1) {
+                                
+                            }
+                        } title:@"取消",@"导入", nil];
+                    }
+                }
+            }];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            
+        }];
+        
+        
+    }
+    else{
+        [IPhoneAlectView showWithAlect:^(BOOL isAlect , NSString * password) {
+            if (isAlect) {
+                [MyNetworkingManager DDPOSTResqust:@"/transfer/Transfer/changeCoin" withparameters:@{@"ob_coin":[CurrencyManager readspeciesWithName:BI_A1],@"cost_ob":self.exchangeNumTf.text,@"src_coin":[CurrencyManager readspeciesWithName:BI_A0],@"cost_src":self.numTf.text,@"transpwd":password} withVC:self progress:^(NSProgress * _Nonnull progre) {
+                } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                    
+                    
+                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                    
+                }];
+            }
+        }];
+    }
+}
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if ([string isEqualToString:@"0"] && textField.text.length == 0) {
+        return  NO;
+    }
+    NSString * str = @"0";
+    if (textField == self.numTf) {
+        if (range.length == 1) {
+            if (textField.text.length > 0) {
+                str = [textField.text substringWithRange:NSMakeRange(0, textField.text.length -1)];
+            }
+            if (str.length == 0) {
+                str = @"0";
+            }
+        }else {
+            str  = [NSString stringWithFormat:@"%@%@",textField.text,string];
+        }
+        NSLog(@"====%@ ==== %@",self.curManager.portionModel.propor,self.curManager.portionModel.ebocny);
+        
+        if ([self.upLab.text isEqualToString:BI_A0]) {
+            self.exchangeNumTf.text = [NSString stringWithFormat:@"%f",[str floatValue] / [self.curManager.portionModel.propor floatValue]];
+            self.valuationLb.text = [NSString stringWithFormat:@"￥%.2f",[str floatValue] / [self.curManager.portionModel.ebocny floatValue]];
+        }
+        else{
+            self.exchangeNumTf.text = [NSString stringWithFormat:@"%f",[str floatValue] * [self.curManager.portionModel.propor floatValue]];
+            self.valuationLb.text = [NSString stringWithFormat:@"￥%.2f",[self.exchangeNumTf.text floatValue] / [self.curManager.portionModel.ebocny floatValue]];
+        }
+        
+        
+    }else {
+        
+        if (range.length == 1) {
+            if (textField.text.length > 0) {
+                str = [textField.text substringWithRange:NSMakeRange(0, textField.text.length -1)];
+            }
+            if (str.length == 0) {
+                str = @"0";
+            }
+        }else {
+            NSArray * array = [textField.text componentsSeparatedByString:@"."];
+            if (array.count > 1 ) {
+                NSString * textStr = array[1];
+                if (textStr.length >=6 || [string isEqual:@"."]) {
+                    return  NO;
+                }
+            }
+            if ([string isEqual:@"."] && textField.text.length == 0 ) {
+                textField.text = @"0";
+            }
+            if ([textField.text isEqual:@"0"] && ![string isEqual:@"."]) {
+                textField.text = nil;
+            }
+            str  = [NSString stringWithFormat:@"%@%@",textField.text,string];
+            
+        }
+        
+        if ([self.upLab.text isEqualToString:BI_A0]) {
+            self.numTf.text = [NSString stringWithFormat:@"%f",[str intValue] / [self.curManager.portionModel.propor floatValue]];
+            str = self.numTf.text ;
+            self.valuationLb.text = [NSString stringWithFormat:@"￥%.2f",[str intValue] / [self.curManager.portionModel.ebocny floatValue]];
+        }
+        else{
+            self.numTf.text = [NSString stringWithFormat:@"%f",[str intValue] * [self.curManager.portionModel.propor floatValue]];
+            str = self.numTf.text ;
+            self.valuationLb.text = [NSString stringWithFormat:@"￥%.2f",[str intValue] / [self.curManager.portionModel.ebocny floatValue]];
+        }
+    }
+    return YES;
+}
+#pragma mark 历史点击了
+-(void)historyClick{
+    
+}
+-(void)change{
+    self.numTf.text = @"";
+    self.exchangeNumTf.text = @"";
+    [self.changeImv oneCircles];
+    [Helpr dispatch_queue_t_timer:1 send:^{
+        if ([self.upLab.text isEqualToString:BI_A0]) {
+            self.upLab.text = ETH;
+            self.downLb.text = BI_A0;
+        }
+        else{
+            self.upLab.text = BI_A0;
+            self.downLb.text = ETH;
+        }
+        self.numTf.placeholder = [NSString stringWithFormat:@"%@%@",self.upLab.text,exchangeStr];
+    }];
+}
+-(void)downDatas{
     //获取曲线图
     [self postdownDatas:@"transfer/list/getKindlelist" withdict:@{@"size":@"50",@"period":@"4hour",@"symbol":@"ethusdt"} index:1];
     //获取比例
-    [self postdownDatas:@"/transfer/wallet/getEBOProportion" withdict:@{@"coin_name":@"eth"} index:2];
+    [CurrencyManager exchangeProportion:^(ProportionModel * model) {
+//        self.valuationLb.text = [NSString stringWithFormat:@"$%f",[model.ebocny floatValue]/[model.propor floatValue]];
+    }];
 }
 
 -(void)readDowndatawithResponseDict:(NSDictionary *)responseDict index:(int)index
@@ -142,62 +375,19 @@
             }
             _curveView.curveModels = array;
         }
-    }else if(index == 2)
-    {
-        self.curManager.portionModel = [[ProportionModel alloc]initWithDict:responseDict];
-        for (int i = 0 ; i < 2; i++) {
-            MarketView * etView = (MarketView *)[_downScrollView viewWithTag:200 +i];
-            if (etView) {
-                etView.bili = [self.curManager.portionModel.propor floatValue];
-                etView.rmbBili = [self.curManager.portionModel.ebocny floatValue];
-            }
-        }
-
-
-    }else if(index == 501)
-    {
-        NSLog(@"responseDict ===== %@",responseDict);
     }
 }
 
--(void)addListeningkeyboard
-{
-
+-(void)addListeningkeyboard{
     [[Listeningkeyboard sharedInstance]startlisteningblockcompletion:^(CGFloat h) {
         [UIView animateWithDuration:0.3 animations:^{
-            [self.downView setY:self.nav_h];
-            [self.slidingView setY:(SCREEN_HEIGHT-JN_HH(60)-h) ];
+            self.bodyView.frame = CGRectMake(0, - 200, SCREEN_WIDTH, SCREEN_HEIGHT);
         }];
     } keyboard:^(CGFloat h) {
-        [UIView animateWithDuration:0.3 animations:^{
-            [self.downView setY:self.nav_h + JN_HH(150)];
-            [self.slidingView setY:SCREEN_HEIGHT ];
-        }];
+        self.bodyView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     }];
 }
 
--(void)btnClick:(UIButton *)btn
-{
-    if (_selBtn == btn) {
-        return ;
-    }
-  //  [Listeningkeyboard endEditing];
-    _selBtn.selected = NO;
-    _selBtn.backgroundColor = COLOR_WHITE;
-    [self addBtn:_selBtn];
-    _selBtn = btn ;
-    _selBtn.selected = YES;
-    _selBtn.backgroundColor = COLOR_A1;
-    [self removeBtn:_selBtn];
-
-    [UIView animateWithDuration:0.3 animations:^{
-        if (btn.tag == 100) {
-            [self->_downScrollView setX:0];
-        }else {
-            [self->_downScrollView setX:-SCREEN_WIDTH];
-        }
-    }];
-}
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
@@ -233,9 +423,9 @@
 -(void)didView:(UIView *)view text:(NSString *)text
 {
     if ([text floatValue] >= _max) {
-        [_slidingView setIndex:1];
+//        [_slidingView setIndex:1];
     }else {
-        [_slidingView setIndex:[text floatValue]/_max];
+//        [_slidingView setIndex:[text floatValue]/_max];
     }
 }
 

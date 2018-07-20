@@ -42,7 +42,8 @@ XMGSingletoH
 
 
 //获取币种的互换比例
-+(void)downWithBiswap;
++(void)exchangeProportion;
++(void)exchangeProportion:(void (^)(ProportionModel * ))model;
 
 @property(nonatomic,retain)ProportionModel * portionModel;
 @end

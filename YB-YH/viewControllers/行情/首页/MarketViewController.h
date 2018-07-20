@@ -6,8 +6,8 @@
 //  Copyright © 2018年 YB-YH. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "BaseBodyVC.h"
 
-@interface MarketViewController : BaseViewController
+@interface MarketViewController : BaseBodyVC
 
 @end
