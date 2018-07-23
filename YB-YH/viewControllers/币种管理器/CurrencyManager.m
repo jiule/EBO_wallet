@@ -10,10 +10,19 @@
 #import "Personal.h"
 #import "MoneyViewController.h"
 
+@interface CurrencyManager()
+
+
+
+@end
+
 
 @implementation CurrencyManager
 
 XMGSingletoM
+
+
+
 
 -(void)Initialize
 {
@@ -201,5 +210,14 @@ XMGSingletoM
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
+}
++(NSString *)readInvite:(int)invite
+{
+    NSArray * inviteArray = @[@"",@"",@"邀请",@"邀请",@"关注",@"实名认证",@"高级认证",@"备份钱包",@"支付宝授权",@"京东授权",@"学信网授权",@"手机运营授权",@"信用卡邮箱账单"
+                              ,@"开通共享共功能",@"币种首次充值",@"共享",@"",@"",@"",@"",@"糖果",@"糖果",@"转账",@"转账",@"买入",@"卖出",@"赠送",@"领取",@"派发",@"游戏" ];
+    if (invite >= inviteArray.count || invite < 0) {
+        return nil;
+    }
+   return  inviteArray[invite];
 }
 @end

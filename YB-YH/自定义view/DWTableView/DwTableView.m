@@ -33,8 +33,6 @@
 
 @property(nonatomic,assign)int cur;
 
-@property(nonatomic,copy)NSString * data1;
-
 @end
 
 @implementation DwTableView

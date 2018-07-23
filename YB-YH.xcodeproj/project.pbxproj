@@ -43,6 +43,8 @@
 		186BA8AC20D8F5D900A7F5F9 /* RollIntoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186BA8AB20D8F5D900A7F5F9 /* RollIntoViewController.m */; };
 		186BA8AF20D8F63600A7F5F9 /* CreditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186BA8AE20D8F63600A7F5F9 /* CreditViewController.m */; };
 		186BA8B220D8F65600A7F5F9 /* AssetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186BA8B120D8F65600A7F5F9 /* AssetsViewController.m */; };
+		1880C3CC210586E7008860E3 /* MyAlertsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1880C3CB210586E7008860E3 /* MyAlertsModel.m */; };
+		1880C3CF210586F9008860E3 /* MyAlertsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1880C3CE210586F9008860E3 /* MyAlertsCell.m */; };
 		188E8A5C20D0BA4A009F253C /* KeFuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E8A5B20D0BA4A009F253C /* KeFuViewController.m */; };
 		188E8A6820D0BCA7009F253C /* MyInvitationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E8A6720D0BCA7009F253C /* MyInvitationViewController.m */; };
 		188E8A6B20D0BCC1009F253C /* MyRealnameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E8A6A20D0BCC1009F253C /* MyRealnameViewController.m */; };
@@ -275,6 +277,10 @@
 		186BA8AE20D8F63600A7F5F9 /* CreditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreditViewController.m; sourceTree = "<group>"; };
 		186BA8B020D8F65600A7F5F9 /* AssetsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetsViewController.h; sourceTree = "<group>"; };
 		186BA8B120D8F65600A7F5F9 /* AssetsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetsViewController.m; sourceTree = "<group>"; };
+		1880C3CA210586E7008860E3 /* MyAlertsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyAlertsModel.h; sourceTree = "<group>"; };
+		1880C3CB210586E7008860E3 /* MyAlertsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyAlertsModel.m; sourceTree = "<group>"; };
+		1880C3CD210586F9008860E3 /* MyAlertsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyAlertsCell.h; sourceTree = "<group>"; };
+		1880C3CE210586F9008860E3 /* MyAlertsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyAlertsCell.m; sourceTree = "<group>"; };
 		188E8A5A20D0BA4A009F253C /* KeFuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeFuViewController.h; sourceTree = "<group>"; };
 		188E8A5B20D0BA4A009F253C /* KeFuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeFuViewController.m; sourceTree = "<group>"; };
 		188E8A6620D0BCA7009F253C /* MyInvitationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyInvitationViewController.h; sourceTree = "<group>"; };
@@ -944,6 +950,10 @@
 			children = (
 				188E8A7220D0BD09009F253C /* MyAlertsViewController.h */,
 				188E8A7320D0BD09009F253C /* MyAlertsViewController.m */,
+				1880C3CA210586E7008860E3 /* MyAlertsModel.h */,
+				1880C3CB210586E7008860E3 /* MyAlertsModel.m */,
+				1880C3CD210586F9008860E3 /* MyAlertsCell.h */,
+				1880C3CE210586F9008860E3 /* MyAlertsCell.m */,
 			);
 			path = "消息通知";
 			sourceTree = "<group>";
@@ -2046,6 +2056,7 @@
 				18FECFE420C140B3008E4BE4 /* UIScrollView+MJRefresh.m in Sources */,
 				84049438210173ED002B0F52 /* DDViewController.m in Sources */,
 				18FECFF320C140B3008E4BE4 /* MJRefreshHeader.m in Sources */,
+				1880C3CF210586F9008860E3 /* MyAlertsCell.m in Sources */,
 				18944F4420F43E8E005601E2 /* RegisteredObj.m in Sources */,
 				18D0D36120E077A7001ADFC8 /* JNGraphModel.m in Sources */,
 				189C165820EB191E00887FD3 /* MarketCurveModel.m in Sources */,
@@ -2120,6 +2131,7 @@
 				18FECFFF20C140B3008E4BE4 /* AFImageDownloader.m in Sources */,
 				18FECF3720C13AA4008E4BE4 /* WCLRecordEngine.m in Sources */,
 				189B4C6620EDB6EB00B1BB3C /* PentagramView.m in Sources */,
+				1880C3CC210586E7008860E3 /* MyAlertsModel.m in Sources */,
 				18D0D35E20E07639001ADFC8 /* JNGraphView.m in Sources */,
 				18B6568120F351FB00E222D6 /* ScreeningTransferView.m in Sources */,
 				18D5190720D8A86E00AF49F5 /* SXColorGradientView.m in Sources */,

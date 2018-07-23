@@ -47,4 +47,7 @@ XMGSingletoH
 +(void)exchangeProportion:(void (^)(ProportionModel * ))model;
 
 @property(nonatomic,retain)ProportionModel * portionModel;
+//根据交易类型 获取字符串类型
++(NSString *)readInvite:(int)invite;
+
 @end

@@ -13,7 +13,7 @@
 #import "MJRefresh.h"
 
 #define DWTABLEVIEW_DATA  @"data"
-#define DWTABLEVIEW_DATA1 @"data"
+#define DWTABLEVIEW_DATA1 @"list"
 
 @class DwTableView;
 
@@ -49,6 +49,7 @@
 @property(nonatomic,retain)UIImageView * emptyImageView;
 //这是取2级数据的
 @property(nonatomic,assign)BOOL is_data;
+@property(nonatomic,copy)NSString * data1;
 //这是是否添加刷新动画 默认yes
 @property(nonatomic,assign)BOOL isRefreshAnimation;
 

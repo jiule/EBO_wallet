@@ -22,16 +22,24 @@
 
 -(void)createCell
 {
-    
+    [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+    _timerLabel = JnLabelType(CGRectMake(0, 0, SCREEN_WIDTH / 3, JN_HH(50)), UILABEL_2, @"", 1);
+    [self addSubview:_timerLabel];
+
+    _nameLabel = JnLabelType(CGRectMake(SCREEN_WIDTH / 3 , 0, SCREEN_WIDTH / 3, JN_HH(50)), UILABEL_2, @"", 1);
+    [self addSubview:_nameLabel];
+
+    _jiangliLabel = JnLabelType(CGRectMake(SCREEN_WIDTH / 3 * 2, 0, SCREEN_WIDTH / 3, JN_HH(50)), UILABEL_2, @"", 1);
+    [self addSubview:_jiangliLabel];
 }
 
 -(void)setTableViewModel:(DwTableViewModel *)tableViewModel
 {
     [super setTableViewModel:tableViewModel];
     InvitationlistModel * model = (InvitationlistModel *)tableViewModel;
-    _timerLabel.text = model.timer;
-    _nameLabel.text= model.name ;
-    _nameLabel.text = BI_A0STR(model.jiangli);
+    _timerLabel.text = [model.created_at substringToIndex:10];
+    _nameLabel.text= model.order_id  ;
+    _jiangliLabel.text = [NSString stringWithFormat:@"%d",[model.user_income intValue]];
     [self createcell_h:JN_HH(50) BgColor:nil xian_h:1];
 }
 

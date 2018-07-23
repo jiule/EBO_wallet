@@ -176,7 +176,7 @@
     }
 
    [Listeningkeyboard endEditing];
-    if (!self.model.transpwd.length) {
+    if ([self.model.transpwd intValue] == 0) {
         [ MYAlertController showTitltleArrays:@[@"注意",@"您尚未设置资金密码,不可转出\n请前往安全中心设置"] selButton:^(MYAlertController *AlertController, int index) {
             [self popControllerwithstr:@"MoneyPasswordViewController" title:@"资金密码"];
         } title:@"取消",@"前往设置", nil];
@@ -188,7 +188,11 @@
         [IPhoneAlectView showWithAlect:^(BOOL isAlect , NSString * password) {
             if (isAlect) {
                 if ([self.curManager.selcurrencyModel.coin_name isEqual:@"EBO"]) {
-                    [self  postdownDatas:@"/transfer/Transfer/sendTx" withdict:@{@"coin_species":self.curManager.selcurrencyModel.coin_species,@"coin_num":self.jiaoyiField.text,@"toaddress":self.BTCField.text,@"transpwd":password} index:1];
+                    NSMutableDictionary * dict = [[NSMutableDictionary alloc]initWithDictionary:@{@"coin_species":self.curManager.selcurrencyModel.coin_species,@"coin_num":self.jiaoyiField.text,@"toaddress":self.BTCField.text,@"transpwd":password,@"toaddress":self.BTCField.text}];
+                    if (self->_beizuField.text.length > 0 ) {
+                        [dict setObject:self->_beizuField.text forKey:@"memo"];
+                    }
+                    [self  postdownDatas:@"/transfer/Transfer/sendTx" withdict:dict index:1];
                 }
             }
         }];
@@ -234,13 +238,17 @@
     if (index == 2) {
         [IPhoneAlectView showWithAlect:^(BOOL isAlect , NSString * password) {
             if (isAlect) {
-                if ([self.curManager.selcurrencyModel.coin_name isEqual:@"ETH"]) {
+                if ([self.curManager.selcurrencyModel.coin_name isEqual:BI_A1]) {
                     NSString * str = [MyUserDefaultsManager JNobjectForKey:[MyUserDefaultsManager readAddressSign]];
                             NSLog(@"str===========%@",str);
                     if (str) {
                         [ETHManager createSignWithKey:str data:responseDict responseCallback:^(id responseta) {
                             NSLog(@"%@",responseta);
-                            [self  postdownDatas:@"/transfer/Transfer/sendTx" withdict:@{@"coin_species":self.curManager.selcurrencyModel.coin_species,@"coin_num":self.jiaoyiField.text,@"txstr":responseta,@"transpwd":password} index:1];
+                            NSMutableDictionary * dict = [[NSMutableDictionary alloc]initWithDictionary:@{@"coin_species":self.curManager.selcurrencyModel.coin_species,@"coin_num":self.jiaoyiField.text,@"txstr":responseta,@"transpwd":password,@"toaddress":self.BTCField.text}];
+                            if (self->_beizuField.text.length > 0 ) {
+                                [dict setObject:self->_beizuField.text forKey:@"memo"];
+                            }
+                            [self  postdownDatas:@"/transfer/Transfer/sendTx" withdict:dict index:1];
                         }];
                     }else {
                         [MYAlertController showTitltle:@"当前设备不能签名,请导入加密文件" selButton:^(MYAlertController *AlertController, int index) {

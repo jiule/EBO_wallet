@@ -14,6 +14,14 @@
     UIView * _bgView;
     NSMutableDictionary * _dict;
     ScreeningBtn * _timerBtn;
+    ScreeningBtn * _zengBtn;
+    ScreeningBtn * _biBtn;
+    ScreeningBtn * _leiBtn;
+
+     NSArray * _tiemrArray;
+     NSArray * _zengArray;
+     NSArray * _biArray;
+     NSArray * _leiArray;
 }
 
 @end
@@ -44,6 +52,7 @@
     NSArray * biArray = @[@"EBO",@"ETH"];
     NSArray * leiArray = @[@"收益",@"交易",@"游戏"];
     NSArray * titleArray = @[@"时间",@"增减",@"币种",@"类型"];
+
     for (int i = 0 ; i < titleArray.count; i++) {
         [_bgView addSubview:JnLabelType(CGRectMake(x, h * i + JN_HH(7), JN_HH(100), JN_HH(20)), UILABEL_3, titleArray[i], 0)];
         [_bgView addSubview:JnUIView(CGRectMake(0, h * (i + 1), self.width, 1), DIVIDER_COLOR1)];
@@ -106,9 +115,29 @@
     if (btn.tag == 50) {
         [self removeBtn];
     }else {
-        if ([_delegate respondsToSelector:@selector(didScreeningTransferView:dict:)]) {
-            [_delegate didScreeningTransferView:self dict:@{}];
+        NSArray * array = @[@"week",@"month",@"year"];
+        NSArray * zengarray = @[@"transIn",@"transOut"];
+        NSArray * biarray = @[BI_A0,BI_A1];
+        NSArray * leiarray = @[@"Profit",@"Trans",@"Game"];
+        NSMutableDictionary * dict = [NSMutableDictionary dictionary];
+        if (_timerBtn) {
+            [dict setObject:array[_timerBtn.tag - 100] forKey:@"cycle"];
         }
+        if (_zengBtn) {
+            [dict setObject:zengarray[_zengBtn.tag - 200] forKey:@"inout"];
+        }
+        if (_biBtn) {
+          //  [dict setObject:[CurrencyManager readAddressWithSpecies:biarray[_biBtn.tag - 300]] forKey:@"coin_species"];
+            [dict setObject:[CurrencyManager readspeciesWithName:biarray[_biBtn.tag - 300]] forKey:@"coin_species"];
+        }
+        if (_leiBtn) {
+            [dict setObject:leiarray[_leiBtn.tag - 400] forKey:@"invite_type"];
+        }
+
+        if ([_delegate respondsToSelector:@selector(didScreeningTransferView:dict:)]) {
+            [_delegate didScreeningTransferView:self dict:dict];
+        }
+        [self removeFromSuperview];
     }
 }
 
@@ -121,14 +150,62 @@
         }else if(_timerBtn == btn)
         {
             _timerBtn.selected  = !btn.selected;
+            if (_timerBtn.selected == NO) {
+                _timerBtn = nil;
+            }
         }else {
             _timerBtn.selected = NO;
             _timerBtn = btn;
             _timerBtn.selected = YES ;
         }
 
-    }else {
-        btn.selected = !btn.selected;
+    }else if(btn.tag < 300){
+        if (_zengBtn == nil) {
+            _zengBtn = btn;
+            _zengBtn.selected = YES;
+        }else if(_zengBtn == btn)
+        {
+            _zengBtn.selected  = !btn.selected;
+            if (_zengBtn.selected == NO) {
+                _zengBtn = nil;
+            }
+        }else {
+            _zengBtn.selected = NO;
+            _zengBtn = btn;
+            _zengBtn.selected = YES ;
+        }
+    }else if(btn.tag < 400)
+    {
+        if (_biBtn == nil) {
+            _biBtn = btn;
+            _biBtn.selected = YES;
+        }else if(_biBtn == btn)
+        {
+            _biBtn.selected  = !btn.selected;
+            if (_biBtn.selected == NO) {
+                _biBtn = nil;
+            }
+        }else {
+            _biBtn.selected = NO;
+            _biBtn = btn;
+            _biBtn.selected = YES ;
+        }
+    }  else if(btn.tag < 500)
+    {
+        if (_leiBtn == nil) {
+            _leiBtn = btn;
+            _leiBtn.selected = YES;
+        }else if(_leiBtn == btn)
+        {
+            _leiBtn.selected  = !btn.selected;
+            if (_leiBtn.selected == NO) {
+                _leiBtn = nil;
+            }
+        }else {
+            _leiBtn.selected = NO;
+            _leiBtn = btn;
+            _leiBtn.selected = YES ;
+        }
     }
 }
 

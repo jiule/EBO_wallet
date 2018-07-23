@@ -50,10 +50,10 @@
 -(void)Initialize
 {
     [super Initialize];
-    _nameArrays = @[@"邀请好友",@"实名认证",@"安全中心",@"系统消息",@"备份钱包",@"设置",@"关于我们"];
-    _imageArrays = @[@"wd_yaoqing",@"wd_shiming",@"wd_anquan",@"wd_xitong",@"wd_beifen",@"wd_shezhi",@"wd_guanyu"];
-    _controllerArrays = @[@"MyInvitationViewController",@"MyRealnameViewController",@"MySecurityCenterViewController",@"MyAlertsViewController",@"MyQualificationViewController",@"MySetViewController",@"MyAboutViewController"];
-    _controllerTitleArrays = @[@"邀请好友",@"实名认证",@"安全中心",@"消息",@"备份钱包",@"设置",@"关于我们"];
+    _nameArrays = @[@"邀请好友",@"实名认证",@"安全中心",@"系统消息",@"设置",@"关于我们"];
+    _imageArrays = @[@"wd_yaoqing",@"wd_shiming",@"wd_anquan",@"wd_xitong",@"wd_shezhi",@"wd_guanyu"];
+    _controllerArrays = @[@"MyInvitationViewController",@"MyRealnameViewController",@"MySecurityCenterViewController",@"MyAlertsViewController",@"MySetViewController",@"MyAboutViewController"];
+    _controllerTitleArrays = @[@"邀请好友",@"实名认证",@"安全中心",@"消息",@"设置",@"关于我们"];
 }
 
 -(void)createNavView
@@ -122,7 +122,7 @@
         view.delegate = self;
         [view addUnderscore];
         [_downView addSubview:view];
-        if ( i>= 5) {
+        if ( i>= 4) {
             [view setY:[view getY] + JN_HH(10)];
         }
     }
