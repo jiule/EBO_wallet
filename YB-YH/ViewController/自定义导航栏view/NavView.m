@@ -59,7 +59,7 @@
   //  _fanhuiLabel = [[UILabel alloc]initWithFrame:CGRectMake(35, 12, 50, 20) text:@"返回" textColor:[UIColor whiteColor] index:0 size:17];
     [_returnBtn addSubview:_fanhuiLabel];
 
-    _rightButton = JnButtonImageTag(CGRectMake(SCREEN_WIDTH - 54, CGNavView_20h(), 44, 44), MYimageNamed(@"nav_kefu"), self, @selector(RightBtnClick:), -49);
+    _rightButton = JnButtonImageTag(CGRectMake(SCREEN_WIDTH - 54, CGNavView_20h(), 44, 44), MYimageNamed(@"nav_kefu1"), self, @selector(RightBtnClick:), -49);
     _rightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight ;
 
     [self addSubview:_rightButton];

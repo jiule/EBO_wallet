@@ -10,12 +10,25 @@
 
 @interface ShouyeQianView : UIView
 
-@property(nonatomic,retain)UIImageView * imggeView;
+/**
+ 图片
+ */
+@property(nonatomic,retain)UIImageView * imgeV;
 
-@property(nonatomic,retain)UILabel * eboLabel;
+/**
+ 名称
+ */
+@property(nonatomic,retain)UILabel * titleLb;
 
-@property(nonatomic,retain)UILabel * yueLabel;
 
-@property(nonatomic,retain)UILabel * rebLabel;
+/**
+ 余额
+ */
+@property(nonatomic,retain)UILabel * balanceLb;
+
+/**
+ 人民币
+ */
+@property(nonatomic,retain)UILabel * rmbLb;
 
 @end

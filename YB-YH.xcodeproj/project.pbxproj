@@ -203,6 +203,7 @@
 		18FED02720C143AE008E4BE4 /* MIHelpr.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FED02620C143AE008E4BE4 /* MIHelpr.m */; };
 		840494352101723E002B0F52 /* BaseBodyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 840494342101723E002B0F52 /* BaseBodyVC.m */; };
 		84049438210173ED002B0F52 /* DDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84049437210173ED002B0F52 /* DDViewController.m */; };
+		8430854621056C7900821712 /* HomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8430854521056C7900821712 /* HomeVC.m */; };
 		84CE332A21005FDB00731FF5 /* UIKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CE332821005FDB00731FF5 /* UIKitAdditions.m */; };
 		FF58CB258EF5D9B8B456857A /* libPods-YB-YH.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F81540C3128317C261518E75 /* libPods-YB-YH.a */; };
 /* End PBXBuildFile section */
@@ -603,6 +604,8 @@
 		840494342101723E002B0F52 /* BaseBodyVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseBodyVC.m; sourceTree = "<group>"; };
 		84049436210173ED002B0F52 /* DDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDViewController.h; sourceTree = "<group>"; };
 		84049437210173ED002B0F52 /* DDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDViewController.m; sourceTree = "<group>"; };
+		8430854421056C7900821712 /* HomeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeVC.h; sourceTree = "<group>"; };
+		8430854521056C7900821712 /* HomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeVC.m; sourceTree = "<group>"; };
 		84CE332721005FDB00731FF5 /* UIKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKitAdditions.h; sourceTree = "<group>"; };
 		84CE332821005FDB00731FF5 /* UIKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKitAdditions.m; sourceTree = "<group>"; };
 		A4653356825552DCFDA6A14D /* Pods-YB-YH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YB-YH.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YB-YH/Pods-YB-YH.debug.xcconfig"; sourceTree = "<group>"; };
@@ -819,6 +822,8 @@
 				18B30A9A20C53F0300213243 /* ShouViewController.m */,
 				18A43E1A20F59A940056BCAC /* ShouyeQianView.h */,
 				18A43E1B20F59A940056BCAC /* ShouyeQianView.m */,
+				8430854421056C7900821712 /* HomeVC.h */,
+				8430854521056C7900821712 /* HomeVC.m */,
 			);
 			path = "首页";
 			sourceTree = "<group>";
@@ -2020,6 +2025,7 @@
 				188E8A7720D0BD21009F253C /* MyQualificationViewController.m in Sources */,
 				18B30A9B20C53F0300213243 /* ShouViewController.m in Sources */,
 				18FECF1220C12267008E4BE4 /* UIImageView+Help.m in Sources */,
+				8430854621056C7900821712 /* HomeVC.m in Sources */,
 				18FECEE520C0ED92008E4BE4 /* main.m in Sources */,
 				18FECF4E20C13F12008E4BE4 /* GongGeView.m in Sources */,
 				18944F6220F478D1005601E2 /* InvitationlistCell.m in Sources */,

@@ -4,6 +4,7 @@
 #import "LoginViewController.h"
 
 #import "ShouViewController.h"
+#import "HomeVC.h"
 #import "WodeViewController.h"
 #import "MarketViewController.h"
 #import "SharedViewController.h"

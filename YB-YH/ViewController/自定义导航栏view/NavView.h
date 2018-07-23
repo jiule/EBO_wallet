@@ -43,9 +43,15 @@ typedef NS_ENUM(NSUInteger , MyColor_Style)
 @protocol NavViewDelegate <NSObject>
 
 @optional
-//  Users click on return
+/**
+ 导航栏左边的返回按钮点击了
+ */
 -(void)clickonReturn;
-//  Click on the button on the right of return method
+/**
+ 导航栏右边的按钮点击了
+
+ @param rightBtn 导航栏右边的按钮
+ */
 -(void)clickRightButton:(nonnull UIButton *)rightBtn;
 @end
 

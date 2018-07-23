@@ -177,6 +177,7 @@ NS_ASSUME_NONNULL_BEGIN
 //渐变颜色
 -(void)addJianbianWithColor:(UIColor *)downColor upColor:(UIColor *)upColor;
 -(void)creatLineOnRelativeView:(UIView *)relativeView offSet:(CGFloat)offset;
+-(void)creatStrongLineOnRelativeView:(UIView *)relativeView offSet:(CGFloat)offset;
 
 @end
 

@@ -210,6 +210,7 @@ XH_ATTRIBUTE(strong, UILabel, lab1);
 }
 #pragma mark 兑换按钮点击了
 -(void)valuationClick{
+    [Listeningkeyboard endEditing];
     //ob_coin to币种ID   src_coin from币种ID  cost_ob to币种数量  cost_src  from币种数量
     if ([self.upLab.text isEqualToString:ETH]) {
         //ETH  - EBO
@@ -381,16 +382,15 @@ XH_ATTRIBUTE(strong, UILabel, lab1);
 -(void)addListeningkeyboard{
     [[Listeningkeyboard sharedInstance]startlisteningblockcompletion:^(CGFloat h) {
         [UIView animateWithDuration:0.3 animations:^{
-            self.bodyView.frame = CGRectMake(0, - 200, SCREEN_WIDTH, SCREEN_HEIGHT);
+            self.bodyView.frame = CGRectMake(0, - h + self.nav_h, SCREEN_WIDTH, SCREEN_HEIGHT - self.nav_h - self.tab_h);
         }];
     } keyboard:^(CGFloat h) {
-        self.bodyView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        self.bodyView.frame = CGRectMake(0, self.nav_h, SCREEN_WIDTH, SCREEN_HEIGHT - self.nav_h - self.tab_h);
     }];
 }
 
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [Listeningkeyboard endEditing];
 }
 
