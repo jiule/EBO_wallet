@@ -9,7 +9,7 @@
 #import "ShouViewController.h"
 #import "ShufflingView.h"
 #import "SXHeadLine.h"
-#import "BaseView.h"
+#import "BaseDDView.h"
 
 #import "UIMoneyLabel.h"
 #import "LAContextManger.h"

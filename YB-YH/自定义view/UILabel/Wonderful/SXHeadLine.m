@@ -39,14 +39,14 @@ typedef NS_ENUM(NSInteger, SXMarqueeTapMode) {
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.h                   = frame.size.height;
-        self.w                   = frame.size.width;
-        UILabel *label1          = [[UILabel alloc]initWithFrame:CGRectMake(kSXHeadLineMargin, 0, frame.size.width, _h)];
-        UILabel *label2          = [[UILabel alloc]initWithFrame:CGRectMake(kSXHeadLineMargin, _h, frame.size.width, _h)];
+        self.h                   = self.frame.size.height;
+        self.w                   = self.frame.size.width;
+        UILabel *label1          = [[UILabel alloc]initWithFrame:CGRectMake(kSXHeadLineMargin, 0, self.frame.size.width, _h)];
+        UILabel *label2          = [[UILabel alloc]initWithFrame:CGRectMake(kSXHeadLineMargin, _h, self.frame.size.width, _h)];
         self.bgColor             = [UIColor whiteColor];
         self.textColor           = [UIColor blackColor];
         self.scrollDuration      = 1.0f;
-        self.stayDuration        = 4.0f;
+        self.stayDuration        = 1.0f;
         self.cornerRadius        = 2;
         self.textFont            = [UIFont systemFontOfSize:12];
         label1.font              = label2.font = _textFont;
@@ -61,28 +61,7 @@ typedef NS_ENUM(NSInteger, SXMarqueeTapMode) {
     }
     return self;
 }
--(void)drawRect:(CGRect)rect{
-    [super drawRect:rect];
-    self.h                   = self.frame.size.height;
-    self.w                   = self.frame.size.width;
-    UILabel *label1          = [[UILabel alloc]initWithFrame:CGRectMake(kSXHeadLineMargin, 0, self.frame.size.width, _h)];
-    UILabel *label2          = [[UILabel alloc]initWithFrame:CGRectMake(kSXHeadLineMargin, _h, self.frame.size.width, _h)];
-    self.bgColor             = [UIColor whiteColor];
-    self.textColor           = [UIColor blackColor];
-    self.scrollDuration      = 1.0f;
-    self.stayDuration        = 4.0f;
-    self.cornerRadius        = 2;
-    self.textFont            = [UIFont systemFontOfSize:12];
-    label1.font              = label2.font = _textFont;
-    label1.textColor         = label2.textColor = _textColor;
-    self.label1              = label1;
-    self.label2              = label2;
-    [self addSubview:label1];
-    [self addSubview:label2];
-    [self addSubview:self.bgBtn];
-    self.layer.cornerRadius  = self.cornerRadius;
-    self.layer.masksToBounds = YES;
-}
+
 #pragma mark - **************** animate
 - (void)scrollAnimate
 {
@@ -145,6 +124,8 @@ typedef NS_ENUM(NSInteger, SXMarqueeTapMode) {
         self.label2.text = self.messageArray[1];
         self.messageIndex = 0;
     }
+    [self stop];
+    [self start];
 }
 
 - (void)setTextColor:(UIColor *)textColor{

@@ -206,6 +206,7 @@
 		840494352101723E002B0F52 /* BaseBodyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 840494342101723E002B0F52 /* BaseBodyVC.m */; };
 		84049438210173ED002B0F52 /* DDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84049437210173ED002B0F52 /* DDViewController.m */; };
 		8430854621056C7900821712 /* HomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8430854521056C7900821712 /* HomeVC.m */; };
+		843085492105D2B500821712 /* BaseDDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 843085482105D2B400821712 /* BaseDDView.m */; };
 		84CE332A21005FDB00731FF5 /* UIKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CE332821005FDB00731FF5 /* UIKitAdditions.m */; };
 		FF58CB258EF5D9B8B456857A /* libPods-YB-YH.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F81540C3128317C261518E75 /* libPods-YB-YH.a */; };
 /* End PBXBuildFile section */
@@ -612,6 +613,8 @@
 		84049437210173ED002B0F52 /* DDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDViewController.m; sourceTree = "<group>"; };
 		8430854421056C7900821712 /* HomeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeVC.h; sourceTree = "<group>"; };
 		8430854521056C7900821712 /* HomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeVC.m; sourceTree = "<group>"; };
+		843085472105D2B300821712 /* BaseDDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDDView.h; sourceTree = "<group>"; };
+		843085482105D2B400821712 /* BaseDDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDDView.m; sourceTree = "<group>"; };
 		84CE332721005FDB00731FF5 /* UIKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKitAdditions.h; sourceTree = "<group>"; };
 		84CE332821005FDB00731FF5 /* UIKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKitAdditions.m; sourceTree = "<group>"; };
 		A4653356825552DCFDA6A14D /* Pods-YB-YH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YB-YH.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YB-YH/Pods-YB-YH.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1309,6 +1312,8 @@
 			children = (
 				18DCF93320CF90740092C3FC /* BaseView.h */,
 				18DCF93420CF90740092C3FC /* BaseView.m */,
+				843085472105D2B300821712 /* BaseDDView.h */,
+				843085482105D2B400821712 /* BaseDDView.m */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -2082,6 +2087,7 @@
 				1863B06620DA50D4008421E3 /* AssetModel.m in Sources */,
 				18944F4A20F4439F005601E2 /* GameMyViewCell.m in Sources */,
 				18FED02420C14370008E4BE4 /* MIPickerimage.m in Sources */,
+				843085492105D2B500821712 /* BaseDDView.m in Sources */,
 				188E8A7120D0BCF2009F253C /* MySecurityCenterViewController.m in Sources */,
 				18FECF8620C1406D008E4BE4 /* BaseModel.m in Sources */,
 				18FECF1B20C12989008E4BE4 /* NSObject+Helpr.m in Sources */,

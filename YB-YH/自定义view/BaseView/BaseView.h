@@ -31,5 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void)jn_setLeftName:(nullable NSString *)leftName;
 
+-(void)show;
+
 @end
 NS_ASSUME_NONNULL_END

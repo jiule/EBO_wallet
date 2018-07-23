@@ -39,18 +39,15 @@
         _leftName  = leftName;
         _title = title;
         _rightName = rightName;
-//        [self show];
+        if (frame.size.width > 0) {
+              [self show];
+        }
         return self;
     }
     return nil;
 }
--(void)drawRect:(CGRect)rect{
-    [super drawRect:rect];
-    [self show];
-}
--(void)show
-{
 
+-(void)show{
     float x = JN_HH(10);
     if (_leftName) {
         _leftBtn = JnButtonImageTag(CGRectMake(x, self.height * 0.5  - JN_HH(22), JN_HH(44), JN_HH(44)), MYimageNamed(_leftName), self, @selector(leftBtnClick:), -10);

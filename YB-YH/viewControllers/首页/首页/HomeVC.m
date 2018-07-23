@@ -12,7 +12,7 @@
 #import "ShufflingView.h"
 #import "SXHeadLine.h"
 #import "ShouyeQianView.h"
-#import "BaseView.h"
+#import "BaseDDView.h"
 
 
 #define Tag 666
@@ -37,7 +37,9 @@ XH_ATTRIBUTE(strong, SXHeadLine, runLb);//跑马灯
     [self.runLb start];
     [self.scolV startTimer];
     //获取最新
-    self.conView.titleLabel.text = self.curManager.selcurrencyModel.coin_name;
+    if (self.curManager.selcurrencyModel) {
+         self.conView.titleLabel.text = self.curManager.selcurrencyModel.coin_name;
+    }
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,6 +48,7 @@ XH_ATTRIBUTE(strong, SXHeadLine, runLb);//跑马灯
 -(void)createNavView{
     [super createNavView];
     [self.navView setStyle:2];
+    [self.navView addDividingLine];
     self.conView = [[JNCoinView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH * 0.5 - 30, CGNavView_20h(), 60, 44)];
     self.conView.imageView.image = MYimageNamed(@"选择框剪头1");
     [self.navView addSubview:self.conView];
@@ -63,7 +66,7 @@ XH_ATTRIBUTE(strong, SXHeadLine, runLb);//跑马灯
     scl.bounces = NO;
     [self.bodyView addSubview:scl];
     [scl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(0, 0, 0, 0));
+        make.edges.equalTo(self.bodyView).with.insets(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
     UIView * containView = [UIView new];
     [scl addSubview:containView];
@@ -80,7 +83,7 @@ XH_ATTRIBUTE(strong, SXHeadLine, runLb);//跑马灯
     UILabel * lab = [UIKitAdditions labelWithText:@"账户余额" textColor:[UIColor grayColor] alignment:1 fontSize:14];
     [containView addSubview:lab];
     [lab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.propertyLb.mas_bottom).offset(20);
+        make.top.equalTo(self.propertyLb.mas_bottom).offset(10);
         make.centerX.equalTo(containView);
     }];
     [containView creatLineOnRelativeView:lab offSet:20];
@@ -90,7 +93,7 @@ XH_ATTRIBUTE(strong, SXHeadLine, runLb);//跑马灯
         [containView addSubview:btn];
         [btn mas_makeConstraints:^(MASConstraintMaker *make) {
             if (lastBtn) {
-                make.left.equalTo(lastBtn.mas_right).offset(0);
+                make.left.equalTo(lastBtn.mas_right).offset(0);//取件码
             }
             else
                 make.left.equalTo(containView);
@@ -145,9 +148,12 @@ XH_ATTRIBUTE(strong, SXHeadLine, runLb);//跑马灯
         make.top.equalTo(self.scolV.mas_bottom).offset(20);
     }];
     
-    self.runLb = [[SXHeadLine alloc] initWithFrame:CGRectMake(JN_HH(30), JN_HH(80), SCREEN_WIDTH - JN_HH(60), JN_HH(25))];
-    [containView addSubview:self.runLb];
-    [self.runLb mas_makeConstraints:^(MASConstraintMaker *make) {
+    UIView * runLbView = JnUIView(CGRectMake(0, 0, 0, 0), COLOR_WHITE);
+    [containView addSubview:runLbView];
+    
+    self.runLb = [[SXHeadLine alloc] initWithFrame:CGRectMake(0, JN_HH(-8), SCREEN_WIDTH - JN_HH(60), JN_HH(25))];
+    [runLbView addSubview:self.runLb];
+    [runLbView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(laba.mas_right).offset(10);
         make.top.centerY.equalTo(laba);
         make.right.equalTo(containView).offset(-20);
@@ -156,26 +162,55 @@ XH_ATTRIBUTE(strong, SXHeadLine, runLb);//跑马灯
     [self.runLb setBgColor:[UIColor whiteColor] textColor:COLOR_A1 textFont:[UIFont systemFontOfSize:13]];
     [self.runLb setScrollDuration:0.5 stayDuration:3];
     self.runLb.hasGradient = YES;
-    [containView addSubview:self.runLb];
+
 #pragma mark 跑马灯点击事件
     [self.runLb changeTapMarqueeAction:^(NSInteger index) {
-        
         NSLog(@"你点击了第 %ld 个button！内容：%@", index, self.runLb.messageArray[index]);
         
     }];
     [containView creatStrongLineOnRelativeView:self.runLb offSet:20];
-    BaseView * workBtn = [[BaseView alloc]initWithFrame:CGRectMake(0, 0, 0, 0) leftName:nil title:@"asdfasdf" rightName:@"jiantou_H1_88"];
+    BaseDDView * workBtn = [[BaseDDView alloc]initWithFrame:CGRectMake(0, 0, 0, 0) leftName:nil title:@"赚取工作量证明" rightName:@"jiantou_H1_88"];
     workBtn.delegate = self;
     workBtn.backgroundColor = COLOR_WHITE;
     [containView addSubview:workBtn];
     [workBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.centerX.equalTo(containView);
-        make.top.equalTo(self.runLb.mas_bottom).offset(40);
+        make.top.equalTo(runLbView.mas_bottom).offset(40);
         make.height.mas_equalTo(50);
     }];
+    
+    UIView * v = [UIView new];
+    [containView addSubview:v];
+    [v mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.centerX.equalTo(workBtn);
+        make.top.equalTo(workBtn.mas_bottom);
+        make.height.mas_equalTo(200);
+    }];
+    
+    [containView creatStrongLineOnRelativeView:v offSet:0];
+    
+    BaseDDView * commBtn = [[BaseDDView alloc]initWithFrame:CGRectMake(0, 0, 0, 0) leftName:nil title:@"GamePay社区" rightName:@"jiantou_H1_88"];
+    commBtn.delegate = self;
+    commBtn.backgroundColor = COLOR_WHITE;
+    [containView addSubview:commBtn];
+    [commBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.centerX.equalTo(containView);
+        make.top.equalTo(v.mas_bottom).offset(20);
+        make.height.mas_equalTo(50);
+    }];
+    
+    UIView * v1 = [UIView new];
+    [containView addSubview:v1];
+    [v1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.centerX.equalTo(workBtn);
+        make.top.equalTo(commBtn.mas_bottom);
+        make.height.mas_equalTo(200);
+    }];
+    
+    
     [containView creatLineOnRelativeView:workBtn offSet:0];
     [containView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(workBtn.mas_bottom).offset(-20);
+        make.bottom.equalTo(v1.mas_bottom).offset(-20);
     }];
     
     
@@ -225,12 +260,16 @@ XH_ATTRIBUTE(strong, SXHeadLine, runLb);//跑马灯
         NSLog(@"===%@",responseObject);
         NSArray * arr = (NSArray *)responseObject;
         NSMutableArray * ziArray = [NSMutableArray array];
+        ZiCurrencyModel * zicurmodel ;
         for (int i = 0 ; i < arr.count; i++) {
             ZiCurrencyModel * ziModel = [[ZiCurrencyModel  alloc]initWithDict:arr[i]];
             [ziArray addObject:ziModel];
+            if ([ziModel.coin_name isEqual:self.curManager.selcurrencyModel.coin_name]) {
+                zicurmodel = ziModel;
+            }
         }
         [CurrencyManager sharedInstance].allZiCurrencyModel = ziArray;
-        
+        self.propertyLb.text = [NSString stringWithFormat:@"%@",zicurmodel.balance];
 //        for (int i = 0 ; i < 2; i++) {
 //            ShouyeQianView * view = (ShouyeQianView *)[_qianbaoView viewWithTag:100 +i];
 //            if ( i < [CurrencyManager sharedInstance].allZiCurrencyModel.count) {
@@ -259,13 +298,40 @@ XH_ATTRIBUTE(strong, SXHeadLine, runLb);//跑马灯
         
     }];
 }
+-(void)didView:(UIView *)view text:(NSString *)text{
+    if ([[view class] isEqual:[JNCoinTriangleView class]]) {
+        //设置默认选中的CurrencyModel
+        if ([[CurrencyManager sharedInstance] setSelBiText:text vc:self]) {
+            self.conView.titleLabel.text = text;
+            [self refreshData];
+        }
+    }
+}
+#pragma mark 刷新数据
+-(void)refreshData{
+    if (self.curManager.selcurrencyModel) {
+        self.conView.titleLabel.text = self.curManager.selcurrencyModel.coin_name;
+        ZiCurrencyModel * model = [CurrencyManager readZiModelWithSpecies:self.curManager.selcurrencyModel.coin_species];
+        self.propertyLb.text = [NSString stringWithFormat:@"%@",model.balance];
+    }
+}
 #pragma mark 转入转出按钮点击了
 -(void)inOutClick:(UIButton *)btn{
-    
+    if (btn.tag == Tag) {
+        [self popControllerwithstr:@"RollIntoViewController" title:@"转入"];
+    }
+    else if(btn.tag == Tag + 1){
+        [self popControllerwithstr:@"RollOutViewController" title:@"转出"];
+    }
 }
 #pragma mark 订单点击了
 -(void)clickonReturn{
-    
+    [self popControllerwithstr:@"TransferRecordViewController" title:@"转账记录"];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.scolV endTimer];
+    [self.runLb stop];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
