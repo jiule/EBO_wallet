@@ -132,7 +132,7 @@ XMGSingletoM
 {
     for (int i = 0; i < [CurrencyManager sharedInstance].allCurrencyModel.count; i++) {
         CurrencyModel * model =  [CurrencyManager sharedInstance].allCurrencyModel[i];
-            NSLog(@"%@------========%@",model.coin_name,name);
+          //  NSLog(@"%@------========%@",model.coin_name,name);
         if ([model.coin_name isEqualToString:name]) {
             NSLog(@"%@",model.isopen);
             if ([model.isopen isEqual:@"未开通"]) {

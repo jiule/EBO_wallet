@@ -26,6 +26,7 @@ XMGSingletoH
 @property(nonatomic,retain)NSArray * allCurrencyModel;
 //根据币种名称币种的id
 +(NSString *)readspeciesWithName:(NSString *)name;
+//根据币种名称判断用户是否开通币种
 +(BOOL)readisOpenWithName:(NSString *)name;
 //获取币种的矿工费
 +(NSString *)readMinfeeWithspecies:(NSString *)species;

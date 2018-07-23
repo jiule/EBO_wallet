@@ -24,6 +24,7 @@
     return  [self initWithFrame:frame leftName:leftName title:title rightName:nil];
 }
 
+
 -(instancetype)initWithFrame:(CGRect)frame leftName:(nullable NSString *)leftName title:(NSString *)title rightImageName:(BOOL)rightImageName
 {
     if (rightImageName) {
@@ -38,12 +39,15 @@
         _leftName  = leftName;
         _title = title;
         _rightName = rightName;
-        [self show];
+//        [self show];
         return self;
     }
     return nil;
 }
-
+-(void)drawRect:(CGRect)rect{
+    [super drawRect:rect];
+    [self show];
+}
 -(void)show
 {
 

@@ -12,7 +12,7 @@
 		<key>NAVBAR_TITLE_IMAGE_NAME</key>
 		<string></string>
 		<key>CLASS_NAME</key>
-		<string>ShouViewController</string>
+		<string>HomeVC</string>
 	</dict>
 	<dict>
 		<key>TABBAR_IMAGE_NAME</key>

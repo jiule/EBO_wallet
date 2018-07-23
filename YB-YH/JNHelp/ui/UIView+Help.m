@@ -277,6 +277,17 @@
     }];
     
 }
+#pragma mark 画分割
+-(void)creatStrongLineOnRelativeView:(UIView *)relativeView offSet:(CGFloat)offset{
+    UILabel * line = [UILabel new];
+    line.backgroundColor = COLOR_B6;
+    [relativeView.superview addSubview:line];
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.centerX.equalTo(self);
+        make.height.mas_equalTo(20);
+        make.top.equalTo(relativeView.mas_bottom).offset(offset);
+    }];
+}
 @end
 
 @interface UIView ()

@@ -200,19 +200,19 @@
         ShouyeQianView * qianView = [[ShouyeQianView alloc]initWithFrame:CGRectMake(JN_HH(15), JN_HH(30) + JN_HH(80) * i, SCREEN_WIDTH - JN_HH(30), JN_HH(75)) BgColor:COLOR_WHITE];
         qianView.tag = 100 + i;
         [_qianbaoView addSubview:qianView];
-        if (i == 0) {
-            qianView.imggeView.image = MYimageNamed(@"sy_ebog");
-        }else {
-            qianView.imggeView.image = MYimageNamed(@"sy_eth");
-            [qianView addtapGestureRecognizer:^(UIView * _Nonnull view, UIGestureRecognizer * _Nonnull tap) {
-                ShouyeQianView * anView = (ShouyeQianView *)view;
-                if ( ![CurrencyManager readisOpenWithName:anView.eboLabel.text]) {
-
-                    MoneyViewController * vc = [[MoneyViewController alloc]initWithNavTitle:@"创建钱包" name:anView.eboLabel.text];
-                    [self.navigationController pushViewController:vc animated:YES];
-                }
-            }];
-        }
+//        if (i == 0) {
+//            qianView.imggeView.image = MYimageNamed(@"sy_ebog");
+//        }else {
+//            qianView.imggeView.image = MYimageNamed(@"sy_eth");
+//            [qianView addtapGestureRecognizer:^(UIView * _Nonnull view, UIGestureRecognizer * _Nonnull tap) {
+//                ShouyeQianView * anView = (ShouyeQianView *)view;
+//                if ( ![CurrencyManager readisOpenWithName:anView.eboLabel.text]) {
+//
+//                    MoneyViewController * vc = [[MoneyViewController alloc]initWithNavTitle:@"创建钱包" name:anView.eboLabel.text];
+//                    [self.navigationController pushViewController:vc animated:YES];
+//                }
+//            }];
+//        }
     }
     [self.downView addSubview:_qianbaoView];
 //    [self didShuaxinView];
@@ -343,6 +343,7 @@
 
     for (int i = 0 ; i < 2; i++) {
         ShouyeQianView * view = (ShouyeQianView *)[_qianbaoView viewWithTag:100 +i];
+<<<<<<< HEAD
         if ( i < [CurrencyManager sharedInstance].allZiCurrencyModel.count) {
             ZiCurrencyModel * ziModel = [CurrencyManager sharedInstance].allZiCurrencyModel[i];
             if (view) {
@@ -363,6 +364,27 @@
             view.yueLabel.text = @"去开通";
             [_usdtyueLabel setText:@"0" componentsSeparatedByString:@"."];
         }
+=======
+//        if ( i < [CurrencyManager sharedInstance].allZiCurrencyModel.count) {
+//            ZiCurrencyModel * ziModel = [CurrencyManager sharedInstance].allZiCurrencyModel[i];
+//            if (view) {
+//                view.eboLabel.text = ziModel.coin_name;
+//                view.yueLabel.text = ziModel.balance;
+//            }
+//            if (i == 0) {
+//                [_ccsyueLabel setText:view.yueLabel.text componentsSeparatedByString:@"."];
+//            }else {
+//                [_usdtyueLabel setText:view.yueLabel.text componentsSeparatedByString:@"."];
+//            }
+//            if ([ziModel.coin_species isEqual:self.curManager.selcurrencyModel.coin_species]) {
+//                [_zongziLabel setText:ziModel.balance componentsSeparatedByString:@"."];
+//            }
+//        }else {
+//            view.eboLabel.text = BI_A1;
+//            view.yueLabel.text = @"去开通";
+//            [_usdtyueLabel setText:@"0" componentsSeparatedByString:@"."];
+//        }
+>>>>>>> 07f82cfd39cb013e328119def3b4fdccf3dddbd2
 
     }
 

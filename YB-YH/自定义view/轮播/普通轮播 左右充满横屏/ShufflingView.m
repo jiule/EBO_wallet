@@ -56,7 +56,21 @@
     return self ;
 }
 
-
+-(void)drawRect:(CGRect)rect
+{
+    [super drawRect:rect];
+    _btnW = self.width;
+    _btnH = self.height;
+    _btnX = 0;
+    _btnY = ([self getSizi_H] - _btnH) / 2;
+    _jiange = 0 ;
+    _cornerRadius = 5 ;
+    _time = 5;
+    self.clipsToBounds = YES ;
+    [self createView];
+    [self createView1];
+    [self startTimer];
+}
 -(UIImage *)placeholderImage
 {
     if (!_placeholderImage)
@@ -68,6 +82,9 @@
 {
     _shuffling = shuffling ;
     _urlPaths = urlPaths;
+    
+    [self setNeedsDisplay];
+    return;
   //  _urlPaths = _imageArray;
     [self createView];
     [self createView1];

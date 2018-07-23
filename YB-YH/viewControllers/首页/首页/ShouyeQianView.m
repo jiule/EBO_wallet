@@ -10,36 +10,65 @@
 
 @implementation ShouyeQianView
 
--(instancetype)initWithFrame:(CGRect)frame
-{
-  self=  [super initWithFrame:frame];
-    if (self) {
+-(instancetype)init{
+    if (self = [super init]) {
         [self createView];
-        return self;
     }
-    return nil;
+    return self;
 }
 
--(void)createView
-{
+-(UIImageView *)imgeV{
+    if (!_imgeV) {
+        _imgeV = [UIKitAdditions imageViewWithImageName:@""];
+    }
+    return _imgeV;
+}
+-(UILabel *)balanceLb{
+    if (!_balanceLb) {
+        _balanceLb = [UIKitAdditions labelWithBlackText:@"88" fontSize:20];
+        _balanceLb.textAlignment = NSTextAlignmentRight;
+    }
+    return _balanceLb;
+}
+-(UILabel *)rmbLb{
+    if (!_rmbLb) {
+        _rmbLb = [UIKitAdditions labelWithText:@"" textColor:[UIColor grayColor] alignment:2 fontSize:14];
+    }
+    return _rmbLb;
+}
+-(UILabel *)titleLb{
+    if (!_titleLb) {
+        _titleLb = [UIKitAdditions labelWithBlackText:@"" fontSize:15];
+    }
+    return _titleLb;
+}
+-(void)createView{
     self.layer.shadowColor = [UIColor blackColor].CGColor;
     self.layer.shadowOpacity = 0.6f;
     self.layer.shadowRadius = 4.0f;
     self.layer.cornerRadius = 4.0f;
     self.layer.shadowOffset = CGSizeMake(-1,2);
+    
+    [self addSubview:self.imgeV];
+    [self.imgeV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.equalTo(self).offset(20);
+    }];
+    [self addSubview:self.titleLb];
+    [self.titleLb mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.imgeV.mas_right).offset(20);
+        make.top.equalTo(self.imgeV);
+    }];
 
-    _imggeView = JnImageView(CGRectMake(JN_HH(15), JN_HH(20), JN_HH(34), JN_HH(34)), MYimageNamed(@"sy_ebog"));
-
-    [self addSubview:_imggeView];
-    _eboLabel = JnLabel(CGRectMake(JN_HH(60), JN_HH(10), JN_HH(100), JN_HH(55)), BI_A0, JN_HH(27.5), COLOR_A1, 0);
-    [self addSubview:_eboLabel];
-
-    UILabel * eboLabel = JnLabelType(CGRectMake(self.width * 0.5, JN_HH(5), self.width *0.5 - JN_HH(15), JN_HH(40)), UILABEL_1, @"0", 2);
-    eboLabel.font = [UIFont systemFontOfSize:JN_HH(20)];
-    [self addSubview:eboLabel];
-    _yueLabel = eboLabel;
-    _rebLabel = JnLabelType(CGRectMake(self.width * 0.5, JN_HH(45), self.width *0.5 - JN_HH(15), JN_HH(20)), UILABEL_3, @"0", 2);
-    [self addSubview:_rebLabel];
+    [self addSubview:self.balanceLb];
+    [self.balanceLb mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self).offset(-20);
+        make.top.equalTo(self.imgeV);
+    }];
+    [self addSubview:self.rmbLb];
+    [self.rmbLb mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self).offset(-20);
+        make.top.equalTo(self.balanceLb.mas_bottom).offset(20);
+    }];
 }
 
 @end

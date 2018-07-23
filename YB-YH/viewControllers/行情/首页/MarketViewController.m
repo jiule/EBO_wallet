@@ -382,16 +382,15 @@ XH_ATTRIBUTE(strong, UILabel, lab1);
 -(void)addListeningkeyboard{
     [[Listeningkeyboard sharedInstance]startlisteningblockcompletion:^(CGFloat h) {
         [UIView animateWithDuration:0.3 animations:^{
-            self.bodyView.frame = CGRectMake(0, - 200, SCREEN_WIDTH, SCREEN_HEIGHT);
+            self.bodyView.frame = CGRectMake(0, - h + self.nav_h, SCREEN_WIDTH, SCREEN_HEIGHT - self.nav_h - self.tab_h);
         }];
     } keyboard:^(CGFloat h) {
-        self.bodyView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        self.bodyView.frame = CGRectMake(0, self.nav_h, SCREEN_WIDTH, SCREEN_HEIGHT - self.nav_h - self.tab_h);
     }];
 }
 
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [Listeningkeyboard endEditing];
 }
 
