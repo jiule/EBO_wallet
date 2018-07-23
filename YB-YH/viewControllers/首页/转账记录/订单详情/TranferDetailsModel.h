@@ -10,21 +10,28 @@
 
 @interface TranferDetailsModel : BaseModel
 
-@property(nonatomic,copy)NSString * jiaoyinum;
+@property(nonatomic,copy)NSString * account;
 
-@property(nonatomic,copy)NSString * jiaoyitype;
+@property(nonatomic,copy)NSString * coin_number;
 
-@property(nonatomic,copy)NSString * jiaoyikuang;
+@property(nonatomic,copy)NSString * invite_type;
 
-@property(nonatomic,copy)NSString * jiaoyique;
+@property(nonatomic,copy)NSString * created_at;
 
-@property(nonatomic,copy)NSString * jiaoyigas;
+@property(nonatomic,copy)NSString * confirm;
 
-@property(nonatomic,copy)NSString * jiaoyimuaddress;
+@property(nonatomic,copy)NSString * platform_coin_address;
 
-@property(nonatomic,copy)NSString * jiaoyiaddress;
+@property(nonatomic,copy)NSString * users_coin_address;
 
-@property(nonatomic,copy)NSString * jiaoyitimer;
+@property(nonatomic,copy)NSString * memo; //备注
 
-@property(nonatomic,copy)NSString * jiaoyi_id;
+@property(nonatomic,copy)NSString * game_name;
+
+@property(nonatomic,copy)NSString * txfee;
+
+@property(nonatomic,copy)NSString * txid;
+
+@property(nonatomic,copy)NSString * status;
+
 @end

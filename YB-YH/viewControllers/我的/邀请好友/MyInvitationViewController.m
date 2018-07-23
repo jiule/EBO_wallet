@@ -110,17 +110,15 @@
 -(void)downDatas
 {
     [self postdownDatas:@"/share/Myshare/invitationCount" withdict:@{} index:1];
-    [self postdownDatas:@"/user/Assets/getSuger" withdict:@{} index:2];
+  //  [self postdownDatas:@"/user/Assets/getSuger" withdict:@{} index:2];
 }
 
 -(void)readDowndatawithResponseDict:(NSDictionary *)responseDict index:(int)index
 {
     if (index == 1) {
         NSLog(@"responseDict 1======%@",responseDict);
-    }else if(index == 2)
-    {
-        NSLog(@"responseDict 2======%@",responseDict);
-      //  _jiangliLabel.text = [NSString stringWithFormat:@"%@",responseDict[@"num"]];
+        _haoyoushuLabel.text = [NSString stringWithFormat:@"%@",responseDict[@"invite_cn"]];
+        _jiangliLabel.text = [NSString stringWithFormat:@"%@",responseDict[@"profit"]];
     }
 }
 

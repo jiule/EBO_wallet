@@ -65,7 +65,7 @@ XMGSingletoH
 
 @property(nonatomic,copy)NSString * sweet_total;
 
-@property(nonatomic,copy)NSString * transpwd;
+@property(nonatomic,retain)NSNumber * transpwd;
 
 @property(nonatomic,copy)NSString * uid;
 

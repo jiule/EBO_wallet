@@ -7,31 +7,35 @@
 //
 
 #import "MyAlertsViewController.h"
+#import "DwTableView.h"
 
-@interface MyAlertsViewController ()
+@interface MyAlertsViewController () <DwTableViewDelegate,DwTableViewCellDelegate>
+@property(nonatomic,retain)DwTableView * tableView;
 
 @end
 
 @implementation MyAlertsViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+-(void)createView
+{
+    float h = self.nav_h;
+    self.tableView =  [DwTableView initWithFrame:CGRectMake(0, h , SCREEN_WIDTH, SCREEN_HEIGHT  - h) url:URL(@"/portal/Slide/getNoticeList") modelName:@"MyAlertsModel" cellName:@"MyAlertsCell" delegate:self];
+    self.tableView.delegate = self ;
+    [self.view addSubview:[self.tableView readTableView]];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)tableWithPage:(int)page
+{
+    [self.tableView downWithdict:@{@"page":[NSString stringWithFormat:@"%d",page],@"num":@"15"} index:page];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)downData
+{
+    [self tableWithPage:1];
 }
-*/
+
+-(void)DwtableView:(DwTableView *)tableview refresh:(int)page
+{
+    [self tableWithPage:page];
+}
 
 @end

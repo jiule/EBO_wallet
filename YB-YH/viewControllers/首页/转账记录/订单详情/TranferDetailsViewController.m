@@ -8,6 +8,7 @@
 
 #import "TranferDetailsViewController.h"
 #import "TranferDetailsView.h"
+#import "TranferDetailsModel.h"
 
 @interface TranferDetailsViewController ()
 {
@@ -22,6 +23,7 @@
 {
     self = [super initWithNavTitle:str];
     _tranferID = tranferID;
+    NSLog(@"%@",_tranferID);
     if (self) {
         return self;
     }
@@ -41,5 +43,25 @@
     [self.view addSubview:_tranfetView];
 }
 
+-(void)downData
+{
+    [self postdownDatas:@"transfer/Wallet/getTransInfo" adddict:@{@"txid":_tranferID} index:1];
+}
+-(void)readDowndatawithResponseDict:(NSDictionary *)responseDict index:(int)index
+{
+    if (index == 1) {
+        NSLog(@"%@",responseDict);
+        TranferDetailsModel * trmodel = [[TranferDetailsModel alloc]initWithDict:responseDict];
+        _tranfetView.tranferModel = trmodel;
+        if (trmodel.game_name.length > 0) {
+            //游戏的 
+        }else {
+            [ _tranfetView setY:self.nav_h + JN_HH(20)];
+            NSArray * array = @[@"转账中",@"转账中",@"订单已完成",@"订单已取消"];
+            [self.view addSubview:JnLabelType(CGRectMake(0, CGSCREEN_HEIGHT() - JN_HH(50), SCREEN_WIDTH, JN_HH(44)), UILABEL_3, array[[trmodel.status intValue] ], 1)];
+
+        }
+     }
+}
 
 @end

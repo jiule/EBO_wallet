@@ -210,6 +210,7 @@ XH_ATTRIBUTE(strong, UILabel, lab1);
 }
 #pragma mark 兑换按钮点击了
 -(void)valuationClick{
+    [Listeningkeyboard endEditing];
     //ob_coin to币种ID   src_coin from币种ID  cost_ob to币种数量  cost_src  from币种数量
     if ([self.upLab.text isEqualToString:ETH]) {
         //ETH  - EBO

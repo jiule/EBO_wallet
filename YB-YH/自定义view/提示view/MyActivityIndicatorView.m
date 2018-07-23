@@ -41,7 +41,7 @@
 - (NSArray *)imageArray
 {
     if (!_imageArray) {
-        _imageArray = @[@"连接中",@"连接成功",@"连接超时",@"连接断开",@"连接错误",@""];
+        _imageArray = @[@"hq_qiehuan",@"hq_qiehuan",@"hq_qiehuan",@"hq_qiehuan",@"hq_qiehuan",@""];
     }
     return _imageArray;
 }
@@ -59,13 +59,14 @@
 -(void)show
 {
     if (!_bgImageView) {
-        _bgView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 50, SCREEN_HEIGHT / 2 - 50, 100, 100) BgColor:[UIColor blackColor]];
+        _bgView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 50, SCREEN_HEIGHT / 2 - 50, 100, 100) BgColor:COLOR_B(0.7)];
         _bgView.layer.contentsScale = 5;
         [self addSubview:_bgView];
         
         _bgImageView = [[UIImageView alloc]initWithFrame:CGRectMake(25, 15, 50, 50)];
         _bgImageView.image = [UIImage imageNamed:self.imageArray[_style]];
-        _bgImageView.backgroundColor = COLOR_A1;
+
+  //      _bgImageView.backgroundColor = COLOR_A1;
         [_bgView addSubview:_bgImageView];
         
     //    _TitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 75, 100, 20) text:_TitleString textColor:[UIColor whiteColor] index:1 size:16];

@@ -10,9 +10,9 @@
 
 @interface InvitationlistModel : DwTableViewModel
 
-@property(nonatomic,copy)NSString * name;
+@property(nonatomic,copy)NSString * order_id;
 
-@property(nonatomic,copy)NSString * timer;
+@property(nonatomic,copy)NSString * created_at;
 
-@property(nonatomic,copy)NSString * jiangli;
+@property(nonatomic,copy)NSString * user_income;
 @end

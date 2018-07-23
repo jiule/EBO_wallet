@@ -16,9 +16,9 @@
 
 @end
 
-@interface TransferModel :BaseModel
+@interface TransferModel :DwTableViewModel
 
-@property(nonatomic,copy)NSString * typblockstatee;
+@property(nonatomic,copy)NSString * blockstate;
 
 @property(nonatomic,copy)NSString * coin_name;
 
@@ -43,5 +43,6 @@
 @property(nonatomic,copy)NSString * user_income;
 
 @property(nonatomic,copy)NSString * wallet_id;
+
 
 @end

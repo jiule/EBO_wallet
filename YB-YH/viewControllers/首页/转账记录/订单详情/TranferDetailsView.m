@@ -20,6 +20,7 @@
     UILabel * _yuanLabel;
     UILabel * _timerLabel;
     UILabel * _dingdanLabel;
+    UILabel * _memoLbael;
 }
 
 @end
@@ -43,7 +44,7 @@
     float h = JN_HH(10);
     float x = JN_HH(15);
     float jian = JN_HH(44);
-    NSArray * titleArray = @[@"交易金额",@"交易类型",@"矿工费",@"确认数",@"Gas"];
+    NSArray * titleArray = @[@"交易金额",@"交易类型",@"矿工费",@"确认数"];
     for (int i = 0 ; i < titleArray.count; i++) {
         [self addSubview:JnLabelType(CGRectMake(x, h + jian * i, self.width * 0.5, jian), UILABEL_2, titleArray[i], 0)];
     }
@@ -63,9 +64,9 @@
     _querenLabel = JnLabelType(CGRectMake(self.width *0.5, h, self.width * 0.5 - x, jian), UILABEL_3, @"6", 2);
     [self addSubview:_querenLabel];
 
-    h += jian;
-    _gasLabel = JnLabelType(CGRectMake(self.width *0.5, h, self.width * 0.5 - x, jian), UILABEL_3, @"2100", 2);
-    [self addSubview:_gasLabel];
+//    h += jian;
+//    _gasLabel = JnLabelType(CGRectMake(self.width *0.5, h, self.width * 0.5 - x, jian), UILABEL_3, @"2100", 2);
+//    [self addSubview:_gasLabel];
 
     h += jian;
 
@@ -87,28 +88,36 @@
     [self addUnderscoreWihtFrame:CGRectMake(0, h, self.width, 1)];
 
     h += JN_HH(10);
-    [self addSubview:JnLabelType(CGRectMake(x, h, SCREEN_WIDTH, JN_HH(30)), UILABEL_2, @"交易时间", 0)];
-    _timerLabel = JnLabelType(CGRectMake(self.width *0.5, h, self.width * 0.5 - x, jian), UILABEL_3, @"1990-01-01 14:20", 2);
+    [self addSubview:JnLabelType(CGRectMake(x, h, SCREEN_WIDTH, jian), UILABEL_2, @"交易时间", 0)];
+    _timerLabel = JnLabelType(CGRectMake(self.width * 0.5, h, self.width * 0.5 - x, jian), UILABEL_3, @"1990-01-01 14:20", 2);
     [self addSubview:_timerLabel];
     h += jian;
-    [self addSubview:JnLabelType(CGRectMake(x, h, SCREEN_WIDTH, JN_HH(30)), UILABEL_2, @"订单号", 0)];
+    [self addSubview:JnLabelType(CGRectMake(x, h, SCREEN_WIDTH, jian), UILABEL_2, @"订单号", 0)];
     _dingdanLabel =  JnLabelType(CGRectMake(self.width *0.5, h, self.width * 0.5 - x, jian), UILABEL_3, @"100000100000001111", 2);
     [self addSubview:_dingdanLabel];
+
+    h += jian;
+    _memoLbael = JnLabelType(CGRectMake(JNVIEW_X0 ,h, self.width - JNVIEW_X0, jian), UILABEL_3, @"", 0);
+    [self addSubview:_memoLbael];
 
 }
 
 -(void)setTranferModel:(TranferDetailsModel *)tranferModel
 {
     _tranferModel = tranferModel;
-    _jineLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.jiaoyinum];
-    _typeLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.jiaoyitype];
-     _kuanggongLaebl.text = [NSString stringWithFormat:@"%@",_tranferModel.jiaoyikuang];
-     _querenLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.jiaoyique];
-     _gasLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.jiaoyigas];
-     _mudiLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.jiaoyimuaddress];
-     _yuanLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.jiaoyiaddress];
-     _timerLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.jiaoyitimer];
-     _dingdanLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.jiaoyi_id];
+    _jineLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.coin_number];
+    _typeLabel.text = [CurrencyManager readInvite: [_tranferModel.invite_type intValue]];
+     _kuanggongLaebl.text = [NSString stringWithFormat:@"%@",_tranferModel.txfee];
+     _querenLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.confirm];
+     _mudiLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.platform_coin_address];
+     _yuanLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.users_coin_address];
+     _timerLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.created_at];
+     _dingdanLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.txid];
+    if (tranferModel.memo.length > 0) {
+        _memoLbael.text = [NSString stringWithFormat:@"备注:%@",_tranferModel.memo];
+    }else {
+        [self setH:self.height - JN_HH(54)];
+    }
 }
 
 @end

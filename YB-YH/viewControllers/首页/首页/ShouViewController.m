@@ -356,6 +356,7 @@
             }
             if ([ziModel.coin_species isEqual:self.curManager.selcurrencyModel.coin_species]) {
                 [_zongziLabel setText:ziModel.balance componentsSeparatedByString:@"."];
+                _conView.titleLabel.text = self.curManager.selcurrencyModel.coin_name;
             }
         }else {
             view.eboLabel.text = BI_A1;

@@ -99,7 +99,7 @@
 
 -(void)loginClick
 {
-    [self postdownDatas:@"/user/Profile/changePassword" withdict:@{@"username":_iponeField.text,@"password":_passWordField.text,@"verification_code":_yanzhengField.text } index:501 type:0];
+    [self postdownDatas:@"/user/login/changePassword" withdict:@{@"username":_iponeField.text,@"password":_passWordField.text,@"verification_code":_yanzhengField.text } index:501 type:0];
 }
 
 -(void)readDowndatawithResponseDict:(NSDictionary *)responseDict index:(int)index

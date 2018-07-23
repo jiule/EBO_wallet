@@ -12,11 +12,12 @@
 #import "ScreeningTransferView.h"
 #import "TranferDetailsViewController.h"
 
-@interface TransferRecordViewController ()<DwTableViewDelegate,DwTableViewCellDelegate>
+@interface TransferRecordViewController ()<DwTableViewDelegate,DwTableViewCellDelegate,ScreeningTransferViewDelegate>
 {
 
     UIButton * _navRightBtn;
     ScreeningTransferView * _screeningTransferView;
+    NSDictionary * _screeningDict;
 }
 
 @property(nonatomic,retain)DwTableView * tableView;
@@ -36,30 +37,9 @@
 
 -(void)createView
 {
-    self.tableView =  [DwTableView initWithFrame:CGRectMake(0, self.nav_h , SCREEN_WIDTH, SCREEN_HEIGHT  - self.nav_h) url:@"transfer/wallet/getTransferList" modelName:@"TransferRecordModel" cellName:@"TransferRecordCell" delegate:self];
+    self.tableView =  [DwTableView initWithFrame:CGRectMake(0, self.nav_h , SCREEN_WIDTH, SCREEN_HEIGHT  - self.nav_h) url:URL(@"transfer/wallet/getTransferList") modelName:@"TransferModel" cellName:@"TransferRecordCell" delegate:self];
     [self.tableView readTableView].backgroundColor = COLOR_H3;
     [self.view addSubview:[self.tableView readTableView]];
-
-    NSMutableArray * transModels = [NSMutableArray array];
-    for (int i = 0 ; i < 5;  i++)
-    {
-        TransferRecordModel * model = [[TransferRecordModel alloc]init];
-        model.timer = @"5月6日";
-        NSMutableArray * array = [NSMutableArray array];
-        for (int j = 0; j + i < 6; j++) {
-            TransferModel * model1 = [[TransferModel alloc]init];
-         //   model1.type = @"转出";
-       //     model1.type1 = @"归还";
-         //   model1.timer = @"14:20";
-        //    model1.num = @"+10.00";
-        //    model1.name = @"CCS";
-            model1.transfer_id = [NSString stringWithFormat:@"j"];
-            [array addObject:model1];
-        }
-        model.transFerArrays = array;
-        [transModels addObject:model];
-    }
-    [self.tableView ceshiArrays:transModels];
 }
 
 -(void)rightBtnClick:(UIButton *)btn
@@ -68,6 +48,7 @@
     if (btn.selected) {
         ScreeningTransferView * view = [[ScreeningTransferView alloc]initWithFrame:CGRectMake(0, self.nav_h, SCREEN_WIDTH, SCREEN_HEIGHT - self.nav_h)];
         _screeningTransferView = view;
+        view.delegate = self;
         [self.view addSubview:view];
     }else {
         [_screeningTransferView removeFromSuperview];
@@ -82,24 +63,42 @@
     }
 }
 
--(void)didselview:(DwTableViewCell *)Mycell data:(id)data
+-(void)downData
 {
-    TransferModel  * tranModel = (TransferModel *)data;
-    TranferDetailsViewController * vc = [[TranferDetailsViewController alloc]initWithNavTitle:@"支付订单详情" tranferID:tranModel.transfer_id];
+    [self tableViewWithPage:1];
+}
+
+
+
+-(void)tableViewWithPage:(int)page
+{
+    NSMutableDictionary * dict = [[NSMutableDictionary alloc]initWithDictionary:_screeningDict];
+    [dict setObject:[NSString stringWithFormat:@"%d",page] forKey:@"page"];
+    [dict setObject:@"10" forKey:@"num"];
+    [self.tableView downWithdict:dict index:page];
+}
+
+
+-(void)DwtableView:(DwTableView *)tableview refresh:(int)page
+{
+    [self tableViewWithPage:page];
+}
+-(void)DwtableView:(DwTableView *)tableView model:(DwTableViewModel *)myTableViewModel indexPath:(NSIndexPath *)indexPath
+{
+    TransferModel  * tranModel = (TransferModel *)myTableViewModel;
+    TranferDetailsViewController * vc = [[TranferDetailsViewController alloc]initWithNavTitle:@"支付订单详情" tranferID:tranModel.txid];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
--(void)downDatas
+-(void)DwtableView:(DwTableView *)tableView downDatasWithDict:(NSDictionary *)dict index:(int)index
 {
-    [self getDownDatas:@"transfer/wallet/getTransferList" withdict:@{@"page":@"1",@"num":@"100"} index:501 type:0];
+    NSLog(@"%@",dict);
 }
 
--(void)readDowndatawithResponseDict:(NSDictionary *)responseDict index:(int)index
+#pragma mark----_screeningDict
+-(void)didScreeningTransferView:(ScreeningTransferView *)view dict:(NSDictionary *)dict
 {
-    if (index == 501)
-    {
-        NSLog(@"%@",responseDict);
-    }
+    _screeningDict = dict;
+    [self tableViewWithPage:1];
 }
-
 @end

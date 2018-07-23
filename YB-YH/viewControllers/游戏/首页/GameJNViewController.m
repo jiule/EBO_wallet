@@ -42,12 +42,14 @@
 
     _tableView = [DwTableView initWithFrame:CGRectMake(0, self.nav_h, SCREEN_WIDTH, SCREEN_HEIGHT - self.nav_h -Tabbar_49h()) url:@"http://waiguamobi.com/index.php?s=/Api/Game/game_list" modelName:@"GameModel" cellName:@"GameViewCell" delegate:self];
     _tableView.is_data = YES;
+    _tableView.data1 = @"data";
     [self.view addSubview:[_tableView readTableView]];
 }
 
 -(void)downData
 {
     [self tableViewDownWithPage:1];
+
 }
 
 -(void)tableViewDownWithPage:(int)page
