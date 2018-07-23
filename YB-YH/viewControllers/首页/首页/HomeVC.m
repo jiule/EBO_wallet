@@ -32,7 +32,13 @@ XH_ATTRIBUTE(strong, SXHeadLine, runLb);//跑马灯
     }
     return _propertyLb;
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.runLb start];
+    [self.scolV startTimer];
+    //获取最新
+    self.conView.titleLabel.text = self.curManager.selcurrencyModel.coin_name;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -53,28 +59,41 @@ XH_ATTRIBUTE(strong, SXHeadLine, runLb);//跑马灯
     [self.navView setRrturnBackImage:MYimageNamed(@"hq_dingdan")];
 }
 -(void)createView{
-    [self.bodyView addSubview:self.propertyLb];
+    UIScrollView * scl = [UIScrollView new];
+    scl.bounces = NO;
+    [self.bodyView addSubview:scl];
+    [scl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
+    UIView * containView = [UIView new];
+    [scl addSubview:containView];
+    [containView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(scl).with.insets(UIEdgeInsetsMake(0, 0, 0, 0));
+        make.width.equalTo(scl);
+    }];
+    
+    [containView addSubview:self.propertyLb];
     [self.propertyLb mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.bodyView);
-        make.top.equalTo(self.bodyView).offset(20);
+        make.centerX.equalTo(containView);
+        make.top.equalTo(containView).offset(20);
     }];
     UILabel * lab = [UIKitAdditions labelWithText:@"账户余额" textColor:[UIColor grayColor] alignment:1 fontSize:14];
-    [self.bodyView addSubview:lab];
+    [containView addSubview:lab];
     [lab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.propertyLb.mas_bottom).offset(20);
-        make.centerX.equalTo(self.bodyView);
+        make.centerX.equalTo(containView);
     }];
-    [self.bodyView creatLineOnRelativeView:lab offSet:20];
+    [containView creatLineOnRelativeView:lab offSet:20];
     UIButton * lastBtn = nil;
     for (int i = 0;  i < 2; i ++) {
         UIButton * btn = [UIButton new];
-        [self.bodyView addSubview:btn];
+        [containView addSubview:btn];
         [btn mas_makeConstraints:^(MASConstraintMaker *make) {
             if (lastBtn) {
                 make.left.equalTo(lastBtn.mas_right).offset(0);
             }
             else
-                make.left.equalTo(self.bodyView);
+                make.left.equalTo(containView);
             make.top.equalTo(lab.mas_bottom).offset(20);
             make.width.mas_equalTo(SCREEN_WIDTH/2);
             make.height.mas_equalTo(50);
@@ -96,7 +115,7 @@ XH_ATTRIBUTE(strong, SXHeadLine, runLb);//跑马灯
         if (!lastBtn) {
             UILabel * lab = [UILabel new];
             lab.backgroundColor  = COLOR_B6;
-            [self.bodyView addSubview:lab];
+            [containView addSubview:lab];
             [lab mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerY.equalTo(btn);
                 make.left.equalTo(btn.mas_right);
@@ -106,55 +125,58 @@ XH_ATTRIBUTE(strong, SXHeadLine, runLb);//跑马灯
         }
         lastBtn = btn;
     }
-    [self.bodyView creatLineOnRelativeView:lastBtn offSet:0];
-    [self.bodyView creatStrongLineOnRelativeView:lastBtn offSet:0];
+    [containView creatLineOnRelativeView:lastBtn offSet:0];
+    [containView creatStrongLineOnRelativeView:lastBtn offSet:0];
     
     
     self.scolV = [[ShufflingView alloc]initWithFrame:CGRectMake(0, 0, 0, 0) BgColor:COLOR_WHITE];
-    [self.bodyView addSubview:self.scolV];
+    [containView addSubview:self.scolV];
     [self.scolV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(JN_HH(80));
-        make.left.centerX.equalTo(self.bodyView);
+        make.left.centerX.equalTo(containView);
         make.top.equalTo(lastBtn.mas_bottom).offset(20);
     }];
     
     //跑马灯
     UIImageView * laba = [UIKitAdditions imageViewWithImageName:@"sy_laba"];
-    [self.bodyView addSubview:laba];
+    [containView addSubview:laba];
     [laba mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.bodyView).offset(20);
+        make.left.equalTo(containView).offset(20);
         make.top.equalTo(self.scolV.mas_bottom).offset(20);
     }];
     
     self.runLb = [[SXHeadLine alloc] initWithFrame:CGRectMake(JN_HH(30), JN_HH(80), SCREEN_WIDTH - JN_HH(60), JN_HH(25))];
-    [self.bodyView addSubview:self.runLb];
+    [containView addSubview:self.runLb];
     [self.runLb mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(laba.mas_right).offset(10);
         make.top.centerY.equalTo(laba);
-        make.right.equalTo(self.bodyView).offset(-20);
+        make.right.equalTo(containView).offset(-20);
     }];
     
     [self.runLb setBgColor:[UIColor whiteColor] textColor:COLOR_A1 textFont:[UIFont systemFontOfSize:13]];
     [self.runLb setScrollDuration:0.5 stayDuration:3];
     self.runLb.hasGradient = YES;
-    [self.bodyView addSubview:self.runLb];
+    [containView addSubview:self.runLb];
 #pragma mark 跑马灯点击事件
     [self.runLb changeTapMarqueeAction:^(NSInteger index) {
         
         NSLog(@"你点击了第 %ld 个button！内容：%@", index, self.runLb.messageArray[index]);
         
     }];
-    [self.bodyView creatStrongLineOnRelativeView:self.runLb offSet:20];
+    [containView creatStrongLineOnRelativeView:self.runLb offSet:20];
     BaseView * workBtn = [[BaseView alloc]initWithFrame:CGRectMake(0, 0, 0, 0) leftName:nil title:@"asdfasdf" rightName:@"jiantou_H1_88"];
     workBtn.delegate = self;
     workBtn.backgroundColor = COLOR_WHITE;
-    [self.bodyView addSubview:workBtn];
+    [containView addSubview:workBtn];
     [workBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.centerX.equalTo(self.bodyView);
+        make.left.centerX.equalTo(containView);
         make.top.equalTo(self.runLb.mas_bottom).offset(40);
         make.height.mas_equalTo(50);
     }];
-    [self.bodyView creatLineOnRelativeView:workBtn offSet:0];
+    [containView creatLineOnRelativeView:workBtn offSet:0];
+    [containView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(workBtn.mas_bottom).offset(-20);
+    }];
     
     
 }
