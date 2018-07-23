@@ -343,28 +343,6 @@
 
     for (int i = 0 ; i < 2; i++) {
         ShouyeQianView * view = (ShouyeQianView *)[_qianbaoView viewWithTag:100 +i];
-<<<<<<< HEAD
-        if ( i < [CurrencyManager sharedInstance].allZiCurrencyModel.count) {
-            ZiCurrencyModel * ziModel = [CurrencyManager sharedInstance].allZiCurrencyModel[i];
-            if (view) {
-                view.eboLabel.text = ziModel.coin_name;
-                view.yueLabel.text = ziModel.balance;
-            }
-            if (i == 0) {
-                [_ccsyueLabel setText:view.yueLabel.text componentsSeparatedByString:@"."];
-            }else {
-                [_usdtyueLabel setText:view.yueLabel.text componentsSeparatedByString:@"."];
-            }
-            if ([ziModel.coin_species isEqual:self.curManager.selcurrencyModel.coin_species]) {
-                [_zongziLabel setText:ziModel.balance componentsSeparatedByString:@"."];
-                _conView.titleLabel.text = self.curManager.selcurrencyModel.coin_name;
-            }
-        }else {
-            view.eboLabel.text = BI_A1;
-            view.yueLabel.text = @"去开通";
-            [_usdtyueLabel setText:@"0" componentsSeparatedByString:@"."];
-        }
-=======
 //        if ( i < [CurrencyManager sharedInstance].allZiCurrencyModel.count) {
 //            ZiCurrencyModel * ziModel = [CurrencyManager sharedInstance].allZiCurrencyModel[i];
 //            if (view) {
@@ -384,7 +362,6 @@
 //            view.yueLabel.text = @"去开通";
 //            [_usdtyueLabel setText:@"0" componentsSeparatedByString:@"."];
 //        }
->>>>>>> 07f82cfd39cb013e328119def3b4fdccf3dddbd2
 
     }
 
