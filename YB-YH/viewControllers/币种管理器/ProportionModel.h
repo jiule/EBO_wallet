@@ -11,8 +11,8 @@
 @interface ProportionModel : BaseModel
 XMGSingletoH
 //ebo : 跟 rmb
-@property(nonatomic,copy)NSString *  ebocny;
-// eth
-@property(nonatomic,copy)NSString *  propor;
+@property(nonatomic,assign) float  ebocny;
+// eth  跟 EBO
+@property(nonatomic,assign)float  propor;
 
 @end

@@ -16,7 +16,6 @@
     }
     return self;
 }
-
 -(UIImageView *)imgeV{
     if (!_imgeV) {
         _imgeV = [UIKitAdditions imageViewWithImageName:@""];
@@ -43,11 +42,7 @@
     return _titleLb;
 }
 -(void)createView{
-    self.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.layer.shadowOpacity = 0.6f;
-    self.layer.shadowRadius = 4.0f;
-    self.layer.cornerRadius = 4.0f;
-    self.layer.shadowOffset = CGSizeMake(-1,2);
+    
     
     [self addSubview:self.imgeV];
     [self.imgeV mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -22,14 +22,18 @@
 //      //  _Id = value;
 //    }
 //}
+-(void)setValue:(id)value forUndefinedKey:(NSString *)key{
+    NSLog(@"未定义%@属性",key);
+}
 -(instancetype)initWithDict:(NSDictionary *)dict{
-    if (self=[self init]) {
+    if (self = [self init]) {
         self.dict = [NSMutableDictionary dictionaryWithDictionary:dict];
     }
     return self;
 }
 -(void)setDict:(NSMutableDictionary *)dict{
     _dict = dict;
+    
     NSArray * array = [self getAllProperties];
     for (NSString *str in array) {
         if ([self judgewithStr:str]) {

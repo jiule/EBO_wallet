@@ -276,15 +276,15 @@ XH_ATTRIBUTE(strong, UILabel, lab1);
         }else {
             str  = [NSString stringWithFormat:@"%@%@",textField.text,string];
         }
-        NSLog(@"====%@ ==== %@",self.curManager.portionModel.propor,self.curManager.portionModel.ebocny);
+        NSLog(@"====%.2f ==== %.4f",self.curManager.portionModel.propor,self.curManager.portionModel.ebocny);
         
         if ([self.upLab.text isEqualToString:BI_A0]) {
-            self.exchangeNumTf.text = [NSString stringWithFormat:@"%f",[str floatValue] / [self.curManager.portionModel.propor floatValue]];
-            self.valuationLb.text = [NSString stringWithFormat:@"￥%.2f",[str floatValue] / [self.curManager.portionModel.ebocny floatValue]];
+            self.exchangeNumTf.text = [NSString stringWithFormat:@"%f",[str floatValue] / self.curManager.portionModel.propor];
+            self.valuationLb.text = [NSString stringWithFormat:@"￥%.2f",[str floatValue] / self.curManager.portionModel.ebocny];
         }
         else{
-            self.exchangeNumTf.text = [NSString stringWithFormat:@"%f",[str floatValue] * [self.curManager.portionModel.propor floatValue]];
-            self.valuationLb.text = [NSString stringWithFormat:@"￥%.2f",[self.exchangeNumTf.text floatValue] / [self.curManager.portionModel.ebocny floatValue]];
+            self.exchangeNumTf.text = [NSString stringWithFormat:@"%f",[str floatValue] * self.curManager.portionModel.propor];
+            self.valuationLb.text = [NSString stringWithFormat:@"￥%.2f",[self.exchangeNumTf.text floatValue] / self.curManager.portionModel.ebocny];
         }
         
         
@@ -316,14 +316,14 @@ XH_ATTRIBUTE(strong, UILabel, lab1);
         }
         
         if ([self.upLab.text isEqualToString:BI_A0]) {
-            self.numTf.text = [NSString stringWithFormat:@"%f",[str intValue] / [self.curManager.portionModel.propor floatValue]];
+            self.numTf.text = [NSString stringWithFormat:@"%f",[str intValue] / self.curManager.portionModel.propor];
             str = self.numTf.text ;
-            self.valuationLb.text = [NSString stringWithFormat:@"￥%.2f",[str intValue] / [self.curManager.portionModel.ebocny floatValue]];
+            self.valuationLb.text = [NSString stringWithFormat:@"￥%.2f",[str intValue] / self.curManager.portionModel.ebocny];
         }
         else{
-            self.numTf.text = [NSString stringWithFormat:@"%f",[str intValue] * [self.curManager.portionModel.propor floatValue]];
+            self.numTf.text = [NSString stringWithFormat:@"%f",[str intValue] * self.curManager.portionModel.propor];
             str = self.numTf.text ;
-            self.valuationLb.text = [NSString stringWithFormat:@"￥%.2f",[str intValue] / [self.curManager.portionModel.ebocny floatValue]];
+            self.valuationLb.text = [NSString stringWithFormat:@"￥%.2f",[str intValue] / self.curManager.portionModel.ebocny ];
         }
     }
     return YES;
@@ -344,8 +344,11 @@ XH_ATTRIBUTE(strong, UILabel, lab1);
         else{
             self.upLab.text = BI_A0;
             self.downLb.text = ETH;
+            
         }
-        self.numTf.placeholder = [NSString stringWithFormat:@"%@%@",self.upLab.text,exchangeStr];
+        NSString * t = self.numTf.placeholder;
+        self.numTf.placeholder = self.exchangeNumTf.placeholder;
+        self.exchangeNumTf.placeholder = t;
     }];
 }
 -(void)downDatas{

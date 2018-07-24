@@ -25,6 +25,9 @@
 //    [[WIFIManager sharedInstance] Initialize];         //初始化监听网络
 
  //   [[VideoManager sharedInstance] Initialize];
+    [CurrencyManager exchangeProportion:^(ProportionModel * model) {
+        //        self.valuationLb.text = [NSString stringWithFormat:@"$%f",[model.ebocny floatValue]/[model.propor floatValue]];
+    }];
 }
 
 + (NSString *)weekdayStringFromDate:(NSDate*)inputDate {

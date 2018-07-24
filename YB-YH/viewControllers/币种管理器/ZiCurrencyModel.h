@@ -14,6 +14,9 @@
 
 @property(nonatomic,copy)NSString * address_url;
 
+/**
+ 余额
+ */
 @property(nonatomic,copy)NSString * balance;
 
 @property(nonatomic,copy)NSString * coin_name;
