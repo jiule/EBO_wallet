@@ -58,5 +58,7 @@
 @property(nonatomic,assign)BOOL is_up;  //是否支持上拉刷新
 
 -(void)ceshiArrays:(NSArray *)arrayDatas;
+//无数据的label
+@property(nonatomic,retain)UILabel * titleLabel;
 
 @end

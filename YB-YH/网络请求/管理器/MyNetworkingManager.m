@@ -295,6 +295,7 @@ XMGSingletoM
              progress:(void (^)(NSProgress * _Nonnull))progress
               success:(void (^)(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject))success
               failure:(void (^)(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error))failure{
+    NSLog(@"parameters======%@",parameters);
     [MyNetworkingManager DDResqust:URLString withRequestType:POST encryptionType:0 withparameters:parameters withVC:vc progress:progress success:success failure:failure];
 }
 +(void)handleCode:(NSInteger)code{

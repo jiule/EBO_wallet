@@ -64,7 +64,6 @@ XMGSingletoM
 
 -(void)InitializeWithDict:(NSDictionary *)responseDict
 {
-    NSLog(@"%@",responseDict);
     NSArray * array = responseDict[@"data"];
     NSMutableArray * array1 = [NSMutableArray array];
     for (int i = 0 ; i < array.count; i++) {

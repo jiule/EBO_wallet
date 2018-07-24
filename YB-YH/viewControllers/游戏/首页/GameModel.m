@@ -19,3 +19,8 @@
 
 
 @end
+
+@implementation GameffilingModel
+
+
+@end

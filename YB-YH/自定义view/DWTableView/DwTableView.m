@@ -37,6 +37,15 @@
 
 @implementation DwTableView
 
+-(UILabel *)titleLabel
+{
+    if (!_titleLabel) {
+        _titleLabel = JnLabelType(CGRectMake(0, JN_HH(10), self.tableView.width, JN_HH(30)), UILABEL_6, @"暂无数据", 1);
+        [self.tableView addSubview:_titleLabel];
+    }
+    return _titleLabel;
+}
+
 -(NSMutableArray *)dataArrays
 {
     if (!_dataArrays) {
@@ -172,9 +181,9 @@
     //    }
     }
     if (_dataArrays.count == 0) {
-        self.emptyImageView.alpha = 1;
+        self.titleLabel.alpha = 1;
     }else {
-        self.emptyImageView.alpha = 0 ;
+        self.titleLabel.alpha = 0 ;
     }
 }
 #pragma mark----设置tableview 的tableHeaderView

@@ -9,8 +9,9 @@
 #import "GameMyViewController.h"
 #import "UIMoneyLabel.h"
 #import "DwTableView.h"
-#import "GameMyViewModel.h"
-#import "GameMyDetailsViewController.h"
+#import "TransferRecordModel.h"
+#import "ScreeningTransferView.h"
+#import "TranferDetailsViewController.h"
 
 
 @interface GameMyViewController ()<DwTableViewDelegate,DwTableViewCellDelegate>
@@ -38,42 +39,44 @@
     [_zichanLabel setLeftTextColor:SXRGB16Color(0x4d4d4d) rightColor:SXRGB16Color(0x4d4d4d)];
     [_zichanLabel setLeftFont:[UIFont systemFontOfSize:JN_HH(35.5)] rightFont:[UIFont systemFontOfSize:JN_HH(35.5)]];
     [upView addSubview:_zichanLabel];
+    [upView addUnderscoreWihtFrame:CGRectMake(0, JN_HH(90), SCREEN_WIDTH, JN_HH(10))];
 
-
-    self.tableView =  [DwTableView initWithFrame:CGRectMake(0, h , SCREEN_WIDTH, SCREEN_HEIGHT  - h) url:@"" modelName:@"GameMyViewModel" cellName:@"GameMyViewCell" delegate:self];
+    self.tableView =  [DwTableView initWithFrame:CGRectMake(0, h , SCREEN_WIDTH, SCREEN_HEIGHT  - h) url:URL(@"transfer/wallet/getTransferList") modelName:@"TransferModel" cellName:@"TransferRecordCell" delegate:self];
     [self.tableView readTableView].backgroundColor = COLOR_H3;
     [self.view addSubview:[self.tableView readTableView]];
     [self.tableView setTableViewHearView:upView];
 
 
-    [_zichanLabel setText:@"1000.00" componentsSeparatedByString:@"."];
-
-    NSMutableArray * transModels = [NSMutableArray array];
-    for (int i = 0 ; i < 5;  i++)
-    {
-        GameMyViewModel * model = [[GameMyViewModel alloc]init];
-        model.timer = @"5月6日";
-        NSMutableArray * array = [NSMutableArray array];
-        for (int j = 0; j + i < 6; j++) {
-            GameMyModel * model1 = [[GameMyModel alloc]init];
-            model1.name = @"胖胖大作战";
-            model1.dingdan_id  = @"100000000001";
-            model1.num = @"+10.00";
-            model1.type = @"成功";
-            [array addObject:model1];
-        }
-         model.gameMyModelArrays = array;
-        [transModels addObject:model];
-    }
-    [self.tableView ceshiArrays:transModels];
+    ZiCurrencyModel * zim = [CurrencyManager readZiModelWithSpecies:[CurrencyManager readspeciesWithName:BI_A0]];
+    [_zichanLabel setText:zim.balance componentsSeparatedByString:@"."];
 
 }
 
--(void)didselview:(DwTableViewCell *)Mycell data:(id)data
+-(void)downData
 {
-    GameMyModel  * tranModel = (GameMyModel *)data;
-    GameMyDetailsViewController * vc = [[GameMyDetailsViewController alloc]initWithNavTitle:@"支付订单详情" tranferID:tranModel.dingdan_id];
+    [self tableViewWithPage:1];
+}
+
+-(void)tableViewWithPage:(int)page
+{
+    //NSMutableDictionary * dict = [[NSMutableDictionary alloc]initWithDictionary:@{@"trans_type":@"Game"}];
+    NSMutableDictionary * dict = [[NSMutableDictionary alloc]initWithDictionary:@{@"trans_type":@"Game"}];
+    [dict setObject:[NSString stringWithFormat:@"%d",page] forKey:@"page"];
+    [dict setObject:@"10" forKey:@"num"];
+    [self.tableView downWithdict:dict index:page];
+}
+
+
+-(void)DwtableView:(DwTableView *)tableview refresh:(int)page
+{
+    [self tableViewWithPage:page];
+}
+-(void)DwtableView:(DwTableView *)tableView model:(DwTableViewModel *)myTableViewModel indexPath:(NSIndexPath *)indexPath
+{
+    TransferModel  * tranModel = (TransferModel *)myTableViewModel;
+    TranferDetailsViewController * vc = [[TranferDetailsViewController alloc]initWithNavTitle:@"支付订单详情" tranferID:tranModel.txid];
     [self.navigationController pushViewController:vc animated:YES];
 }
+
 
 @end
