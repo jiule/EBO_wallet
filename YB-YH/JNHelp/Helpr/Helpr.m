@@ -26,12 +26,11 @@
     
 //    [[WIFIManager sharedInstance] Initialize];         //初始化监听网络
 
-<<<<<<< HEAD
  //   [[VideoManager sharedInstance] Initialize];
     [CurrencyManager exchangeProportion:^(ProportionModel * model) {
         //        self.valuationLb.text = [NSString stringWithFormat:@"$%f",[model.ebocny floatValue]/[model.propor floatValue]];
     }];
-=======
+
 
 #ifdef DEBUG
          [UMConfigure initWithAppkey:@"5b554eabb27b0a10b90000c3" channel:@"App Store DEBUG"];
@@ -39,7 +38,7 @@
 #else
 
 #endif
->>>>>>> e9c9f2232ec641c2ec5dcfd29eb143bc08696a89
+
 }
 
 + (NSString *)weekdayStringFromDate:(NSDate*)inputDate {
