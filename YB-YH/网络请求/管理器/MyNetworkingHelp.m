@@ -8,6 +8,7 @@
 
 #import "MyNetworkingHelp.h"
 #import "EncryptionManager.h"
+#import "RootViewController.h"
 
 @implementation MyNetworkingHelp
 
@@ -15,11 +16,12 @@
 {
     if ([responseDict[@"code"] intValue] == 1) {
         return  YES;
-    }else if([responseDict[@"code"] intValue] == -1){
-        [MYAlertController showTitltle:responseDict[@"msg"]];
-        return  YES;
+    }else if([responseDict[@"code"] intValue] == 10001){
+        [MYAlertController showTitltle:@"登录已失效" selButton:^(MYAlertController *AlertController, int index) {
+            [[ RootViewController sharedInstance]loginOFF];
+        }];
+        return  NO;
     }
-    NSLog(@"responseDict======%@",responseDict);
     [MYAlertController showTitltle:responseDict[@"msg"]];
     return NO;
 }

@@ -249,9 +249,9 @@ XH_ATTRIBUTE(strong, UILabel, lab1);
     else{
         [IPhoneAlectView showWithAlect:^(BOOL isAlect , NSString * password) {
             if (isAlect) {
-                [MyNetworkingManager DDPOSTResqust:@"/transfer/Transfer/changeCoin" withparameters:@{@"ob_coin":[CurrencyManager readspeciesWithName:BI_A1],@"cost_ob":self.exchangeNumTf.text,@"src_coin":[CurrencyManager readspeciesWithName:BI_A0],@"cost_src":self.numTf.text,@"transpwd":password} withVC:self progress:^(NSProgress * _Nonnull progre) {
+                [MyNetworkingManager DDPOSTResqust:@"/transfer/Transfer/changeCoin" withparameters:@{@"ob_coin":[CurrencyManager readspeciesWithName:BI_A1],@"cost_ob":self.exchangeNumTf.text,@"src_coin":[CurrencyManager readspeciesWithName:BI_A0],@"cost_src":self.numTf.text,@"transpwd":password,@"txfee1":@"0.00005",@"txfee2":@"0.00008"} withVC:self progress:^(NSProgress * _Nonnull progre) {
                 } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                    
+
                     
                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                     

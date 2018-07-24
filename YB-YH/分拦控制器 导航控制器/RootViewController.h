@@ -15,4 +15,5 @@
 
 
 -(void)loginOK;
+-(void)loginOFF;
 @end

@@ -259,18 +259,10 @@ XMGSingletoM
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 id responseDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
                 [MyActivityIndicatorViewManager remove];
-                if ([responseDict[@"code"] intValue] == 1) {
+                if ([MyNetworkingHelp dealWithResponseDict:responseDict]) {
                     //成功
                     success(task,responseDict[@"data"]);
-                }else if([responseDict[@"code"] intValue] == 0){
-                    [MYAlertController showTitltle:responseDict[@"msg"]];
-                    failure(task, responseDict[@"code"]);
                 }
-                else{
-                    [MYAlertController showTitltle:responseDict[@"msg"]];
-                    failure(task, responseDict[@"code"]);
-                }
-                
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 [MyActivityIndicatorViewManager remove];
                 NSLog(@"error====%@",error);
@@ -283,18 +275,10 @@ XMGSingletoM
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 id responseDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
                 [MyActivityIndicatorViewManager remove];
-                if ([responseDict[@"code"] intValue] == 1) {
+                if ([MyNetworkingHelp dealWithResponseDict:responseDict]) {
                     //成功
                     success(task,responseDict[@"data"]);
-                }else if([responseDict[@"code"] intValue] == 0){
-                    [MYAlertController showTitltle:responseDict[@"msg"]];
-                    failure(task, responseDict[@"code"]);
-                }
-                else{
-                    [MYAlertController showTitltle:responseDict[@"msg"]];
-                    failure(task, responseDict[@"code"]);
-                }
-                
+                }                
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 [MyActivityIndicatorViewManager remove];
                 NSLog(@"error====%@",error);
@@ -311,6 +295,7 @@ XMGSingletoM
              progress:(void (^)(NSProgress * _Nonnull))progress
               success:(void (^)(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject))success
               failure:(void (^)(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error))failure{
+    NSLog(@"parameters======%@",parameters);
     [MyNetworkingManager DDResqust:URLString withRequestType:POST encryptionType:0 withparameters:parameters withVC:vc progress:progress success:success failure:failure];
 }
 +(void)handleCode:(NSInteger)code{

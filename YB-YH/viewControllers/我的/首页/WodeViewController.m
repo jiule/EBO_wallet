@@ -75,7 +75,7 @@
     [_upView addUnderscoreBottomline];
     _upView.userInteractionEnabled = YES ;
 
-    _niceImageView = JNImageViewCornerRadius(CGRectMake(JN_HH(20), h + JN_HH(20) , JN_HH(60), JN_HH(60)), MYimageNamed(@"ebog_icon2"), JN_HH(30));
+    _niceImageView = JnImageViewCornerRadius(CGRectMake(JN_HH(20), h + JN_HH(20) , JN_HH(60), JN_HH(60)), MYimageNamed(@"ebog_icon2"), JN_HH(30));
    // _niceImageView.backgroundColor = COLOR_B1;
     [_niceImageView addtapGestureRecognizer:^(UIView * _Nonnull view, UIGestureRecognizer * _Nonnull tap) {
         [self niceImageClick];

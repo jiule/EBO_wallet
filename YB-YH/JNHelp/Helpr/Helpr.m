@@ -7,6 +7,7 @@
 //
 #import "Helpr.h"
 #import "ETHManager.h"
+#import <UMCommon/UMCommon.h>
 
 @implementation Helpr
 
@@ -22,12 +23,23 @@
 {
     [[Listeningkeyboard sharedInstance] startlistening];  //初始化键盘的监听
     [ETHManager sharedInstance];
+    
 //    [[WIFIManager sharedInstance] Initialize];         //初始化监听网络
 
+<<<<<<< HEAD
  //   [[VideoManager sharedInstance] Initialize];
     [CurrencyManager exchangeProportion:^(ProportionModel * model) {
         //        self.valuationLb.text = [NSString stringWithFormat:@"$%f",[model.ebocny floatValue]/[model.propor floatValue]];
     }];
+=======
+
+#ifdef DEBUG
+         [UMConfigure initWithAppkey:@"5b554eabb27b0a10b90000c3" channel:@"App Store DEBUG"];
+         [UMConfigure setLogEnabled:YES];
+#else
+
+#endif
+>>>>>>> e9c9f2232ec641c2ec5dcfd29eb143bc08696a89
 }
 
 + (NSString *)weekdayStringFromDate:(NSDate*)inputDate {
