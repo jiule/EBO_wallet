@@ -27,7 +27,7 @@
     _timerLabel = JnLabelType(CGRectMake(SCREEN_WIDTH * 0.5 + JNVIEW_X(0),0 , SCREEN_WIDTH * 0.5 - JNVIEW_X(44), JN_HH(44)), UILABEL_4, @"", 2);
     [self addSubview:_timerLabel];
 
-    [self addSubview:JnImageView(CGRectMake(SCREEN_WIDTH - JN_HH(44), 0, JN_HH(44), JN_HH(44)), MYimageNamed(@"jiantou_A1_88"))];
+    [self addSubview:JnImageView(CGRectMake(SCREEN_WIDTH - JN_HH(44), 0, JN_HH(44), JN_HH(44)), MYimageNamed(@"jiantou_H1_88"))];
 }
 
 -(void)setTableViewModel:(DwTableViewModel *)tableViewModel
