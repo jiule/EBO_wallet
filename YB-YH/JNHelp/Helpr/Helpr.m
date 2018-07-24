@@ -7,6 +7,7 @@
 //
 #import "Helpr.h"
 #import "ETHManager.h"
+#import <UMCommon/UMCommon.h>
 
 @implementation Helpr
 
@@ -22,9 +23,16 @@
 {
     [[Listeningkeyboard sharedInstance] startlistening];  //初始化键盘的监听
     [ETHManager sharedInstance];
+    
 //    [[WIFIManager sharedInstance] Initialize];         //初始化监听网络
 
- //   [[VideoManager sharedInstance] Initialize];
+
+#ifdef DEBUG
+         [UMConfigure initWithAppkey:@"5b554eabb27b0a10b90000c3" channel:@"App Store DEBUG"];
+         [UMConfigure setLogEnabled:YES];
+#else
+
+#endif
 }
 
 + (NSString *)weekdayStringFromDate:(NSDate*)inputDate {
