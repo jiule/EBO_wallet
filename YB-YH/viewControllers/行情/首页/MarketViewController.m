@@ -40,7 +40,7 @@ XH_ATTRIBUTE(strong, UILabel, lab1);
 
 -(UITextField *)numTf{
     if (!_numTf) {
-        _numTf = JnTextFiled(CGRectZero, [NSString stringWithFormat:@"%@%@",BI_A0,exchangeStr], 0);
+        _numTf = JnTextFiled(CGRectZero, [NSString stringWithFormat:@"%@%@              ",BI_A0,exchangeStr], 0);
         _numTf.layer.borderColor = COLOR_B6.CGColor;
         _numTf.backgroundColor = COLOR_B6;
         _numTf.delegate = self;
