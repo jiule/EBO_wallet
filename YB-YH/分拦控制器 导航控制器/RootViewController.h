@@ -12,8 +12,7 @@
 @interface RootViewController : NSObject 
 //XMGSingletoH
 -(void)chooseRootViewControllerWithwindow:(UIWindow *)window;
-
-
 -(void)loginOK;
 -(void)loginOFF;
+
 @end

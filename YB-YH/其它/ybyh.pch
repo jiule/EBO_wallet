@@ -87,7 +87,7 @@
 #define TUPIANURL(STR) [NSString stringWithFormat:@"%@",STR]
 #else // 发布状态, 关闭LOG功能
 #define MyLog(...)
-#define URLIP @"http://192.168.8.178/"
+#define URLIP @"http://192.168.8.178/api/"
 #define TUPIANURL(STR) [NSString stringWithFormat:@"%@",STR]
 #endif
 
