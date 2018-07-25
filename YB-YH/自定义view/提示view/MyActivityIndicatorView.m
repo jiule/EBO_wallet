@@ -59,15 +59,20 @@
 -(void)show
 {
     if (!_bgImageView) {
-        _bgView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 50, SCREEN_HEIGHT / 2 - 50, 100, 100) BgColor:COLOR_B(0.7)];
+        _bgView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 50, SCREEN_HEIGHT / 2 - 50, 100, 100) BgColor:COLOR_B(0.2)];
         _bgView.layer.contentsScale = 5;
         [self addSubview:_bgView];
-        
-        _bgImageView = [[UIImageView alloc]initWithFrame:CGRectMake(25, 15, 50, 50)];
-        _bgImageView.image = [UIImage imageNamed:self.imageArray[_style]];
+
+        UIActivityIndicatorView * view = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        view.frame = CGRectMake(25, 15, 50, 50);
+        view.hidesWhenStopped = YES;
+        [view startAnimating];
+        [_bgView addSubview:view];
+  //      _bgImageView = [[UIImageView alloc]initWithFrame:CGRectMake(25, 15, 50, 50)];
+ //       _bgImageView.image = [UIImage imageNamed:self.imageArray[_style]];
 
   //      _bgImageView.backgroundColor = COLOR_A1;
-        [_bgView addSubview:_bgImageView];
+  //      [_bgView addSubview:_bgImageView];
         
     //    _TitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 75, 100, 20) text:_TitleString textColor:[UIColor whiteColor] index:1 size:16];
         [_bgView addSubview:_TitleLabel];

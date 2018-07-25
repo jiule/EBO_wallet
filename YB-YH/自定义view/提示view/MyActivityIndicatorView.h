@@ -23,5 +23,4 @@ typedef NS_OPTIONS(NSUInteger, ActivityIndicatorStyle) {
 
 -(void)show;
 
-
 @end

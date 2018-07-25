@@ -176,9 +176,6 @@
         }else {
             NSLog(@"没有添加成功的model====%@，%@",_modelName,array[i]);
         }
-    //    if (i == 0) {
-     //       MyLog(@"%@",array[i]);
-    //    }
     }
     if (_dataArrays.count == 0) {
         self.titleLabel.alpha = 1;

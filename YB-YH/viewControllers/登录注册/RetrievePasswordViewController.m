@@ -25,21 +25,9 @@
 
 @implementation RetrievePasswordViewController
 
-//-(void)viewWillDisappear:(BOOL)animated
-//{
-//    [super viewWillDisappear:animated];
-//    [Listeningkeyboard endEditing];
-//}
-
--(void)createNavView
-{
-    [super createNavView];
-//    self.navView.backgroundColor = [UIColor clearColor];
-}
-
 -(void)createView
 {
-    _downView = JnUIView(CGRectMake(0, JN_HH(15) + self.nav_h, SCREEN_WIDTH, JN_HH(50) * 3), COLOR_WHITE);
+    _downView = JnUIView(CGRectMake(0, JN_HH(15) + self.nav_h, SCREEN_WIDTH, JN_HH(50) * 4), COLOR_WHITE);
     [self.view addSubview:_downView];
 
     [_downView addSubview:JnImageView(CGRectMake(JNVIEW_X0 , JN_HH(6), JN_HH(44), JN_HH(44)), MYimageNamed(@"dl_shouji"))];
@@ -68,27 +56,13 @@
     _passWordField.backgroundColor = [UIColor clearColor];
     _passWordField.textColor = COLOR_B2;
     [_downView addSubview:_passWordField];
- //   [_downView addSubview:JnUIView(CGRectMake(JNVIEW_X0, JN_HH(140), SCREEN_WIDTH - JNVIEW_W(0), 1), COLOR_T1)];
+    [_downView addSubview:JnUIView(CGRectMake(0, JN_HH(150), SCREEN_WIDTH , 1),DIVIDER_COLOR1 )];
 
     UIButton * loginBtn = JnButtonColorIndexSize(CGRectMake(JNVIEW_X0, JN_HH(180), SCREEN_WIDTH - JNVIEW_W(0), JN_HH(35)), @"找回密码", JN_HH(15.5), COLOR_WHITE,Button_NORMAL_BACKCOLOR, 1, self, @selector(loginClick), 2);
     JNViewStyle(loginBtn, JN_HH(17.5), nil, 0);
     [_downView addSubview:loginBtn];
 
 }
-
-//-(void)addListeningkeyboard
-//{
-//    JNWeakSelf(self);
-//    [[Listeningkeyboard sharedInstance]startlisteningblockcompletion:^(CGFloat h)
-//     {
-//         weakself.upView.alpha = 0;
-//         weakself.downView.frame = CGRectMake(0,SCREEN_HEIGHT * 0.48 + self.nav_h - h , SCREEN_WIDTH, self->_downView.height );
-//     } keyboard:^(CGFloat h) {
-//         weakself.upView.alpha = 1;
-//         weakself.downView.frame = CGRectMake(0, SCREEN_HEIGHT * 0.52 + self.nav_h, SCREEN_WIDTH, self->_downView.height);
-//     }];
-//}
-
 
 #pragma mark----语音按钮被点击
 -(void)yuyinClick:(UIButton *)btn
@@ -109,12 +83,9 @@
             [MYAlertController showNavViewWith:@"验证码已发送"];
         }else if(index == 501)
         {
-            NSLog(@"222222------%@=====%@",responseDict,responseDict[@"msg"]);
             [MYAlertController showTitltle:@"设置成功" selButton:^(MYAlertController *AlertController, int index) {
                 FANHUI_JIUSHITU ;
             }];
-
-
         }else if(index == 2)
         {
             [MYAlertController showTitltle:@"注册成功" selButton:^(MYAlertController *AlertController, int index) {

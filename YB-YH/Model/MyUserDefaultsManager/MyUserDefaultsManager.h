@@ -51,5 +51,7 @@ XMGSingletoH
 +(NSString *)readCoinTypes;
 //保存用户币种余额额
 +(NSString *)readAssets;
++ (void)saveKeychainValue:(NSString *)sValue key:(NSString *)sKey;
++ (NSString *)readKeychainValue:(NSString *)sKey;
 NS_ASSUME_NONNULL_END
 @end
