@@ -39,6 +39,7 @@
 
     _conView = [[JNCoinView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 80, CGNavView_20h(), 60, 44)];
     [self.navView addSubview:_conView];
+    _conView.titleLabel.textColor = COLOR_WHITE;
     _conView.titleLabel.text = self.curManager.selcurrencyModel.coin_name;
 
     [_conView addtapGestureRecognizer:^(UIView * _Nonnull view, UIGestureRecognizer * _Nonnull tap) {
@@ -60,7 +61,7 @@
     [wirteView addSubview:_dizhiLabel];
 
     _erImageView = JnImageView(CGRectMake(JN_HH(35), JN_HH(35), wirteView.width - JN_HH(70), wirteView.width - JN_HH(70)), MYimageNamed(@""));
-    _erImageView.backgroundColor = COLOR_RED;
+//    _erImageView.backgroundColor = COLOR_RED;
     [wirteView addSubview:_erImageView];
 
     _erImageView1 = JnImageView(CGRectMake(_erImageView.width / 2 - 30, _erImageView.height /2 -30, 60, 60), MYimageNamed(@"二维码G"));

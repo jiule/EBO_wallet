@@ -50,6 +50,7 @@
     [self.navView setStyle:2];
     [self.navView.rightButton setBackgroundImage:nil forState:0];
     [self.navView.rightButton setTitle:@"相册" forState:0];
+    [self.navView.rightButton setTitleColor:COLOR_BL_2 forState:0];
     self.navView.backgroundColor = [self.navView.backgroundColor colorWithAlphaComponent:0.7];
 }
 
@@ -101,7 +102,7 @@
     _SaomiaoView=[self createViewWithFrame:cropRect1];
     [self.view addSubview:_SaomiaoView];
 
-    [self.view addSubview:JnLabel(CGRectMake(0, 130+self.nav_h +cropRect.size.width, SCREEN_WIDTH, JN_HH(20)), @"将二维码方法框内,自动扫描", JN_HH(14.5), COLOR_A3, 1)];
+    [self.view addSubview:JnLabel(CGRectMake(0, 130+self.nav_h +cropRect.size.width, SCREEN_WIDTH, JN_HH(20)), @"将二维码方法框内,自动扫描", JN_HH(14.5), COLOR_A1, 1)];
 
 }
 

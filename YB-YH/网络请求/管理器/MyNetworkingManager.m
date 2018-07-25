@@ -277,8 +277,10 @@ XMGSingletoM
                 [MyActivityIndicatorViewManager remove];
                 if ([MyNetworkingHelp dealWithResponseDict:responseDict]) {
                     //成功
+                    NSLog(@"*******%@",responseDict);
                     success(task,responseDict[@"data"]);
-                }                
+                }else
+                    failure(task,[NSError new]);
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 [MyActivityIndicatorViewManager remove];
                 NSLog(@"error====%@",error);
