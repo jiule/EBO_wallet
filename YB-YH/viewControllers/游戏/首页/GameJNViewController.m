@@ -175,7 +175,11 @@
         JNViewStyle(imageView, 5, nil, 0);
         [UIImage removeimageWithURL:model.image_url];
         [imageView setimage:MYimageNamed(@"dl_xingming") withurl:model.image_url];
-        [btn addSubview:JnLabel(CGRectMake(0, w , w - JN_HH(10), JN_HH(20)), model.name, JN_HH(11.5), COLOR_BL_2, 0)];
+        UILabel * label = JnLabel(CGRectMake(0, w , w - JN_HH(10), JN_HH(20)), model.name, JN_HH(10), COLOR_BL_2, 0);
+        if ([model.name widthOfFont:label.font height:label.height] > label.width) {
+            [label adjusts];
+        }
+        [btn addSubview:label];
         [btn addSubview:JnLabel(CGRectMake(0, w + JN_HH(20), w - JN_HH(10), JN_HH(20)), model.category_name, JN_HH(11.5), COLOR_A1, 0)];
         [btn addSubview:imageView];
     }

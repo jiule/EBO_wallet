@@ -58,7 +58,12 @@
         }else {
             [ _tranfetView setY:self.nav_h + JN_HH(20)];
             NSArray * array = @[@"转账中",@"转账中",@"订单已完成",@"订单已取消"];
-            [self.view addSubview:JnLabelType(CGRectMake(0, CGSCREEN_HEIGHT() - JN_HH(50), SCREEN_WIDTH, JN_HH(44)), UILABEL_3, array[[trmodel.status intValue] ], 1)];
+            if ([trmodel.status intValue] < array.count) {
+                            [self.view addSubview:JnLabelType(CGRectMake(0, CGSCREEN_HEIGHT() - JN_HH(50), SCREEN_WIDTH, JN_HH(44)), UILABEL_3, array[[trmodel.status intValue] ], 1)];
+            }else {
+                NSLog(@"status 数组越界");
+            }
+
 
         }
      }

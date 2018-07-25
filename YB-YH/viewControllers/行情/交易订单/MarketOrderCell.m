@@ -34,19 +34,18 @@
     self.backgroundColor = COLOR_H3;
     self.bgView = JnUIView(CGRectMake(0, 0, SCREEN_WIDTH , JN_HH(100)), COLOR_WHITE);
     [self addSubview:self.bgView];
-    float label_w = self.bgView.width;  float label_x = JN_HH(30);
+    float label_w = self.bgView.width;  float label_x = JN_HH(15);
     _zhuanLabel = JnLabelType(CGRectMake(label_x, JN_HH(10),label_w - label_x* 2 , JN_HH(30)), UILABEL_2,BI_A0STR1(@"转入", @""), 0);
     [self.bgView addSubview:_zhuanLabel];
 
-    _zhuantextLabel = JnLabel(CGRectMake(label_w * 0.5, JN_HH(10),label_w * 0.5 , JN_HH(30)), @"+1000", JN_HH(16.5), SXRGB16Color(0x8BBB51), 0);
+    _zhuantextLabel = JnLabel(CGRectMake(JN_HH(100), JN_HH(10),label_w * 0.5 , JN_HH(30)), @"0", JN_HH(16.5), SXRGB16Color(0x8BBB51), 0);
     [self.bgView addSubview:_zhuantextLabel];
 
     _zhuanStyleLabel = JnLabelType(CGRectMake(label_x, JN_HH(40),label_w - label_x* 2 , JN_HH(30)),UILABEL_2, BI_A1STR1(@"转出", @""), 0);
     [self.bgView addSubview:_zhuanStyleLabel];
 
-    _zhuanStyletextLabel = JnLabelType(CGRectMake(label_w * 0.5, JN_HH(40),label_w * 0.5 , JN_HH(30)),UILABEL_2, @"-0.25",  0);
+    _zhuanStyletextLabel = JnLabelType(CGRectMake(JN_HH(100), JN_HH(40),label_w * 0.5 , JN_HH(30)),UILABEL_2, @"0",  0);
     [self.bgView addSubview:_zhuanStyletextLabel];
-
 
     _zhuangtaiLabel = JnLabel(CGRectMake(label_w * 0.5, JN_HH(40),label_w * 0.5 - label_x , JN_HH(30)), @"确认中", JN_HH(15.5), COLOR_A1, 2);
     [self.bgView addSubview:_zhuangtaiLabel];
@@ -63,7 +62,19 @@
 {
     [super setTableViewModel:tableViewModel];
     self.markModel = (MarketOrderModel *)tableViewModel;
-
+    if ([self.markModel.coin_species isEqual:BI_A0]) {
+        _zhuanLabel.text = BI_A0STR1(@"转入", @"");
+        _zhuanStyleLabel.text = [NSString stringWithFormat:@"转出%@",self.markModel.ob_species];
+        _zhuantextLabel.text = [NSString stringWithFormat:@"+%@",self.markModel.coin_num];
+        _zhuanStyletextLabel.text = [NSString stringWithFormat:@"-%@",self.markModel.ob_coin];
+    }else {
+        _zhuanStyleLabel.text = [NSString stringWithFormat:@"转入%@",self.markModel.coin_species];
+        _zhuanLabel.text = BI_A0STR1(@"转出", @"");
+        _zhuanStyletextLabel.text = [NSString stringWithFormat:@"+%@",self.markModel.coin_num];
+        _zhuantextLabel.text = [NSString stringWithFormat:@"-%@",self.markModel.ob_coin];
+    }
+    _zhuangtaiLabel.text = self.markModel.state_name;
+    _timerLabel.text = self.markModel.create_time;
     [self createcell_h:JN_HH(100) BgColor:COLOR_H3 xian_h:2];
 
 }

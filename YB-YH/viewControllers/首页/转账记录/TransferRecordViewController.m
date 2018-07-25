@@ -99,6 +99,7 @@
 -(void)didScreeningTransferView:(ScreeningTransferView *)view dict:(NSDictionary *)dict
 {
     _screeningDict = dict;
+    NSLog(@"%@",dict);
     [self tableViewWithPage:1];
 }
 @end
