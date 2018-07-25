@@ -27,16 +27,15 @@
 //    [[WIFIManager sharedInstance] Initialize];         //初始化监听网络
 
  //   [[VideoManager sharedInstance] Initialize];
-    [CurrencyManager exchangeProportion:^(ProportionModel * model) {
-        //        self.valuationLb.text = [NSString stringWithFormat:@"$%f",[model.ebocny floatValue]/[model.propor floatValue]];
-    }];
 
+    [CurrencyManager exchangeProportion:nil];  //获取比例
 
 #ifdef DEBUG
          [UMConfigure initWithAppkey:@"5b554eabb27b0a10b90000c3" channel:@"App Store DEBUG"];
          [UMConfigure setLogEnabled:YES];
 #else
-
+         [UMConfigure initWithAppkey:@"5b554eabb27b0a10b90000c3" channel:@"App Store"];
+         [UMConfigure setLogEnabled:YES];
 #endif
 
 }

@@ -45,8 +45,8 @@ typedef NS_ENUM(NSInteger, SXMarqueeTapMode) {
         UILabel *label2          = [[UILabel alloc]initWithFrame:CGRectMake(kSXHeadLineMargin, _h, self.frame.size.width, _h)];
         self.bgColor             = [UIColor whiteColor];
         self.textColor           = [UIColor blackColor];
-        self.scrollDuration      = 1.0f;
-        self.stayDuration        = 1.0f;
+        self.scrollDuration      = 4.0f;
+        self.stayDuration        = 4.0f;
         self.cornerRadius        = 2;
         self.textFont            = [UIFont systemFontOfSize:12];
         label1.font              = label2.font = _textFont;

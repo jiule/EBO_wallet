@@ -10,12 +10,20 @@
 
 @implementation ShouyeQianView
 
--(instancetype)init{
-    if (self = [super init]) {
+-(instancetype)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]) {
         [self createView];
     }
     return self;
 }
+
+-(instancetype)init{
+    if (self == [super init]) {
+        [self createView];
+    }
+    return self;
+}
+
 -(UIImageView *)imgeV{
     if (!_imgeV) {
         _imgeV = [UIKitAdditions imageViewWithImageName:@""];
@@ -24,7 +32,7 @@
 }
 -(UILabel *)balanceLb{
     if (!_balanceLb) {
-        _balanceLb = [UIKitAdditions labelWithBlackText:@"88" fontSize:20];
+        _balanceLb = [UIKitAdditions labelWithBlackText:@"0" fontSize:20];
         _balanceLb.textAlignment = NSTextAlignmentRight;
     }
     return _balanceLb;
@@ -42,8 +50,7 @@
     return _titleLb;
 }
 -(void)createView{
-    
-    
+        
     [self addSubview:self.imgeV];
     [self.imgeV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.equalTo(self).offset(20);

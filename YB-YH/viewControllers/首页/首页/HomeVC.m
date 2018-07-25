@@ -19,9 +19,9 @@
 #define Tag 666
 #define vTag 888
 
-@interface HomeVC ()<JNBaseViewDelegate , UIGestureRecognizerDelegate,UIScrollViewDelegate>
+@interface HomeVC ()<JNBaseViewDelegate ,UIScrollViewDelegate>
 XH_ATTRIBUTE(strong, UIScrollView, scl);
-XH_ATTRIBUTE(strong, UIView, containView);//scollView 的内容视图
+//XH_ATTRIBUTE(strong, UIView, containView);//scollView 的内容视图
 XH_ATTRIBUTE(strong, JNCoinView, conView);
 XH_ATTRIBUTE(strong, UILabel, propertyLb);
 XH_ATTRIBUTE(strong, ShufflingView, scolV);//轮播图
@@ -68,43 +68,36 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
 }
 -(void)createView{
     self.scl = [UIScrollView new];
-    self.scl.bounces = NO;
+ //   self.scl.bounces = NO;
     [self.bodyView addSubview:self.scl];
     [self.scl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.bodyView).with.insets(UIEdgeInsetsMake(0, 0, Tabbar_49h(), 0));
     }];
-//    UIGestureRecognizer * gestur = [[UIGestureRecognizer alloc]init];
-//    gestur.delegate = self;
-//    [scl addGestureRecognizer:gestur];
-    self.containView = [UIView new];
-    [self.scl addSubview:self.containView];
-    [self.containView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.scl).with.insets(UIEdgeInsetsMake(0, 0, 0, 0));
-        make.width.equalTo(self.scl);
-    }];
-    
-    [self.containView addSubview:self.propertyLb];
+
+   self.scl.contentSize = CGSizeMake(0, 10000);
+
+    [self.scl addSubview:self.propertyLb];
     [self.propertyLb mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.containView);
-        make.top.equalTo(self.containView).offset(20);
+        make.centerX.equalTo(self.scl);
+        make.top.equalTo(self.scl).offset(20);
     }];
     UILabel * lab = [UIKitAdditions labelWithText:@"账户余额" textColor:[UIColor grayColor] alignment:1 fontSize:14];
-    [self.containView addSubview:lab];
+    [self.scl addSubview:lab];
     [lab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.propertyLb.mas_bottom).offset(10);
-        make.centerX.equalTo(self.containView);
+        make.centerX.equalTo(self.scl);
     }];
-    [self.containView creatLineOnRelativeView:lab offSet:20];
+    [self.scl creatLineOnRelativeView:lab offSet:20];
     UIButton * lastBtn = nil;
     for (int i = 0;  i < 2; i ++) {
         UIButton * btn = [UIButton new];
-        [self.containView addSubview:btn];
+        [self.scl addSubview:btn];
         [btn mas_makeConstraints:^(MASConstraintMaker *make) {
             if (lastBtn) {
                 make.left.equalTo(lastBtn.mas_right).offset(0);//取件码
             }
             else
-                make.left.equalTo(self.containView);
+                make.left.equalTo(self.scl);
             make.top.equalTo(lab.mas_bottom).offset(20);
             make.width.mas_equalTo(SCREEN_WIDTH/2);
             make.height.mas_equalTo(50);
@@ -126,7 +119,7 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
         if (!lastBtn) {
             UILabel * lab = [UILabel new];
             lab.backgroundColor  = COLOR_B6;
-            [self.containView addSubview:lab];
+            [self.scl addSubview:lab];
             [lab mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerY.equalTo(btn);
                 make.left.equalTo(btn.mas_right);
@@ -136,117 +129,113 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
         }
         lastBtn = btn;
     }
-    [self.containView creatLineOnRelativeView:lastBtn offSet:0];
-    [self.containView creatStrongLineOnRelativeView:lastBtn offSet:0];
-    
+    [self.scl creatLineOnRelativeView:lastBtn offSet:0];
+    [self.scl creatStrongLineOnRelativeView:lastBtn offSet:0];
+
     
     self.scolV = [[ShufflingView alloc]initWithFrame:CGRectMake(0, 0, 0, 0) BgColor:COLOR_WHITE];
-    [self.containView addSubview:self.scolV];
+    [self.scl addSubview:self.scolV];
     [self.scolV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(JN_HH(80));
-        make.left.centerX.equalTo(self.containView);
+        make.left.centerX.equalTo(self.scl);
         make.top.equalTo(lastBtn.mas_bottom).offset(20);
     }];
-    
+
     //跑马灯
     UIImageView * laba = [UIKitAdditions imageViewWithImageName:@"sy_laba"];
-    [self.containView addSubview:laba];
+    [self.scl addSubview:laba];
     [laba mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.containView).offset(20);
+        make.left.equalTo(self.scl).offset(20);
         make.top.equalTo(self.scolV.mas_bottom).offset(20);
     }];
-    
-    UIView * runLbView = JnUIView(CGRectMake(0, 0, 0, 0), COLOR_WHITE);
-    [self.containView addSubview:runLbView];
-    
-    self.runLb = [[SXHeadLine alloc] initWithFrame:CGRectMake(0, JN_HH(-8), SCREEN_WIDTH - JN_HH(60), JN_HH(25))];
-    [runLbView addSubview:self.runLb];
-    [runLbView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(laba.mas_right).offset(10);
-        make.top.centerY.equalTo(laba);
-        make.right.equalTo(self.containView).offset(-20);
-    }];
-    
-    [self.runLb setBgColor:[UIColor whiteColor] textColor:COLOR_A1 textFont:[UIFont systemFontOfSize:13]];
-    [self.runLb setScrollDuration:0.5 stayDuration:3];
-    self.runLb.hasGradient = YES;
+
+//    UIView * runLbView = [UIView new];
+//    [self.scl addSubview:runLbView];
+//
+//    [runLbView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(laba.mas_right).offset(10);
+//        make.top.centerY.equalTo(laba);
+//        make.right.equalTo(self.scl).offset(-20);
+//    }];
+//
+//    self.runLb = [[SXHeadLine alloc] initWithFrame:CGRectMake(0, JN_HH(-8), SCREEN_WIDTH - JN_HH(60), JN_HH(25))];
+//    [runLbView addSubview:self.runLb];
+//
+//    [self.runLb setBgColor:[UIColor whiteColor] textColor:COLOR_A1 textFont:[UIFont systemFontOfSize:13]];
+//    [self.runLb setScrollDuration:0.5 stayDuration:3];
+//    self.runLb.hasGradient = YES;
 
 #pragma mark 跑马灯点击事件
-    [self.runLb changeTapMarqueeAction:^(NSInteger index) {
-        NSLog(@"你点击了第 %ld 个button！内容：%@", index, self.runLb.messageArray[index]);
-        
-    }];
-    [self.containView creatStrongLineOnRelativeView:self.runLb offSet:20];
+//    [self.runLb changeTapMarqueeAction:^(NSInteger index) {
+//        NSLog(@"你点击了第 %ld 个button！内容：%@", index, self.runLb.messageArray[index]);
+//
+//    }];
+//    [self.scl creatStrongLineOnRelativeView:self.runLb offSet:20];
     BaseDDView * workBtn = [[BaseDDView alloc]initWithFrame:CGRectMake(0, 0, 0, 0) leftName:nil title:@"赚取工作量证明" rightName:@"jiantou_H1_88"];
     workBtn.delegate = self;
     workBtn.backgroundColor = COLOR_WHITE;
-    [self.containView addSubview:workBtn];
+    [self.scl addSubview:workBtn];
     [workBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.centerX.equalTo(self.containView);
-        make.top.equalTo(runLbView.mas_bottom).offset(40);
+        make.left.centerX.equalTo(self.scl);
+        make.top.equalTo(laba.mas_bottom).offset(40);
         make.height.mas_equalTo(50);
     }];
-    
+
     UIScrollView * scl1 = [UIScrollView new];
+    scl1.backgroundColor = COLOR_A1 ;
     scl1.delegate = self;
-//    scl1.bounces = NO;
-    [self.bodyView addSubview:scl1];
-//    UIGestureRecognizer * gestur1 = [[UIGestureRecognizer alloc]init];
-//    scl1.tag = 999;
-////    gestur1.delegate = self;
-//    [scl1 addGestureRecognizer:gestur1];
+    [self.scl addSubview:scl1];
+
     [scl1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.containView).offset(20);
-        make.right.equalTo(self.containView);
+        make.left.equalTo(self.scl).offset(20);
+        make.right.equalTo(self.scl);
         make.top.equalTo(workBtn.mas_bottom);
         make.height.mas_equalTo(150);
     }];
 
-    UIView * conv = [UIView new];
-    [scl1 addSubview:conv];
-    [conv mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(scl1).with.insets(UIEdgeInsetsMake(0, 0, 0, 0));
-        make.height.equalTo(scl1);
-    }];
-    UIImageView * lastimav = nil;
-    for ( int i = 0; i < 2; i ++) {
-        UIImageView * ima = [UIKitAdditions imageViewWithImageName:@[@"xyxz",@"zkfl"][i]];
-        [conv addSubview:ima];
-        [ima mas_makeConstraints:^(MASConstraintMaker *make) {
-            if (lastimav) {
-                make.left.equalTo(lastimav.mas_right).offset(20);
-            }
-            else{
-                make.left.equalTo(conv);
-            }
-            make.centerY.equalTo(conv);
-        }];
-        lastimav = ima;
-        [lastimav addtapGestureRecognizer:^(UIView * _Nonnull view, UIGestureRecognizer * _Nonnull tap) {
-            [MYAlertController showTitltle:@"此功能暂未开放！" vc:self];
-        }];
-    }
-    [conv mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(lastimav.mas_right).offset(20);
-    }];
-//    scl1.contentSize = CGSizeMake(scl1.width, 0);
+//    UIView * conv = [UIView new];
+//    [scl1 addSubview:conv];
+//    [conv mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo(scl1).with.insets(UIEdgeInsetsMake(0, 0, 0, 0));
+//        make.height.equalTo(scl1);
+//    }];
+//    UIImageView * lastimav = nil;
+//    for ( int i = 0; i < 2; i ++) {
+//        UIImageView * ima = [UIKitAdditions imageViewWithImageName:@[@"xyxz",@"zkfl"][i]];
+//        [conv addSubview:ima];
+//        [ima mas_makeConstraints:^(MASConstraintMaker *make) {
+//            if (lastimav) {
+//                make.left.equalTo(lastimav.mas_right).offset(20);
+//            }
+//            else{
+//                make.left.equalTo(conv);
+//            }
+//            make.centerY.equalTo(conv);
+//        }];
+//        lastimav = ima;
+//        [lastimav addtapGestureRecognizer:^(UIView * _Nonnull view, UIGestureRecognizer * _Nonnull tap) {
+//            [MYAlertController showTitltle:@"此功能暂未开放！" vc:self];
+//        }];
+//    }
+//    [conv mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.right.equalTo(lastimav.mas_right).offset(20);
+//    }];
+    scl1.contentSize = CGSizeMake(scl1.width, 500);
     
-    
-    
-    [self.containView creatStrongLineOnRelativeView:scl1 offSet:0];
+    [self.scl creatStrongLineOnRelativeView:scl1 offSet:0];
     
     BaseDDView * commBtn = [[BaseDDView alloc]initWithFrame:CGRectMake(0, 0, 0, 0) leftName:nil title:@"GamePay社区" rightName:@"jiantou_H1_88"];
     commBtn.delegate = self;
     commBtn.backgroundColor = COLOR_WHITE;
-    [self.containView addSubview:commBtn];
+    [self.scl addSubview:commBtn];
     [commBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.centerX.equalTo(self.containView);
+        make.left.centerX.equalTo(self.scl);
         make.top.equalTo(scl1.mas_bottom).offset(20);
         make.height.mas_equalTo(50);
     }];
     
     UIImageView * v1 = [UIKitAdditions imageViewWithImageName:@"gamepay"];
-    [self.containView addSubview:v1];
+    [self.scl addSubview:v1];
     [v1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.centerX.equalTo(workBtn);
         make.top.equalTo(commBtn.mas_bottom);
@@ -255,17 +244,17 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
         [MYAlertController showTitltle:@"此功能暂未开放！" vc:self];
     }];
     
-    [self.containView creatStrongLineOnRelativeView:v1 offSet:0];
+    [self.scl creatStrongLineOnRelativeView:v1 offSet:0];
     UILabel * lab2 = [UIKitAdditions labelWithBlackText:@"我的钱包" fontSize:0];
-    [self.containView addSubview:lab2];
+    [self.scl addSubview:lab2];
     [lab2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.containView).offset(20);
+        make.left.equalTo(self.scl).offset(20);
         make.top.equalTo(v1.mas_bottom).offset(40);
     }];
     self.walletBtn = [UIButton new];
-    [self.containView addSubview:self.walletBtn];
+    [self.scl addSubview:self.walletBtn];
     [self.walletBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.containView).offset(-20);
+        make.right.equalTo(self.scl).offset(-20);
         make.centerY.equalTo(lab2);
         make.width.mas_equalTo(SCREEN_WIDTH/2);
         make.height.mas_equalTo(50);
@@ -283,25 +272,12 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
         make.left.equalTo(imav.mas_right).offset(20);
         make.centerY.equalTo(self.walletBtn);
     }];
-    [self.containView creatLineOnRelativeView:self.walletBtn offSet:20];
-//    [self.containView mas_updateConstraints:^(MASConstraintMaker *make) {
-//        make.bottom.equalTo(self.walletBtn.mas_bottom).offset(-20);
-//    }];
-    
+    [self.scl creatLineOnRelativeView:self.walletBtn offSet:20];
+
+    self.scl.contentSize = CGSizeMake(0, 10000);
     
 }
-#pragma mark 解决滑动冲突
-//-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
-//    //在这里判断是百度地图的view 既可以实现手势拖动 scrollview 的滚动关闭
-//    if ([gestureRecognizer.view isKindOfClass:[UIScrollView class]] ){
-//        self.scl.scrollEnabled = YES;
-//        return NO;
-//    }else{
-//        self.scl.scrollEnabled = NO;
-//        return YES;
-//    }
-//
-//}
+
 #pragma mark 新增钱包
 -(void)addWallet{
     MoneyViewController * vc = [[MoneyViewController alloc]initWithNavTitle:@"创建钱包" name:BI_A1];
@@ -362,7 +338,7 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
             }
             [CurrencyManager sharedInstance].allZiCurrencyModel = ziArray;
             self.propertyLb.text = [NSString stringWithFormat:@"%@",zicurmodel.balance];
-            for (UIView * v in self.containView.subviews) {
+            for (UIView * v in self.scl.subviews) {
                 if (v.tag > vTag - 1) {
                     [v removeFromSuperview];
                 }
@@ -378,7 +354,7 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
                 CurrencyModel * model = self.curManager.allCurrencyModel[i];
                 if (![model.isopen isEqualToString:currencyNOopen]) {
                     ShouyeQianView * v = [[ShouyeQianView alloc] init];
-                    [self.containView addSubview:v];
+                    [self.scl addSubview:v];
                     v.imgeV.image = MYimageNamed(model.icon);
                     v.titleLb.text = model.coin_name;
                     ZiCurrencyModel * zim = [CurrencyManager readZiModelWithSpecies:model.coin_species];
@@ -397,8 +373,8 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
                         }
                         else
                             make.top.equalTo(self.walletBtn.mas_bottom).offset(40);
-                        make.left.equalTo(self.containView).offset(20);
-                        make.centerX.equalTo(self.containView);
+                        make.left.equalTo(self.scl).offset(20);
+                        make.centerX.equalTo(self.scl);
                         make.height.mas_equalTo(100);
                     }];
                     v.layer.borderColor = COLOR_B6.CGColor;
@@ -407,16 +383,13 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
                     lastV = v;
                 }
             }
-            [self.containView mas_updateConstraints:^(MASConstraintMaker *make) {
+            [self.scl mas_updateConstraints:^(MASConstraintMaker *make) {
                 if (lastV) {
                     make.bottom.equalTo(lastV.mas_bottom).offset(20);
                 }
                 else
                     make.bottom.equalTo(self.walletBtn.mas_bottom).offset(20);
-                
             }];
-            
-            
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             
         }];
@@ -459,6 +432,14 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
     [self.runLb stop];
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (self.scl != scrollView) {
+        NSLog(@"asdfasdfasdf---=====%f",scrollView.contentOffset.x);
+        self.scl.contentOffset =  CGPointMake(0,  self.scl.contentOffset.y + scrollView.contentOffset.y);
+      //  scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, 0);
+    }
 
+}
 
 @end

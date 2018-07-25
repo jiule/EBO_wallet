@@ -35,8 +35,7 @@ XMGSingletoM
     if ([currentVersion compare:sandboxVersion] == NSOrderedDescending) {
         // 更新本地保存的版本号
         [defaults setValue:currentVersion forKey:@"sandboxVersion"];
-        MainTabBarViewController *tab = [[MainTabBarViewController alloc]initWithStringPlist:@"YB-YH"];
-        window.rootViewController = tab;
+       [self loginOFF];
     }else
     {
         [self loginOFF];
