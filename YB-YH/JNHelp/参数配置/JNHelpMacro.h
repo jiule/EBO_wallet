@@ -98,9 +98,9 @@ typedef enum : NSUInteger
 } JNButton_TYPE;
 
 #define Button_NORMAL_TEXTCOLOR  COLOR_WHITE   // 1
-#define Button_NORMAL_BACKCOLOR  SXRGB16Color(0XEC4C37)
+#define Button_NORMAL_BACKCOLOR  SXRGB16Color(0X539ccf)
 
-#define Button_TEXT_TEXTCOLOR    SXRGB16Color(0XEC4C37)      // 1
+#define Button_TEXT_TEXTCOLOR    SXRGB16Color(0X539ccf)      // 1
 #define Button_TEXT_BACKCOLOR    COLOR_WHITE
 
 #define Button_DESCRIBE_TEXTCOLOR  COLOR_WHITE

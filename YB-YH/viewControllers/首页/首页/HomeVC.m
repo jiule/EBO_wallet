@@ -19,7 +19,7 @@
 #define Tag 666
 #define vTag 888
 
-@interface HomeVC ()<JNBaseViewDelegate , UIGestureRecognizerDelegate,UIScrollViewDelegate>
+@interface HomeVC ()<JNBaseViewDelegate>
 XH_ATTRIBUTE(strong, UIScrollView, scl);
 XH_ATTRIBUTE(strong, UIView, containView);//scollView 的内容视图
 XH_ATTRIBUTE(strong, JNCoinView, conView);
@@ -73,9 +73,6 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
     [self.scl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.bodyView).with.insets(UIEdgeInsetsMake(0, 0, Tabbar_49h(), 0));
     }];
-//    UIGestureRecognizer * gestur = [[UIGestureRecognizer alloc]init];
-//    gestur.delegate = self;
-//    [scl addGestureRecognizer:gestur];
     self.containView = [UIView new];
     [self.scl addSubview:self.containView];
     [self.containView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -188,18 +185,13 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
     }];
     
     UIScrollView * scl1 = [UIScrollView new];
-    scl1.delegate = self;
-//    scl1.bounces = NO;
-    [self.bodyView addSubview:scl1];
-//    UIGestureRecognizer * gestur1 = [[UIGestureRecognizer alloc]init];
-//    scl1.tag = 999;
-////    gestur1.delegate = self;
-//    [scl1 addGestureRecognizer:gestur1];
+    scl1.bounces = YES;
+    [self.containView addSubview:scl1];
     [scl1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.containView).offset(20);
         make.right.equalTo(self.containView);
         make.top.equalTo(workBtn.mas_bottom);
-        make.height.mas_equalTo(150);
+        make.height.mas_equalTo(200);
     }];
 
     UIView * conv = [UIView new];
@@ -229,8 +221,6 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
     [conv mas_updateConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(lastimav.mas_right).offset(20);
     }];
-//    scl1.contentSize = CGSizeMake(scl1.width, 0);
-    
     
     
     [self.containView creatStrongLineOnRelativeView:scl1 offSet:0];
@@ -285,23 +275,11 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
     }];
     [self.containView creatLineOnRelativeView:self.walletBtn offSet:20];
 //    [self.containView mas_updateConstraints:^(MASConstraintMaker *make) {
-//        make.bottom.equalTo(self.walletBtn.mas_bottom).offset(-20);
+//        make.bottom.equalTo(self.walletBtn.mas_bottom).offset(20);
+//
 //    }];
     
-    
 }
-#pragma mark 解决滑动冲突
-//-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
-//    //在这里判断是百度地图的view 既可以实现手势拖动 scrollview 的滚动关闭
-//    if ([gestureRecognizer.view isKindOfClass:[UIScrollView class]] ){
-//        self.scl.scrollEnabled = YES;
-//        return NO;
-//    }else{
-//        self.scl.scrollEnabled = NO;
-//        return YES;
-//    }
-//
-//}
 #pragma mark 新增钱包
 -(void)addWallet{
     MoneyViewController * vc = [[MoneyViewController alloc]initWithNavTitle:@"创建钱包" name:BI_A1];
