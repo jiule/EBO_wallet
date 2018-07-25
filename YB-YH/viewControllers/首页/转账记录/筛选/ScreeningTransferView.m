@@ -131,7 +131,7 @@
             [dict setObject:[CurrencyManager readspeciesWithName:biarray[_biBtn.tag - 300]] forKey:@"coin_species"];
         }
         if (_leiBtn) {
-            [dict setObject:leiarray[_leiBtn.tag - 400] forKey:@"invite_type"];
+            [dict setObject:leiarray[_leiBtn.tag - 400] forKey:@"trans_type"];
         }
 
         if ([_delegate respondsToSelector:@selector(didScreeningTransferView:dict:)]) {

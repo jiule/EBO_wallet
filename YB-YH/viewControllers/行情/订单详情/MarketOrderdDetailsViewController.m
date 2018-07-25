@@ -15,7 +15,8 @@
     UIView * _bgDownView;
     MarketOrderdDetailsView * _upView;
     MarketOrderdDetailsView * _downView;
-     MarketOrderdDetailsView * _timerView;
+    MarketOrderdDetailsView * _timerView;
+    UIButton * _dingdanBtn;
 }
 @end
 
@@ -37,7 +38,7 @@
     [self.navView addDividingLine];
     float h = self.nav_h;
     _bgDownView = JnUIView(CGRectMake(0, h + JN_HH(15), SCREEN_WIDTH , JN_HH(380)), COLOR_WHITE);
-//    JNViewStyle(_bgDownView, 10, nil, 0);
+    //    JNViewStyle(_bgDownView, 10, nil, 0);
     [self.view addSubview:_bgDownView];
 
     _upView  = [[MarketOrderdDetailsView alloc]initWithFrame:CGRectMake(0, JN_HH(20), _bgDownView.width, JN_HH(120))];
@@ -55,8 +56,21 @@
     [_bgDownView addSubview:_timerView];
 
     [self.view addSubview:JnUIView(CGRectMake(0, JN_HH(430) + self.nav_h, SCREEN_WIDTH, JN_HH(40)), COLOR_WHITE)];
-    [self.view addSubview:JnButtonTextType(CGRectMake(JN_HH(15), JN_HH(435) + self.nav_h, SCREEN_WIDTH  - JN_HH(30), JN_HH(30)), @"订单异常? 客服申诉", Button_3, self, @selector(kefuClick))];
+    _dingdanBtn = JnButtonTextType(CGRectMake(JN_HH(15), JN_HH(435) + self.nav_h, SCREEN_WIDTH  - JN_HH(30), JN_HH(30)), @"订单异常? 客服申诉", Button_3, self, @selector(kefuClick));
+    [self.view addSubview:_dingdanBtn];
 
+}
+
+-(void)downData
+{
+    [self postdownDatas:@"/transfer/Wallet/getOrderInfo" withdict:@{@"order_id":@"c605be7de0921e32b1711bf495821149"} index:1];
+}
+
+
+-(void)readDowndatawithResponseDict:(NSDictionary *)responseDict index:(int)index
+{
+    NSLog(@"%@",responseDict);
+    [_timerView showWithTmer:responseDict[@"create_time"] order_id:responseDict[@"order_id"]];
 }
 
 -(void)kefuClick

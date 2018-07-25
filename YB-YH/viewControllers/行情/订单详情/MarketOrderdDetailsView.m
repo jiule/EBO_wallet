@@ -84,5 +84,10 @@
     _style =style;
     [self show];
 }
+-(void)showWithTmer:(NSString *)timer order_id:(NSString * )order_id
+{
+    _rightlabel1.text = timer;
+    _rightlabel2.text = order_id;
+}
 
 @end

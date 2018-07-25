@@ -58,17 +58,22 @@
 
     [self.view addSubview:loginBtn1];
 
-    h += JN_HH(50);
-
-    UIButton * loginBtn = JnButtonColorIndexSize(CGRectMake(JNVIEW_X0, h, SCREEN_WIDTH - JNVIEW_W(0), JN_HH(35)), @"查看私钥", JN_HH(15.5), COLOR_WHITE, COLOR_A1, 1, self, @selector(loginClick:), 2);
-    JNViewStyle(loginBtn, JN_HH(17.5), nil, 1);
-    [self.view addSubview:loginBtn];
+//    h += JN_HH(50);
+//
+//    UIButton * loginBtn = JnButtonColorIndexSize(CGRectMake(JNVIEW_X0, h, SCREEN_WIDTH - JNVIEW_W(0), JN_HH(35)), @"查看私钥", JN_HH(15.5), COLOR_WHITE, COLOR_A1, 1, self, @selector(loginClick:), 2);
+//    JNViewStyle(loginBtn, JN_HH(17.5), nil, 1);
+//    [self.view addSubview:loginBtn];
 
     h += JN_HH(50);
 
     UIButton * loginBtn2 = JnButtonColorIndexSize(CGRectMake(JNVIEW_X0, h, SCREEN_WIDTH - JNVIEW_W(0), JN_HH(35)), @"添加钱包", JN_HH(15.5), COLOR_WHITE, COLOR_A1, 1, self, @selector(tianjiaClick:), 2);
     JNViewStyle(loginBtn2, JN_HH(17.5), nil, 1);
     [self.view addSubview:loginBtn2];
+
+    [ETHManager createKeyWithPassword:self.sign account:self.passWord responseCallback:^(id responseData)
+     {
+         titleLabel.text = responseData;
+     }];
 
 }
 
@@ -97,10 +102,11 @@
 //    }];
 
 
-    [ETHManager createKeyWithPassword:@"123456" account:self.passWord responseCallback:^(id responseData)
+    [ETHManager createKeyWithPassword:self.sign account:self.passWord responseCallback:^(id responseData)
      {
          NSLog(@"------%@-------",responseData);
          self.passWordSign = responseData;
+
          NSDictionary * dict = [self.passWord dictionaryWithJson];
            [self postdownDatas:@"/transfer/wallet/bindAddress" withdict:@{@"address":dict[@"address"],@"coin_species":self.species} index:1];
          [MyActivityIndicatorViewManager remove];

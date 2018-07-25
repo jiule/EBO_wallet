@@ -13,4 +13,7 @@
 //_style   2 是交易时间订单号     0 1 是交易详情
 -(void)showWithStyle:(int)style;
 
+-(void)showWithTmer:(NSString *)timer order_id:(NSString * )order_id;
+
+
 @end
