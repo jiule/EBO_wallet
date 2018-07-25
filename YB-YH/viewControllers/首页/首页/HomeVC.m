@@ -37,7 +37,7 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
 
 -(UILabel *)propertyLb{
     if (!_propertyLb) {
-        _propertyLb = [UIKitAdditions labelWithBlackText:@"500 0000" fontSize:25];
+        _propertyLb = [UIKitAdditions labelWithBlackText:@"0" fontSize:25];
     }
     return _propertyLb;
 }
@@ -58,7 +58,7 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
     [super createNavView];
     [self.navView setStyle:2];
     [self.navView addDividingLine];
-    self.conView = [[JNCoinView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH * 0.5 - 30, CGNavView_20h(), 60, 44)];
+    self.conView = [[JNCoinView alloc]initWithFrame:CGRectMake( SCREEN_WIDTH * 0.5 - 30, CGNavView_20h(), 60, 44)];
     self.conView.imageView.image = MYimageNamed(@"选择框剪头1");
     [self.navView addSubview:self.conView];
     self.conView.titleLabel.text = BI_A0;
@@ -266,6 +266,11 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
 
     [self.containView creatLineOnRelativeView:self.walletBtn offSet:20];
 
+    [self.containView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.walletBtn.mas_bottom).offset(20);
+
+    }];
+
     
 }
 
@@ -375,7 +380,8 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
                     lastV = v;
                 }
             }
-            [self.scl mas_updateConstraints:^(MASConstraintMaker *make) {
+            [self.containView mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.left.right.top.equalTo(self.scl);
                 if (lastV) {
                     make.bottom.equalTo(lastV.mas_bottom).offset(20);
                 }
