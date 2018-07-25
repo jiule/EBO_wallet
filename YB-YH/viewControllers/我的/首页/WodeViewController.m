@@ -110,7 +110,7 @@
     [self.view addSubview:_lingBtn];
     h += JN_HH(54);
 
-    float baseView_h = JN_HH(44);
+    float baseView_h = JN_HH(50);
     _downY = h;
     _downView = JnUIView(CGRectMake(0, h, SCREEN_WIDTH, baseView_h * _nameArrays.count +JN_HH(10)), self.view.backgroundColor);
     [self.view addSubview:_downView];

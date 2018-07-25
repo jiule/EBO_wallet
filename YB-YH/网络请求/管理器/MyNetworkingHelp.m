@@ -12,8 +12,7 @@
 
 @implementation MyNetworkingHelp
 
-+(BOOL)dealWithResponseDict:(NSDictionary *)responseDict;
-{
++(BOOL)dealWithResponseDict:(NSDictionary *)responseDict;{
     if ([responseDict[@"code"] intValue] == 1) {
         return  YES;
     }else if([responseDict[@"code"] intValue] == 10001){

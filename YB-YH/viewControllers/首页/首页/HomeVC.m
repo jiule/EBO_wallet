@@ -19,9 +19,13 @@
 #define Tag 666
 #define vTag 888
 
-@interface HomeVC ()<JNBaseViewDelegate ,UIScrollViewDelegate>
+
+
+
+@interface HomeVC ()<JNBaseViewDelegate>
+
 XH_ATTRIBUTE(strong, UIScrollView, scl);
-//XH_ATTRIBUTE(strong, UIView, containView);//scollView 的内容视图
+XH_ATTRIBUTE(strong, UIView, containView);//scollView 的内容视图
 XH_ATTRIBUTE(strong, JNCoinView, conView);
 XH_ATTRIBUTE(strong, UILabel, propertyLb);
 XH_ATTRIBUTE(strong, ShufflingView, scolV);//轮播图
@@ -74,9 +78,15 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
         make.edges.equalTo(self.bodyView).with.insets(UIEdgeInsetsMake(0, 0, Tabbar_49h(), 0));
     }];
 
-   self.scl.contentSize = CGSizeMake(0, 10000);
+    self.containView = [UIView new];
+    [self.scl addSubview:self.containView];
+    [self.containView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.scl).with.insets(UIEdgeInsetsMake(0, 0, 0, 0));
+        make.width.equalTo(self.scl);
+    }];
+    
+    [self.containView addSubview:self.propertyLb];
 
-    [self.scl addSubview:self.propertyLb];
     [self.propertyLb mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.scl);
         make.top.equalTo(self.scl).offset(20);
@@ -182,45 +192,47 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
     }];
 
     UIScrollView * scl1 = [UIScrollView new];
-    scl1.backgroundColor = COLOR_A1 ;
-    scl1.delegate = self;
-    [self.scl addSubview:scl1];
+
+    scl1.bounces = YES;
+    [self.containView addSubview:scl1];
 
     [scl1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.scl).offset(20);
         make.right.equalTo(self.scl);
         make.top.equalTo(workBtn.mas_bottom);
-        make.height.mas_equalTo(150);
+        make.height.mas_equalTo(200);
     }];
 
-//    UIView * conv = [UIView new];
-//    [scl1 addSubview:conv];
-//    [conv mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.equalTo(scl1).with.insets(UIEdgeInsetsMake(0, 0, 0, 0));
-//        make.height.equalTo(scl1);
-//    }];
-//    UIImageView * lastimav = nil;
-//    for ( int i = 0; i < 2; i ++) {
-//        UIImageView * ima = [UIKitAdditions imageViewWithImageName:@[@"xyxz",@"zkfl"][i]];
-//        [conv addSubview:ima];
-//        [ima mas_makeConstraints:^(MASConstraintMaker *make) {
-//            if (lastimav) {
-//                make.left.equalTo(lastimav.mas_right).offset(20);
-//            }
-//            else{
-//                make.left.equalTo(conv);
-//            }
-//            make.centerY.equalTo(conv);
-//        }];
-//        lastimav = ima;
-//        [lastimav addtapGestureRecognizer:^(UIView * _Nonnull view, UIGestureRecognizer * _Nonnull tap) {
-//            [MYAlertController showTitltle:@"此功能暂未开放！" vc:self];
-//        }];
-//    }
-//    [conv mas_updateConstraints:^(MASConstraintMaker *make) {
-//        make.right.equalTo(lastimav.mas_right).offset(20);
-//    }];
-    scl1.contentSize = CGSizeMake(scl1.width, 500);
+
+    UIView * conv = [UIView new];
+    [scl1 addSubview:conv];
+    [conv mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(scl1).with.insets(UIEdgeInsetsMake(0, 0, 0, 0));
+        make.height.equalTo(scl1);
+    }];
+    UIImageView * lastimav = nil;
+    for ( int i = 0; i < 2; i ++) {
+        UIImageView * ima = [UIKitAdditions imageViewWithImageName:@[@"xyxz",@"zkfl"][i]];
+        [conv addSubview:ima];
+        [ima mas_makeConstraints:^(MASConstraintMaker *make) {
+            if (lastimav) {
+                make.left.equalTo(lastimav.mas_right).offset(20);
+            }
+            else{
+                make.left.equalTo(conv);
+            }
+            make.centerY.equalTo(conv);
+        }];
+        lastimav = ima;
+        [lastimav addtapGestureRecognizer:^(UIView * _Nonnull view, UIGestureRecognizer * _Nonnull tap) {
+            [MYAlertController showTitltle:@"此功能暂未开放！" vc:self];
+        }];
+    }
+    [conv mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(lastimav.mas_right).offset(20);
+    }];
+    
+
     
     [self.scl creatStrongLineOnRelativeView:scl1 offSet:0];
     
@@ -272,9 +284,12 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
         make.left.equalTo(imav.mas_right).offset(20);
         make.centerY.equalTo(self.walletBtn);
     }];
-    [self.scl creatLineOnRelativeView:self.walletBtn offSet:20];
 
-    self.scl.contentSize = CGSizeMake(0, 10000);
+    [self.containView creatLineOnRelativeView:self.walletBtn offSet:20];
+//    [self.containView mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.equalTo(self.walletBtn.mas_bottom).offset(20);
+//
+//    }];
     
 }
 

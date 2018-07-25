@@ -82,11 +82,11 @@
 #ifdef DEBUG // 调试状态 打开LOG功能
 #define MyLog(...) NSLog(__VA_ARGS__)
 //#define URLIP @"http://1.ximei999.com/"
-#define URLIP @"http://192.168.8.178/api/"
+#define URLIP @"http://pay.ebogame.com/api/"
 #define TUPIANURL(STR) [NSString stringWithFormat:@"%@",STR]
 #else // 发布状态, 关闭LOG功能
 #define MyLog(...)
-#define URLIP @"http://192.168.8.178/"
+#define URLIP @"http://192.168.8.178/api/"
 #define TUPIANURL(STR) [NSString stringWithFormat:@"%@",STR]
 #endif
 
