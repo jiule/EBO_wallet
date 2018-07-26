@@ -43,7 +43,7 @@
     h += JN_HH(50);
     [self.view addUnderscoreWihtFrame:CGRectMake(0, h - 1, SCREEN_WIDTH, 1)];
     [self.view addSubview:JnImageView(CGRectMake(JN_HH(15), h + JN_HH(3), JN_HH(44), JN_HH(44)), MYimageNamed(@"dl_suo"))];
-    _textFiled = [UITextField TextFieldPassWordWithframe:CGRectMake(JN_HH(70), h + JN_HH(10), SCREEN_WIDTH - JN_HH(120), JN_HH(30)) placeholder:@"钱包密码 6-16位数字与字母组合" borderStyle:0];
+    _textFiled = [UITextField TextFieldPassWordWithframe:CGRectMake(JN_HH(70), h + JN_HH(10), SCREEN_WIDTH - JN_HH(120), JN_HH(30)) placeholder:@"输入6位数字密码" borderStyle:0];
     [self.view addSubview:_textFiled];
 
     h += JN_HH(80);
@@ -55,8 +55,8 @@
 
 -(void)loginClick:(UIButton *)btn
 {
-    if (_textFiled.text.length < 6 || _textFiled.text.length >16) {
-        [MYAlertController showTitltle:@"请输入6016位数字与字母组合的密码"];
+    if (_textFiled.text.length != 6) {
+        [MYAlertController showTitltle:@"请输入6数字密码"];
         return ;
     }
 

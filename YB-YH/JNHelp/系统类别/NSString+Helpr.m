@@ -52,7 +52,7 @@
 //密码
 + (BOOL) justPassword:(NSString *)passWord
 {
-    NSString *passWordRegex = @"^[a-zA-Z0-9\x21-\x7e]{6,16}+$";
+    NSString *passWordRegex = @"^[a-zA-Z0-9\x21-\x7e]{6,12}+$";
     NSPredicate *passWordPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",passWordRegex];
     return [passWordPredicate evaluateWithObject:passWord];
 }

@@ -70,10 +70,10 @@
     JNViewStyle(loginBtn2, JN_HH(17.5), nil, 1);
     [self.view addSubview:loginBtn2];
 
-    [ETHManager createKeyWithPassword:self.sign account:self.passWord responseCallback:^(id responseData)
-     {
-         titleLabel.text = responseData;
-     }];
+//    [ETHManager createKeyWithPassword:self.sign account:self.passWord responseCallback:^(id responseData)
+//     {
+//         titleLabel.text = responseData;
+//     }];
 
 }
 

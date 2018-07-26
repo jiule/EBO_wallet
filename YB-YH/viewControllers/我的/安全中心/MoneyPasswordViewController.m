@@ -81,6 +81,12 @@
 
 -(void)loginClick
 {
+    if (_passWorfField.text.length != 6) {
+        [MYAlertController showTitltle:@"请输入6位数字密码" selButton:^(MYAlertController *AlertController, int index) {
+            [self->_passWorfField becomeFirstResponder];
+        } ];
+        return ;
+    }
     [self postdownDatas:@"/user/Profile/setTransPwd" withdict:@{@"verification_code":_yanzhengField.text,@"transpwd":_passWorfField.text} index:1];
 }
 

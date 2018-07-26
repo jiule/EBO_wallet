@@ -40,7 +40,7 @@
 
     _shenfenField = [UITextField TextFieldWithframe:CGRectMake(JNVIEW_X(44), y + JN_HH(3), SCREEN_WIDTH - JNVIEW_W(44), JN_HH(44)) placeholder:@"输入身份证号" borderStyle:0];
     _shenfenField.backgroundColor = [UIColor clearColor];
-    _shenfenField.keyboardType = UIKeyboardTypeNumberPad;
+   // _shenfenField.keyboardType = UIKeyboardTypeNumberPad;
     [self.view addSubview:_shenfenField];
 
     y += JN_HH(50);

@@ -186,7 +186,19 @@
         return ;
     }
     if ( ![NSString justPassword:_passWordField.text] ) {
-        [MYAlertController showTitltle:@"密码格式错误" selButton:^(MYAlertController *AlertController, int index) {
+        [MYAlertController showTitltle:@"请输入长度6-12位的密码" selButton:^(MYAlertController *AlertController, int index) {
+            [self->_passWordField becomeFirstResponder];
+        } ];
+        return ;
+    }
+    if ([self justPasswordaz:_passWordField.text]  ) {
+        [MYAlertController showTitltle:@"请输入字母数字组合的密码" selButton:^(MYAlertController *AlertController, int index) {
+            [self->_passWordField becomeFirstResponder];
+        } ];
+        return ;
+    }
+    if ([self justPasswordnum:_passWordField.text]  ) {
+        [MYAlertController showTitltle:@"请输入字母数字组合的密码" selButton:^(MYAlertController *AlertController, int index) {
             [self->_passWordField becomeFirstResponder];
         } ];
         return ;
@@ -195,10 +207,15 @@
         [MYAlertController showTitltle:@"两次输入的密码不一致" selButton:^(MYAlertController *AlertController, int index) {
             [self->_passWordQueField becomeFirstResponder];
         }];
-        return ;  
+        return ;
     }
     [Listeningkeyboard endEditing];
     if (_yaoField.text.length > 0) {
+
+        if (_yanzhengField.text.length != 4 ) {
+            [MYAlertController showTitltle:@"邀请码输入格式错误"];
+                    return ;
+        }
         [self postdownDatas:@"user/login/regist" withdict:@{@"username":_iponeField.text,@"password":_passWordField.text,@"verification_code":_yanzhengField.text,@"invite_code":_yaoField.text } index:2 type:0];
     }else {
         [self postdownDatas:@"user/login/regist" withdict:@{@"username":_iponeField.text,@"password":_passWordField.text,@"verification_code":_yanzhengField.text } index:2 type:0];
@@ -232,4 +249,16 @@
     [Listeningkeyboard   endEditing];
 }
 
+- (BOOL) justPasswordaz:(NSString *)passWord
+{
+    NSString *passWordRegex = @"^[a-zA-Z]{6,12}+$";
+    NSPredicate *passWordPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",passWordRegex];
+    return [passWordPredicate evaluateWithObject:passWord];
+}
+- (BOOL) justPasswordnum:(NSString *)passWord
+{
+    NSString *passWordRegex = @"^[0-9]{6,12}+$";
+    NSPredicate *passWordPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",passWordRegex];
+    return [passWordPredicate evaluateWithObject:passWord];
+}
 @end

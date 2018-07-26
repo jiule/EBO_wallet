@@ -108,7 +108,7 @@
         [MYAlertController showTitltle:@"账号输入错误"];
         return ;
     }
-    if (_passWordField.text.length  < 6) {
+    if (_passWordField.text.length  < 6 || _passWordField.text.length > 12) {
         [MYAlertController showTitltle:@"密码输入错误"];
         return ;
     }
