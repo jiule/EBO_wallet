@@ -170,10 +170,10 @@
         UIButton * btn = JnButton_tag(CGRectMake(w * i, 0, w, h), COLOR_WHITE, self, @selector(BtnClick:), 100 + i);
         [_upScrollView addSubview:btn];
         GameModel * model = _upScrollViewArrays[i];
-        UIImageView * imageView = JnImageView(CGRectMake(JN_HH(0), JN_HH(0), w - JN_HH(10), w - JN_HH(10)), MYimageNamed(@"dl_xingming"));
+        UIImageView * imageView = JnImageView(CGRectMake(JN_HH(0), JN_HH(0), w - JN_HH(10), w - JN_HH(10)), nil);
         JNViewStyle(imageView, 5, nil, 0);
         [UIImage removeimageWithURL:model.image_url];
-        [imageView setimage:MYimageNamed(@"dl_xingming") withurl:model.image_url];
+        [imageView setimage:nil withurl:model.image_url];
         UILabel * label = JnLabel(CGRectMake(0, w , w - JN_HH(10), JN_HH(20)), model.name, JN_HH(10), COLOR_BL_2, 0);
         if ([model.name widthOfFont:label.font height:label.height] > label.width) {
             [label adjusts];
