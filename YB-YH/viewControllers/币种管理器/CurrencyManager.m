@@ -66,6 +66,7 @@ XMGSingletoM
 {
     NSArray * array = responseDict[@"data"];
     NSMutableArray * array1 = [NSMutableArray array];
+    NSLog(@"array=========%@",array);
     for (int i = 0 ; i < array.count; i++) {
         CurrencyModel * model =  [[CurrencyModel alloc]initWithDict:array[i]];
         [array1 addObject:model];
@@ -201,13 +202,14 @@ XMGSingletoM
     [MyNetworkingManager DDPOSTResqust:@"/transfer/wallet/getEBOProportion" withparameters:@{@"coin_name":@"eth"} withVC:nil progress:^(NSProgress * _Nonnull progree) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary * dic = (NSDictionary *)responseObject;
+        NSLog(@"比例   responseObject====%@",responseObject);
         //  [MyUserDefaultsManager  setJNObject:responseDict forkey:[MyUserDefaultsManager readCoinTypes]];  //保存到本地
         [CurrencyManager sharedInstance].portionModel = [[ProportionModel alloc]initWithDict:dic];
         if (model) {
             model([CurrencyManager sharedInstance].portionModel);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+        NSLog(@"比例没有获取到");
     }];
 }
 +(NSString *)readInvite:(int)invite

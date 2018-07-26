@@ -57,11 +57,12 @@
             //游戏的 
         }else {
             [ _tranfetView setY:self.nav_h + JN_HH(20)];
-            NSArray * array = @[@"转账中",@"转账中",@"订单已完成",@"订单已取消"];
+            NSArray * array = @[@"未确定",@"确认中",@"已确认",@"确认失败"];
             if ([trmodel.status intValue] < array.count) {
-                            [self.view addSubview:JnLabelType(CGRectMake(0, CGSCREEN_HEIGHT() - JN_HH(50), SCREEN_WIDTH, JN_HH(44)), UILABEL_3, array[[trmodel.status intValue] ], 1)];
+                    [self.view addSubview:JnLabelType(CGRectMake(0, CGSCREEN_HEIGHT() - JN_HH(50), SCREEN_WIDTH, JN_HH(44)), UILABEL_3, array[[trmodel.status intValue] ], 1)];
             }else {
                 NSLog(@"status 数组越界");
+                 [self.view addSubview:JnLabelType(CGRectMake(0, CGSCREEN_HEIGHT() - JN_HH(50), SCREEN_WIDTH, JN_HH(44)), UILABEL_3, @"确认失败", 1)];
             }
 
 

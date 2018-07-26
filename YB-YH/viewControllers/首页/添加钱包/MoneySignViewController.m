@@ -122,7 +122,7 @@
         [MyUserDefaultsManager saveKeychainValue:self.passWordSign key:[MyUserDefaultsManager readAddressSign]];
 
         [MyUserDefaultsManager setJNObject:self.passWord forkey:[MyUserDefaultsManager readAddressBi]]; //保存加密文件
-          [MyUserDefaultsManager saveKeychainValue:self.passWord key:[MyUserDefaultsManager readAddressSign]];
+          [MyUserDefaultsManager saveKeychainValue:self.passWord key:[MyUserDefaultsManager readAddressBi]];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
 }

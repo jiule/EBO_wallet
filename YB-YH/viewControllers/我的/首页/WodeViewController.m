@@ -44,8 +44,7 @@
 {
     [super viewWillAppear:animated];
     _niceField.text = self.model.nickname;
- //   NSLog(@"%@",self.model.avatar);
-  //  [_niceImageView setimageWithurl:URL(self.model.avatar)];
+    [_niceImageView setimageWithurl:self.model.avatar];
 }
 -(void)Initialize
 {
@@ -161,6 +160,9 @@
             });
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
             NSLog(@"%@",responseObject);
+      //  id responseDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+            self->_niceImageView.image = image;
+
         } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
             NSLog(@"%@",error);
         } type:@"avatar"];
