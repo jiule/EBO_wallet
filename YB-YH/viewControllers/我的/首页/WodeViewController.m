@@ -161,13 +161,8 @@
             });
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
             NSLog(@"%@",responseObject);
-<<<<<<< HEAD
-      //  id responseDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
             self->_niceImageView.image = image;
 
-=======
-            self->_niceImageView.image = image;
->>>>>>> 7084a10fa1cac3a8b5da7c28f88075d6b76a438b
         } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
             NSLog(@"%@",error);
         } type:@"avatar"];

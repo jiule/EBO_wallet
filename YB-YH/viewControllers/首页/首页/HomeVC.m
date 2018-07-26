@@ -182,7 +182,7 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
 
     }];
     [self.containView creatStrongLineOnRelativeView:self.runLb offSet:20];
->>>>>>> 7084a10fa1cac3a8b5da7c28f88075d6b76a438b
+
     BaseDDView * workBtn = [[BaseDDView alloc]initWithFrame:CGRectMake(0, 0, 0, 0) leftName:nil title:@"赚取工作量证明" rightName:@"jiantou_H1_88"];
     workBtn.delegate = self;
     workBtn.backgroundColor = COLOR_WHITE;
@@ -438,7 +438,7 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
     
 }
 -(void)didView:(UIView *)view text:(NSString *)text{
-    if ([[view class] isEqual:[JNCoinTriangleView class]]) {
+    if ([view class] == [JNCoinTriangleView class]) {
         //设置默认选中的CurrencyModel
         if ([[CurrencyManager sharedInstance] setSelBiText:text vc:self]) {
             self.conView.titleLabel.text = text;
