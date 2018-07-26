@@ -300,7 +300,9 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
     [self.navigationController pushViewController:vc animated:YES];
 }
 -(void)didView:(UIView *)view{
-    [MYAlertController showTitltle:@"此功能暂未开放！" vc:self];
+    if (![[view class] isKindOfClass:[CandyView class]]) {
+        [MYAlertController showTitltle:@"此功能暂未开放！" vc:self];
+    }
 }
 -(void)downData{
     //获取糖果
