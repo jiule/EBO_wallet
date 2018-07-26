@@ -10,6 +10,7 @@
 #import "BaseView.h"
 #import "MIPickerimage.h"
 #import "MIPickerView.h"
+#import "RootViewController.h"
 
 @interface WodeViewController () <JNBaseViewDelegate>
 {
@@ -51,8 +52,8 @@
 -(void)Initialize
 {
     [super Initialize];
-    _nameArrays = @[@"邀请好友",@"实名认证",@"安全中心",@"系统消息",@"设置",@"关于我们"];
-    _imageArrays = @[@"wd_yaoqing",@"wd_shiming",@"wd_anquan",@"wd_xitong",@"wd_shezhi",@"wd_guanyu"];
+    _nameArrays = @[@"邀请好友",@"实名认证",@"安全中心",@"系统消息",@"设置",@"关于我们",@"退出登录"];
+    _imageArrays = @[@"wd_yaoqing",@"wd_shiming",@"wd_anquan",@"wd_xitong",@"wd_shezhi",@"wd_guanyu",@"wd_guanyu"];
     _controllerArrays = @[@"MyInvitationViewController",@"MyRealnameViewController",@"MySecurityCenterViewController",@"MyAlertsViewController",@"MySetViewController",@"MyAboutViewController"];
     _controllerTitleArrays = @[@"邀请好友",@"实名认证",@"安全中心",@"消息",@"设置",@"关于我们"];
 }
@@ -172,11 +173,12 @@
 -(void)didView:(UIView *)view
 {
     int index = (int)view.tag - 100;
-    if (index < _controllerArrays.count)
+    if (index < _controllerArrays.count -1)
     {
         [self popControllerwithstr:_controllerArrays[index] title:_controllerTitleArrays[index]];
     }else {
         NSLog(@"没有传入控制器值");
+        [[RootViewController sharedInstance]loginOFF];
     }
 }
 

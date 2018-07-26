@@ -304,7 +304,7 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
     [self.navigationController pushViewController:vc animated:YES];
 }
 -(void)didView:(UIView *)view{
-    if (![[view class] isKindOfClass:[CandyView class]]) {
+    if ( [view class] != [CandyView class]) {
         [MYAlertController showTitltle:@"此功能暂未开放！" vc:self];
     }
 }

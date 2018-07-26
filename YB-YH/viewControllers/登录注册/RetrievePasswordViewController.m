@@ -15,8 +15,10 @@
 
     UITextField * _yanzhengField;
     UIButton * _yuyinBtn;
-}
 
+       int  _timerIndex;
+}
+@property(nonatomic,assign)NSTimer * timer;
 @property(nonatomic,retain)UIView *upView;
 @property(nonatomic,retain)UIView *downView;
 @end
@@ -45,7 +47,8 @@
       _yanzhengField.textColor = COLOR_B2;
     [_downView addSubview:_yanzhengField];
 
-    _yuyinBtn = JnButtonTextType(CGRectMake(SCREEN_WIDTH - JNVIEW_X(120),  JN_HH(56) + JN_HH(3.5) , JN_HH(120), JN_HH(30)), @"获取验证码", 1, self, @selector(yuyinClick:));
+    _yuyinBtn = JnButtonTextType(CGRectMake(SCREEN_WIDTH - JNVIEW_X(120),  JN_HH(56) + JN_HH(3.5) , JN_HH(120), JN_HH(30)), @"获取验证码", 0, self, @selector(yuyinClick:));
+       [_yuyinBtn titleLabel].font = [UIFont systemFontOfSize:JN_HH(13.5)];
     JNViewStyle(_yuyinBtn, JN_HH(15), Button_TEXT_TEXTCOLOR, 1);
     [_downView addSubview:_yuyinBtn];
 
@@ -67,9 +70,24 @@
 #pragma mark----语音按钮被点击
 -(void)yuyinClick:(UIButton *)btn
 {
-    [btn setTitle:@"验证码已发送" forState:0];
+//    [btn setTitle:@"验证码已发送" forState:0];
+
     [self postdownDatas:@"/user/VerificationCode" withdict:@{@"username":_iponeField.text} index:1];
 }
+
+-(void)updateTimer
+{
+    if (_timerIndex > 0) {
+        _timerIndex--;
+        [_yuyinBtn setTitle:[NSString stringWithFormat:@"%02ds",_timerIndex] forState:0];
+    }else
+    {
+        [_timer setFireDate:[NSDate distantFuture]];
+        [_yuyinBtn setTitle:@"重试" forState:0];
+        _yuyinBtn.enabled = YES ;
+    }
+}
+
 
 -(void)loginClick
 {
@@ -80,7 +98,12 @@
     {
         if(index == 1){
             _iponeField.userInteractionEnabled = NO;
-            [MYAlertController showNavViewWith:@"验证码已发送"];
+            [MYAlertController showNavViewWith:@"验证码已发送" ];
+            _yuyinBtn.enabled = NO;
+            _timerIndex = 60;
+            _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
+            [_yuyinBtn setTitle:[NSString stringWithFormat:@"%02ds",_timerIndex] forState:0];
+            [_timer setFireDate:[NSDate distantPast]];
         }else if(index == 501)
         {
             [MYAlertController showTitltle:@"设置成功" selButton:^(MYAlertController *AlertController, int index) {

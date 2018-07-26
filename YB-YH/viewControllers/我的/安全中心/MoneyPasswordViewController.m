@@ -13,7 +13,9 @@
     UITextField * _yanzhengField;
     UIButton * _yuyinBtn;
     UITextField * _passWorfField;
+        int  _timerIndex;
 }
+@property(nonatomic,assign)NSTimer * timer;
 @end
 
 @implementation MoneyPasswordViewController
@@ -35,7 +37,8 @@
     _yanzhengField.clearButtonMode = UITextFieldViewModeNever;
     [self.view addSubview:_yanzhengField];
 
-    _yuyinBtn = JnButtonTextType(CGRectMake(SCREEN_WIDTH - JNVIEW_X(120), h + JN_HH(7.5) + JN_HH(5), JN_HH(120), JN_HH(30)), @"短信验证码", 1, self, @selector(yuyinClick:));
+    _yuyinBtn = JnButtonTextType(CGRectMake(SCREEN_WIDTH - JNVIEW_X(120), h + JN_HH(7.5) + JN_HH(5), JN_HH(120), JN_HH(30)), @"短信验证码", 0, self, @selector(yuyinClick:));
+    [_yuyinBtn titleLabel].font = [UIFont systemFontOfSize:JN_HH(13.5)];
     JNViewStyle(_yuyinBtn, JN_HH(15), COLOR_A1, 1);
     //_yuyinBtn.backgroundColor = COLOR_WHITE;
     [self.view addSubview:_yuyinBtn];
@@ -58,12 +61,27 @@
 -(void)yuyinClick:(UIButton *)btn
 {
 
-    [btn setTitle:@"验证码已发送" forState:0];
+//    [btn setTitle:@"验证码已发送" forState:0];
+
     [self postdownDatas:@"user/VerificationCode" withdict:@{@"username":self.model.mobile} index:2];
 }
+
+-(void)updateTimer
+{
+    if (_timerIndex > 0) {
+        _timerIndex--;
+        [_yuyinBtn setTitle:[NSString stringWithFormat:@"%02ds",_timerIndex] forState:0];
+    }else
+    {
+        [_timer setFireDate:[NSDate distantFuture]];
+        [_yuyinBtn setTitle:@"重试" forState:0];
+        _yuyinBtn.enabled = YES ;
+    }
+}
+
 -(void)loginClick
 {
-    [self postdownDatas:@"/user/Profile/setTransPwd" withdict:@{@"verification_code":@"213456",@"transpwd":_passWorfField.text} index:1];
+    [self postdownDatas:@"/user/Profile/setTransPwd" withdict:@{@"verification_code":_yanzhengField.text,@"transpwd":_passWorfField.text} index:1];
 }
 
 -(void)readDowndatawithResponseDict:(NSDictionary *)responseDict index:(int)index
@@ -74,6 +92,13 @@
             FANHUI_JIUSHITU ;
         } ];
 
+    }else {
+        [MYAlertController showNavViewWith:@"验证码已经发送"];
+        _yuyinBtn.enabled = NO;
+        _timerIndex = 60;
+        _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
+        [_yuyinBtn setTitle:[NSString stringWithFormat:@"%02ds",_timerIndex] forState:0];
+        [_timer setFireDate:[NSDate distantPast]];
     }
 }
 
