@@ -9,6 +9,7 @@
 #import "WodeViewController.h"
 #import "BaseView.h"
 #import "MIPickerimage.h"
+#import "MIPickerView.h"
 
 @interface WodeViewController () <JNBaseViewDelegate>
 {
@@ -44,6 +45,7 @@
 {
     [super viewWillAppear:animated];
     _niceField.text = self.model.nickname;
+
     [_niceImageView setimageWithurl:self.model.avatar];
 }
 -(void)Initialize
@@ -74,7 +76,7 @@
     [_upView addUnderscoreBottomline];
     _upView.userInteractionEnabled = YES ;
 
-    _niceImageView = JnImageViewCornerRadius(CGRectMake(JN_HH(20), h + JN_HH(20) , JN_HH(60), JN_HH(60)), MYimageNamed(@"ebog_icon2"), JN_HH(30));
+    _niceImageView = JnImageViewCornerRadius(CGRectMake(JN_HH(20), h + JN_HH(20) , JN_HH(60), JN_HH(60)), MYimageNamed(@"sy_ebog"), JN_HH(30));
    // _niceImageView.backgroundColor = COLOR_B1;
     [_niceImageView addtapGestureRecognizer:^(UIView * _Nonnull view, UIGestureRecognizer * _Nonnull tap) {
         [self niceImageClick];
@@ -152,17 +154,20 @@
 
 -(void)niceImageClick
 {
-    [[MIPickerimage sharedInstance] PickerpushWithscurceType:UIImagePickerControllerSourceTypeCamera MIPickerimage:^(UIImage * _Nonnull image) {
-        NSLog(@"%f----%f",image.size.width,image.size.height);
+    [MIPickerView showWithType:0 MIPickerimage:^(UIImage * _Nonnull image) {
         [ MyNetworkingManager POST:@"user/Profile/userInfo" parameters:@{@"avatar":@"File"} image:[image scaleImagetoSize:CGSizeMake(100, 100)] progress:^(NSProgress * _Nonnull uploadProgress) {
             dispatch_sync(dispatch_get_main_queue(), ^{
                 NSLog(@"progress is %@",uploadProgress);
             });
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
             NSLog(@"%@",responseObject);
+<<<<<<< HEAD
       //  id responseDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
             self->_niceImageView.image = image;
 
+=======
+            self->_niceImageView.image = image;
+>>>>>>> 7084a10fa1cac3a8b5da7c28f88075d6b76a438b
         } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
             NSLog(@"%@",error);
         } type:@"avatar"];
