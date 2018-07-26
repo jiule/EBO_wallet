@@ -35,7 +35,7 @@
     _yanzhengField.clearButtonMode = UITextFieldViewModeNever;
     [self.view addSubview:_yanzhengField];
 
-    _yuyinBtn = JnButtonTextType(CGRectMake(SCREEN_WIDTH - JNVIEW_X(120), h + JN_HH(7.5) + JN_HH(5), JN_HH(120), JN_HH(30)), @"语音验证码", 1, self, @selector(yuyinClick:));
+    _yuyinBtn = JnButtonTextType(CGRectMake(SCREEN_WIDTH - JNVIEW_X(120), h + JN_HH(7.5) + JN_HH(5), JN_HH(120), JN_HH(30)), @"短信验证码", 1, self, @selector(yuyinClick:));
     JNViewStyle(_yuyinBtn, JN_HH(15), COLOR_A1, 1);
     //_yuyinBtn.backgroundColor = COLOR_WHITE;
     [self.view addSubview:_yuyinBtn];

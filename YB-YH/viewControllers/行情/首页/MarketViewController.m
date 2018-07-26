@@ -220,7 +220,7 @@ XH_ATTRIBUTE(strong, UILabel, lab1);
             [IPhoneAlectView showWithAlect:^(BOOL isAlect , NSString * password) {
                 if (isAlect) {
                     NSString * str = [MyUserDefaultsManager JNobjectForKey:[MyUserDefaultsManager readAddressSign]];
-                    str = [MyUserDefaultsManager readKeychainValue:[MyUserDefaultsManager readAddressSign]];
+                 //   str = [MyUserDefaultsManager readKeychainValue:[MyUserDefaultsManager readAddressSign]];
                     NSLog(@"str===========%@",str);
                     if (str) {
                         [ETHManager createSignWithKey:str data:responseObject responseCallback:^(id responseta) {

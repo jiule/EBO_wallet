@@ -51,7 +51,7 @@
     _yanzhengField.clearButtonMode = UITextFieldViewModeNever;
     [self.baseScollView addSubview:_yanzhengField];
 
-    _yuyinBtn = JnButtonTextType(CGRectMake(SCREEN_WIDTH - JNVIEW_X(120), y + JN_HH(7.5) - j * 0.5, JN_HH(120), JN_HH(30)), @"语音验证码", 0, self, @selector(yuyinClick:));
+    _yuyinBtn = JnButtonTextType(CGRectMake(SCREEN_WIDTH - JNVIEW_X(120), y + JN_HH(7.5) - j * 0.5, JN_HH(120), JN_HH(30)), @"短信验证码", 0, self, @selector(yuyinClick:));
     JNViewStyle(_yuyinBtn, JN_HH(15), nil, 0);
     [self.baseScollView addSubview:_yuyinBtn];
 
