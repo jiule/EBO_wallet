@@ -48,15 +48,13 @@
     [self addSubview:self.titleLabel];
     [self addSubview:JnLabelType(CGRectMake(JN_HH(85), JN_HH(40), SCREEN_WIDTH - JN_HH(100), JN_HH(30)), UILABEL_4,@"游戏评分:",  0)];
 
-    _pentagramView = [[PentagramView alloc]initWithFrame:CGRectMake(JN_HH(165),  JN_HH(30), JN_HH(100), JN_HH(30))];
-    [self.bgImageView addSubview:_pentagramView];
+    _pentagramView = [[PentagramView alloc]initWithFrame:CGRectMake(JN_HH(150),  JN_HH(45), JN_HH(100), JN_HH(30))];
+    [self addSubview:_pentagramView];
 
-    _downBtn = JnButtonTextType(CGRectMake(SCREEN_WIDTH - JN_HH(60), JN_HH(25), JN_HH(50), JN_HH(30)), @"获取", 0, self, @selector(btnClick));
-    JNViewStyle(_downBtn, self.bgImageView.height * 0.05, nil, 0);
-    [self.bgImageView addSubview:_downBtn];
+    _downBtn = JnButtonTextType(CGRectMake(SCREEN_WIDTH - JN_HH(60), JN_HH(40), JN_HH(50), JN_HH(30)), @"获取", 0, self, @selector(btnClick));
+    JNViewStyle(_downBtn, _downBtn.height * 0.5, nil, 0);
+    [self addSubview:_downBtn];
 }
-
-
 
 -(void)setTableViewModel:(DwTableViewModel *)tableViewModel
 {
@@ -65,7 +63,9 @@
     [self.bgImageView setimage:nil withurl:_gameModel.icon];
     [self.hearImageView setimage:nil withurl:_gameModel.icon];
     self.titleLabel.text = _gameModel.name;
+//    NSLog(@"%d",[_gameModel.score intValue]);
     [_pentagramView showScore:[_gameModel.score floatValue]/10.00];
+//    _pentagramView.backgroundColor = [UIColor redColor];
     [self createcell_h:JN_HH(80) BgColor:COLOR_B6 xian_h:1];
 }
 

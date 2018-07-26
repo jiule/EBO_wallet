@@ -241,6 +241,8 @@
                 if ([self.curManager.selcurrencyModel.coin_name isEqual:BI_A1]) {
                     NSString * str = [MyUserDefaultsManager JNobjectForKey:[MyUserDefaultsManager readAddressSign]];
                             NSLog(@"str===========%@",str);
+//                    str = [MyUserDefaultsManager readKeychainValue:[MyUserDefaultsManager readAddressSign]];
+//                      NSLog(@"str===========%@",str);
                     if (str) {
                         [ETHManager createSignWithKey:str data:responseDict responseCallback:^(id responseta) {
                             NSLog(@"%@",responseta);

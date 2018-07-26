@@ -220,6 +220,7 @@ XH_ATTRIBUTE(strong, UILabel, lab1);
             [IPhoneAlectView showWithAlect:^(BOOL isAlect , NSString * password) {
                 if (isAlect) {
                     NSString * str = [MyUserDefaultsManager JNobjectForKey:[MyUserDefaultsManager readAddressSign]];
+                 //   str = [MyUserDefaultsManager readKeychainValue:[MyUserDefaultsManager readAddressSign]];
                     NSLog(@"str===========%@",str);
                     if (str) {
                         [ETHManager createSignWithKey:str data:responseObject responseCallback:^(id responseta) {
@@ -276,8 +277,6 @@ XH_ATTRIBUTE(strong, UILabel, lab1);
         }else {
             str  = [NSString stringWithFormat:@"%@%@",textField.text,string];
         }
-        NSLog(@"====%.2f ==== %.4f",self.curManager.portionModel.propor,self.curManager.portionModel.ebocny);
-        
         if ([self.upLab.text isEqualToString:BI_A0]) {
             self.exchangeNumTf.text = [NSString stringWithFormat:@"%f",[str floatValue] / self.curManager.portionModel.propor];
             self.valuationLb.text = [NSString stringWithFormat:@"￥%.2f",[str floatValue] / self.curManager.portionModel.ebocny];

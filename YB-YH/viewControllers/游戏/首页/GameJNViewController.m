@@ -47,14 +47,14 @@
 {
     [super createView];
 
-    _tableView = [DwTableView initWithFrame:CGRectMake(0, self.nav_h, SCREEN_WIDTH, SCREEN_HEIGHT - self.nav_h -Tabbar_49h()) url:@"http://waiguamobi.com/index.php?s=/Api/Game/game_list" modelName:@"GameModel" cellName:@"GameViewCell" delegate:self];
-    _tableView.is_data = YES;
-    _tableView.data1 = @"data";
+    _tableView = [DwTableView initWithFrame:CGRectMake(0, self.nav_h, SCREEN_WIDTH, SCREEN_HEIGHT - self.nav_h -Tabbar_49h()) url:URL(@"/portal/Slide/newGames") modelName:@"GameModel" cellName:@"GameViewCell" delegate:self];
+//    _tableView.is_data = YES;
+//    _tableView.data1 = @"data";
     [self.view addSubview:[_tableView readTableView]];
 
     UIView * upView = JnUIView(CGRectMake(0, 0, SCREEN_WIDTH, JN_HH(200)), COLOR_WHITE);
 
-    _ffilingView = [[ShufflingView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, JN_HH(120)) BgColor:COLOR_WHITE];
+    _ffilingView = [[ShufflingView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, JN_HH(360) / SCREEN_WIDTH * JN_HH(130)) BgColor:COLOR_WHITE];
     [upView addSubview:_ffilingView];
     float h = _ffilingView.height;
     [upView addSubview:JnLabelType(CGRectMake(JNVIEW_X0, h, SCREEN_WIDTH, JN_HH(40)), UILABEL_1, @"新游推荐", 0)];
@@ -76,7 +76,7 @@
 {
     [self tableViewDownWithPage:1];
     [self postdownDatas:@"/portal/Slide/gameSlideList" withdict:@{} index:-1];  //获取轮播
-    [self postdownDatas:@"/portal/Slide/newGames" withdict:@{@"page":@"1",@"num":@"8"} index:-2];
+    [self postdownDatas:@"/portal/Slide/newGames" withdict:@{@"page":@"1",@"num":@"8",@"orderby":@"name"} index: -2];
 }
 
 -(void)tableViewDownWithPage:(int)page
@@ -84,7 +84,7 @@
     if (page > 1 && _isDown == NO) {
         return;
     }
-    [_tableView downWithdict:@{@"page":[NSString stringWithFormat:@"%d",page]} index:page];
+    [_tableView downWithdict:@{@"page":[NSString stringWithFormat:@"%d",page],@"num":@"10",@"orderby":@"timedesc"} index:page];
 }
 
 -(void)clickonReturn
@@ -104,13 +104,12 @@
 -(void)DwtableView:(DwTableView *)tableView downDatasWithDict:(NSDictionary *)dict index:(int)index
 {
     NSDictionary * dataDict = dict[@"data"];
-    NSString * flag = dataDict[@"flag"];
-    NSLog(@"dataDict=====%@",dataDict);
-    if ([flag intValue] ==  1) {
-        _isDown = YES;
-    }else {
-        _isDown = NO;
-    }
+//    NSString * flag = dataDict[@"flag"];
+//    if ([flag intValue] ==  1) {
+//        _isDown = YES;
+//    }else {
+//        _isDown = NO;
+//    }
 }
 
 -(void)DwtableView:(DwTableView *)tableview refresh:(int)page
@@ -149,7 +148,7 @@
         }];
     }else if(index == -2)
     {
-       // NSLog(@"dataArray ===== %@",dataArray);
+        NSLog(@"dataArray =====  -2 %@",dataArray);
         NSMutableArray * array = [NSMutableArray array];
         for (int i = 0 ; i < dataArray.count; i++) {
             GameModel * model = [[GameModel alloc]initWithDict:dataArray[i]];

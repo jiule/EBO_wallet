@@ -182,6 +182,7 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
 
     }];
     [self.containView creatStrongLineOnRelativeView:self.runLb offSet:20];
+
     BaseDDView * workBtn = [[BaseDDView alloc]initWithFrame:CGRectMake(0, 0, 0, 0) leftName:nil title:@"赚取工作量证明" rightName:@"jiantou_H1_88"];
     workBtn.delegate = self;
     workBtn.backgroundColor = COLOR_WHITE;
@@ -287,10 +288,13 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
     }];
 
     [self.containView creatLineOnRelativeView:self.walletBtn offSet:20];
+
 //    [self.containView mas_updateConstraints:^(MASConstraintMaker *make) {
 //        make.bottom.equalTo(self.walletBtn.mas_bottom).offset(20);
 //
 //    }];
+
+
     
 }
 
@@ -356,6 +360,7 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             NSArray * arr = (NSArray *)responseObject;
             NSMutableArray * ziArray = [NSMutableArray array];
+            NSLog(@"responseObject ====== %@",responseObject);
             ZiCurrencyModel * zicurmodel ;
             for (int i = 0 ; i < arr.count; i++) {
                 ZiCurrencyModel * ziModel = [[ZiCurrencyModel  alloc]initWithDict:arr[i]];
@@ -435,7 +440,7 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
     
 }
 -(void)didView:(UIView *)view text:(NSString *)text{
-    if ([[view class] isEqual:[JNCoinTriangleView class]]) {
+    if ([view class] == [JNCoinTriangleView class]) {
         //设置默认选中的CurrencyModel
         if ([[CurrencyManager sharedInstance] setSelBiText:text vc:self]) {
             self.conView.titleLabel.text = text;

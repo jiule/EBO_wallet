@@ -45,7 +45,7 @@
 {
     [super viewWillAppear:animated];
     _niceField.text = self.model.nickname;
- //   NSLog(@"%@",self.model.avatar);
+
     [_niceImageView setimageWithurl:self.model.avatar];
 }
 -(void)Initialize
@@ -162,6 +162,7 @@
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
             NSLog(@"%@",responseObject);
             self->_niceImageView.image = image;
+
         } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
             NSLog(@"%@",error);
         } type:@"avatar"];
