@@ -17,7 +17,10 @@
     UITextField * _passWordQueField;
     UITextField * _yaoField;
     UIButton * _yuyinBtn;
+    int  _timerIndex;
 }
+
+@property(nonatomic,assign)NSTimer * timer;
 
 @end
 
@@ -27,7 +30,7 @@
 {
     self.view.backgroundColor = COLOR_WHITE;
     float y = JN_HH(40);  float j = 10;
-    [self.view addSubview:JnLabel(CGRectMake(0, self.nav_h + y, SCREEN_WIDTH, JN_HH(40)), BI_A0STR1(@"欢迎使用", @" GAME"), JN_HH(17.5), COLOR_A1, 1)];
+    [self.view addSubview:JnLabel(CGRectMake(0, self.nav_h + y, SCREEN_WIDTH, JN_HH(40)), BI_A0STR1(@"欢迎使用", @" 钱包"), JN_HH(17.5), COLOR_A1, 1)];
     [super createView];
 
 
@@ -52,6 +55,7 @@
     [self.baseScollView addSubview:_yanzhengField];
 
     _yuyinBtn = JnButtonTextType(CGRectMake(SCREEN_WIDTH - JNVIEW_X(120), y + JN_HH(7.5) - j * 0.5, JN_HH(120), JN_HH(30)), @"短信验证码", 0, self, @selector(yuyinClick:));
+    [_yuyinBtn titleLabel].font = [UIFont systemFontOfSize:JN_HH(13.5)];
     JNViewStyle(_yuyinBtn, JN_HH(15), nil, 0);
     [self.baseScollView addSubview:_yuyinBtn];
 
@@ -106,15 +110,37 @@
         }];
         return ;
     }
-    [btn setTitle:@"验证码已发送" forState:0];
+
+//    [btn setTitle:@"验证码已发送" forState:0];
     [self postdownDatas:@"user/VerificationCode" withdict:@{@"username":_iponeField.text} index:1];
 }
+
+-(void)updateTimer
+{
+    if (_timerIndex > 0) {
+        _timerIndex--;
+        [_yuyinBtn setTitle:[NSString stringWithFormat:@"%02ds",_timerIndex] forState:0];
+    }else
+    {
+        [_timer setFireDate:[NSDate distantFuture]];
+        [_yuyinBtn setTitle:@"重试" forState:0];
+        _yuyinBtn.enabled = YES ;
+    }
+}
+
+
 
 -(void)readDowndatawithResponseDict:(NSDictionary *)responseDict index:(int)index
 {
     if(index == 1){
         _iponeField.userInteractionEnabled = NO;
         [MYAlertController showNavViewWith:@"验证码已发送"];
+
+        _yuyinBtn.enabled = NO;
+        _timerIndex = 60;
+        _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
+        [_yuyinBtn setTitle:[NSString stringWithFormat:@"%02ds",_timerIndex] forState:0];
+        [_timer setFireDate:[NSDate distantPast]];
     }else if(index == 501)
     {
         NSLog(@"222222------%@=====%@",responseDict,responseDict[@"msg"]);
@@ -181,7 +207,7 @@
 
 -(void)xieyiClick
 {
-
+    [MYAlertController showTitltle:@"协议页面还没有"];
 }
 
 -(void)RealNameView

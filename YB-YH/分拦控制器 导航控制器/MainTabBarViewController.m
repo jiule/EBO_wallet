@@ -74,8 +74,8 @@
 #pragma mark - 定制分栏
 - (void)createTabBar
 {
-    UIImageView * iamgeView = [[UIImageView alloc]initWithFrame:CGRectMake(0, -Tabbar_49h(), SCREEN_WIDTH, Tabbar_49h()) image:[UIImage imageNamed:@"Tab"]];
-    [self.tabBar addSubview:iamgeView];
+//    UIImageView * iamgeView = [[UIImageView alloc]initWithFrame:CGRectMake(0, -Tabbar_49h(), SCREEN_WIDTH, Tabbar_49h()) image:[UIImage imageNamed:@"Tab"]];
+//    [self.tabBar addSubview:iamgeView];
     // 创建自定制的tabBar,并添加到分栏控制器的tabbar上
     MyTabBar *tabBar = [[MyTabBar alloc] init];
 #pragma mark----设置分栏的个数
