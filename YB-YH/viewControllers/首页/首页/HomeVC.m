@@ -437,7 +437,6 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
             }];
         }];
     }];
-    
 }
 -(void)didView:(UIView *)view text:(NSString *)text{
     if ([view class] == [JNCoinTriangleView class]) {
