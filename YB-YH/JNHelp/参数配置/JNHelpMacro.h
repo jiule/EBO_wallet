@@ -82,7 +82,7 @@ CGIndexColorMake(int startIndex,CGColorRef textColor,float textsize)
 
 #define UILABEL_BZ_1  JN_HH(18)                              //UILABEL_1的文字大小
 #define UILABEL_BZ_2  JN_HH(15.5)                            //UILABEL_2 的字体大小
-#define UILABEL_BZ_3   JN_HH(15.5)                       //其他
+#define UILABEL_BZ_3  JN_HH(15.5)                       //其他
 #define UILABEL_BZ_4  JN_HH(13.5)
 #define UILABEL_BZ_5  JN_HH(13.5)
 #define UILABEL_BZ_6  JN_HH(13.5)
@@ -109,7 +109,7 @@ typedef enum : NSUInteger
 #define Button_DESCRIBE_TEXTCOLOR1 COLOR_A2
 #define Button_DESCRIBE_BACKCOLOR1 [UIColor clearColor]
 
-/*这里是分割线的
+/*  这里是分割线的
  *  默认的分割线的颜色   DIVIDER_COLOR1
  *  默认的分割线的开始   X:DIVIDER_X  Y:view的高度 － DIVIDER_H  W: DIVIDER_W   H: DIVIDER_H
  */

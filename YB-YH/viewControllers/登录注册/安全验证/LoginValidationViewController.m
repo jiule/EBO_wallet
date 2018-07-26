@@ -60,7 +60,8 @@
                 if (pan.state == UIGestureRecognizerStateEnded) {
                     [view removeGestureRecognizer:tap];
                     [MYAlertController showTitltle:@"验证通过" selButton:^(MYAlertController *AlertController, int index) {
-                         [[RootViewController sharedInstance]loginOK];
+                         [self popControllerwithstr:@"RealNameViewController" title:@"实名认证"];
+//                         [[RootViewController sharedInstance]loginOK];
 //                             [self postdownDatas:@"/user/login/login" withdict:@{@"username":[RegisteredObj sharedInstance].iphone,@"password":[RegisteredObj sharedInstance].password,@"device_type":@"iphone",@"jpush_id":@"1234"} index:1 type:0];
                     }];
                 }else {

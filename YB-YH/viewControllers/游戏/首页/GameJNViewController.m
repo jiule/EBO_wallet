@@ -182,10 +182,16 @@
         [btn addSubview:JnLabel(CGRectMake(0, w + JN_HH(20), w - JN_HH(10), JN_HH(20)), model.category_name, JN_HH(11.5), COLOR_A1, 0)];
         [btn addSubview:imageView];
     }
+    _upScrollView.contentSize = CGSizeMake(w * _upScrollViewArrays.count, 1);
 }
 
 -(void)BtnClick:(UIButton *)btn
 {
+    [MYAlertController showTitltle:@"功能暂未开放"];
+}
 
+-(void)DwtableView:(DwTableView *)tableView model:(DwTableViewModel *)myTableViewModel indexPath:(NSIndexPath *)indexPath
+{
+     [MYAlertController showTitltle:@"功能暂未开放"];
 }
 @end

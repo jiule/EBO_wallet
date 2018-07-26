@@ -23,7 +23,7 @@
 -(void)createView
 {
     [super createView];
-    [self.view addSubview:JnImageView(CGRectMake(SCREEN_WIDTH * 0.5 - JN_HH(40), self.nav_h + JN_HH(30),JN_HH(80) , JN_HH(80)), MYimageNamed(@"ebog_icon2"))];
+    [self.view addSubview:JnImageView(CGRectMake(SCREEN_WIDTH * 0.5 - JN_HH(40), self.nav_h + JN_HH(30),JN_HH(80) , JN_HH(80)), MYimageNamed(@"sy_ebog"))];
 
     float h =  JN_HH(205) + JN_HH(10); float jian = JN_HH(50);
 

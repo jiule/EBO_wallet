@@ -186,7 +186,7 @@
 
 -(void)RealNameView
 {
-    [self popControllerwithstr:@"RealNameViewController" title:@"实名认证"];
+    [self popControllerwithstr:@"LoginValidationViewController" title:@"安全认证"];
 }
 
 -(void)addListeningkeyboard

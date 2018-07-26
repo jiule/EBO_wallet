@@ -17,7 +17,7 @@
             self.image = image;
         }else
         {
-            self.image = [UIImage imageNamed:@""];
+            self.image = [UIImage imageNamed:@"yoxi_icon"];
         }
     }
     return  self;
@@ -35,7 +35,7 @@
         if (image) {
             self.image = image;
         }else {
-            // self.image = [UIImage imageNamed:UIIMAGEVIEW_ZHANWEIIMAGE];
+             self.image = [UIImage imageNamed:@"yoxi_icon"];
         }
     }
     dispatch_queue_t  queue =  dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -46,7 +46,7 @@
                 self.image = image;
             }else
             {
-                self.image = [UIImage imageNamed:@""];
+                self.image = [UIImage imageNamed:@"yoxi_icon"];
             }
 
             [activ removeFromSuperview];

@@ -40,11 +40,13 @@
     [_zichanLabel setLeftFont:[UIFont systemFontOfSize:JN_HH(35.5)] rightFont:[UIFont systemFontOfSize:JN_HH(35.5)]];
     [upView addSubview:_zichanLabel];
     [upView addUnderscoreWihtFrame:CGRectMake(0, JN_HH(90), SCREEN_WIDTH, JN_HH(10))];
+    [self.view addSubview:upView];
+    h += JN_HH(100);
 
     self.tableView =  [DwTableView initWithFrame:CGRectMake(0, h , SCREEN_WIDTH, SCREEN_HEIGHT  - h) url:URL(@"transfer/wallet/getTransferList") modelName:@"TransferModel" cellName:@"TransferRecordCell" delegate:self];
     [self.tableView readTableView].backgroundColor = COLOR_H3;
     [self.view addSubview:[self.tableView readTableView]];
-    [self.tableView setTableViewHearView:upView];
+ //   [self.tableView setTableViewHearView:upView];
 
 
     ZiCurrencyModel * zim = [CurrencyManager readZiModelWithSpecies:[CurrencyManager readspeciesWithName:BI_A0]];
