@@ -45,8 +45,8 @@
 -(instancetype)initWithFrame:(CGRect)frame
 {
     _maxIndex = 5;
-    _upImage = [UIImage imageNamed:@"zp_xing1_2x"];
-    _downImage = [UIImage imageNamed:@"zp_xing2_2x"];
+    _upImage = [UIImage imageNamed:@"xingxing"];
+    _downImage = [UIImage imageNamed:@"xingxingh"];
     self = [super initWithFrame:frame];
     if (!self) {
         return nil;

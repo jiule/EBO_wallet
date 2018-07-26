@@ -59,7 +59,7 @@
 {
 
     [btn setTitle:@"验证码已发送" forState:0];
-    [self postdownDatas:@"user/VerificationCode" withdict:@{@"username":self.model.mobile} index:1];
+    [self postdownDatas:@"user/VerificationCode" withdict:@{@"username":self.model.mobile} index:2];
 }
 -(void)loginClick
 {
@@ -70,7 +70,7 @@
 {
     if (index == 1) {
         [MYAlertController showTitltle:@"设置成功" selButton:^(MYAlertController *AlertController, int index) {
-            self.model.transpwd = @"888888888";
+            self.model.transpwd = [NSNumber numberWithInt:1];
             FANHUI_JIUSHITU ;
         } ];
 

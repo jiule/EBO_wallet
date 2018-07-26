@@ -48,10 +48,11 @@
     [self addSubview:self.titleLabel];
     [self addSubview:JnLabelType(CGRectMake(JN_HH(85), JN_HH(40), SCREEN_WIDTH - JN_HH(100), JN_HH(30)), UILABEL_4,@"游戏评分:",  0)];
 
-    _pentagramView = [[PentagramView alloc]initWithFrame:CGRectMake(JN_HH(150),  JN_HH(45), JN_HH(100), JN_HH(30))];
+    _pentagramView = [[PentagramView alloc]initWithFrame:CGRectMake(JN_HH(150),  JN_HH(47), JN_HH(75), JN_HH(20))];
     [self addSubview:_pentagramView];
 
-    _downBtn = JnButtonTextType(CGRectMake(SCREEN_WIDTH - JN_HH(60), JN_HH(40), JN_HH(50), JN_HH(30)), @"获取", 0, self, @selector(btnClick));
+    _downBtn = JnButtonTextType(CGRectMake(SCREEN_WIDTH - JN_HH(70), JN_HH(40), JN_HH(60), JN_HH(30)), @"获取", 1, self, @selector(btnClick));
+    _downBtn.layer.backgroundColor = COLOR_B5.CGColor ;
     JNViewStyle(_downBtn, _downBtn.height * 0.5, nil, 0);
     [self addSubview:_downBtn];
 }
@@ -60,8 +61,7 @@
 {
     [super setTableViewModel:tableViewModel];
     _gameModel = (GameModel *)tableViewModel;
-    [self.bgImageView setimage:nil withurl:_gameModel.icon];
-    [self.hearImageView setimage:nil withurl:_gameModel.icon];
+    [self.hearImageView setimage:MYimageNamed(@"yoxi_icon") withurl:_gameModel.icon];
     self.titleLabel.text = _gameModel.name;
 //    NSLog(@"%d",[_gameModel.score intValue]);
     [_pentagramView showScore:[_gameModel.score floatValue]/10.00];

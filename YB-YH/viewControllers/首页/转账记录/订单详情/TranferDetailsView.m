@@ -93,7 +93,9 @@
     [self addSubview:_timerLabel];
     h += jian;
     [self addSubview:JnLabelType(CGRectMake(x, h, SCREEN_WIDTH, jian), UILABEL_2, @"订单号", 0)];
-    _dingdanLabel =  JnLabelType(CGRectMake(self.width *0.5, h, self.width * 0.5 - x, jian), UILABEL_3, @"100000100000001111", 2);
+    _dingdanLabel =  JnLabelType(CGRectMake(x + JN_HH(80), h, self.width  - x * 2 - JN_HH(80), jian), UILABEL_3, @"100000100000001111", 2);
+    _dingdanLabel.numberOfLines = 0;
+    _dingdanLabel.font = [UIFont systemFontOfSize:JN_HH(11)];
     [self addSubview:_dingdanLabel];
 
     h += jian;

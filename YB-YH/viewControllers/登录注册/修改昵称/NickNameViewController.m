@@ -7,6 +7,7 @@
 //
 
 #import "NickNameViewController.h"
+#import "RootViewController.h"
 
 @interface NickNameViewController ()
 {
@@ -61,7 +62,8 @@
 -(void)readDowndatawithResponseDict:(NSDictionary *)responseDict index:(int)index
 {
     if (index == 1) {
-            [self popControllerwithstr:@"LoginValidationViewController" title:@"安全认证"];
+             [[RootViewController sharedInstance]loginOK];
+        //    [self popControllerwithstr:@"LoginValidationViewController" title:@"安全认证"];
     }
 }
 
