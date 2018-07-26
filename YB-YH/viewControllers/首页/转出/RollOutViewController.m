@@ -13,7 +13,7 @@
 #import "JNCoinView.h"
 #import "JNCoinTriangleView.h"
 
-@interface RollOutViewController () <RollSaomaViewControllerDelegate,JNBaseViewDelegate>
+@interface RollOutViewController () <RollSaomaViewControllerDelegate,JNBaseViewDelegate,UITextFieldDelegate>
 {
     UIMoneyLabel * _yueLabel;  //每个币中的余额
 
@@ -106,6 +106,7 @@
     _jiaoyiField.clearButtonMode = UITextFieldViewModeNever;
     _jiaoyiField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
     _jiaoyiField.textColor = COLOR_A1;
+    _jiaoyiField.delegate = self ;
     [bgView addSubview:_jiaoyiField];
 
     _rmbLabel = JnLabelType(CGRectMake(0, b_h + 5,  SCREEN_WIDTH - JN_HH(15), JN_HH(20)), UILABEL_2,[NSString stringWithFormat:@"%@%@0.00",FUHAO_YUEDENGYU,FUHAO_RENMINGBI], 2);
@@ -270,6 +271,19 @@
     }else {
         NSLog(@"%@",responseDict);
     }
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if ([string isEqualToString:@"0"] && textField.text.length == 0) {
+        return  NO;
+    }
+    NSString * str = [NSString stringWithFormat:@"%@%@",textField.text,string];
+    if ([self.curManager.selcurrencyModel.coin_name isEqual:BI_A0]) {
+       _rmbLabel.text = [NSString stringWithFormat:@"%@%@%.2f",FUHAO_YUEDENGYU,FUHAO_RENMINGBI,[str floatValue] / self.curManager.portionModel.ebocny];
+     }else {
+         _rmbLabel.text = [NSString stringWithFormat:@"%@%@%.2f",FUHAO_YUEDENGYU,FUHAO_RENMINGBI,[str floatValue] / self.curManager.portionModel.ebocny * self.curManager.portionModel.propor];
+    }
+    return  YES;
 }
 
 @end

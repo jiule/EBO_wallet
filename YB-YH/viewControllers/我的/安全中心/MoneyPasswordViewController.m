@@ -81,7 +81,7 @@
 
 -(void)loginClick
 {
-    [self postdownDatas:@"/user/Profile/setTransPwd" withdict:@{@"verification_code":@"213456",@"transpwd":_passWorfField.text} index:1];
+    [self postdownDatas:@"/user/Profile/setTransPwd" withdict:@{@"verification_code":_yanzhengField.text,@"transpwd":_passWorfField.text} index:1];
 }
 
 -(void)readDowndatawithResponseDict:(NSDictionary *)responseDict index:(int)index

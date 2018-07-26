@@ -197,6 +197,7 @@
         }];
         return ;  
     }
+    [Listeningkeyboard endEditing];
     if (_yaoField.text.length > 0) {
         [self postdownDatas:@"user/login/regist" withdict:@{@"username":_iponeField.text,@"password":_passWordField.text,@"verification_code":_yanzhengField.text,@"invite_code":_yaoField.text } index:2 type:0];
     }else {
