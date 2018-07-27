@@ -13,7 +13,8 @@
 
 //下载图片
 +(nullable UIImage *)setimageWithURL:(NSString *)url{
-    NSData *data = [self images][url];
+    NSString * urlStr = [NSString isStringWithChinese:url];
+    NSData *data = [self images][urlStr];
     if (data) {
         return [UIImage imageWithData:data];
     }
@@ -23,11 +24,11 @@
         [fileManager createDirectoryAtPath:[self ImagePath] withIntermediateDirectories:YES attributes:nil error:nil];
     }
     //判断有没有文件路径 没有就创建
-    NSString *filename = [NSString stringWithFormat:@"%@/%@",[self ImagePath],[url lastPathComponent]];
+    NSString *filename = [NSString stringWithFormat:@"%@/%@",[self ImagePath],[urlStr lastPathComponent]];
     data = [NSData dataWithContentsOfFile:filename ];
     if (!data) {
        
-        data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString isStringWithChinese:url]]];
+        data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlStr]];
         if (data == nil) {
             return nil;
         }
@@ -37,11 +38,11 @@
         dispatch_queue_t   queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(queue, ^{
             if(  [data writeToFile:filename atomically:YES]){
-                [self images][url] = data;
+                [self images][urlStr] = data;
             }
         });
     }else{
-        [self images][url] = data;
+        [self images][urlStr] = data;
     }
     return [UIImage imageWithData:data];
 }
