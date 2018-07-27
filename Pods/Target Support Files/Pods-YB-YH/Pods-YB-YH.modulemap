@@ -1,0 +1,6 @@
+module Pods_YB_YH {
+  umbrella header "Pods-YB-YH-umbrella.h"
+
+  export *
+  module * { export * }
+}

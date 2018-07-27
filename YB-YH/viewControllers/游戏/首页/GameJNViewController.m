@@ -61,7 +61,7 @@
 
     h += JN_HH(40);
 
-    _upScrollView = JnScrollView(CGRectMake(JNVIEW_X0, h, SCREEN_WIDTH - JNVIEW_X(0), SCREEN_WIDTH * 0.25 + JN_HH(40)), COLOR_WHITE);
+    _upScrollView = JnScrollView(CGRectMake(0, h, SCREEN_WIDTH , SCREEN_WIDTH * 0.25 + JN_HH(40)), COLOR_WHITE);
     [upView addSubview:_upScrollView];
 
     h += SCREEN_WIDTH * 0.25 + JN_HH(50);
@@ -170,16 +170,16 @@
         UIButton * btn = JnButton_tag(CGRectMake(w * i, 0, w, h), COLOR_WHITE, self, @selector(BtnClick:), 100 + i);
         [_upScrollView addSubview:btn];
         GameModel * model = _upScrollViewArrays[i];
-        UIImageView * imageView = JnImageView(CGRectMake(JN_HH(0), JN_HH(0), w - JN_HH(10), w - JN_HH(10)), nil);
+        UIImageView * imageView = JnImageView(CGRectMake(JN_HH(10), JN_HH(10), w - JN_HH(20), w - JN_HH(20)), nil);
         JNViewStyle(imageView, 5, nil, 0);
         [UIImage removeimageWithURL:model.image_url];
         [imageView setimage:nil withurl:model.image_url];
-        UILabel * label = JnLabel(CGRectMake(0, w , w - JN_HH(10), JN_HH(20)), model.name, JN_HH(10), COLOR_BL_2, 0);
+        UILabel * label = JnLabel(CGRectMake(JN_HH(10), w , w - JN_HH(20), JN_HH(20)), model.name, JN_HH(10), COLOR_BL_2, 0);
         if ([model.name widthOfFont:label.font height:label.height] > label.width) {
             [label adjusts];
         }
         [btn addSubview:label];
-        [btn addSubview:JnLabel(CGRectMake(0, w + JN_HH(20), w - JN_HH(10), JN_HH(20)), model.category_name, JN_HH(11.5), COLOR_A1, 0)];
+        [btn addSubview:JnLabel(CGRectMake(JN_HH(10), w + JN_HH(20), w - JN_HH(20), JN_HH(20)), model.category_name, JN_HH(11.5), COLOR_A1, 0)];
         [btn addSubview:imageView];
     }
     _upScrollView.contentSize = CGSizeMake(w * _upScrollViewArrays.count, 1);
