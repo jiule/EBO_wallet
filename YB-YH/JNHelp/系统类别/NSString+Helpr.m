@@ -144,7 +144,10 @@
     if ([predicate evaluateWithObject:string]) {
         return string ;
     }
-    return  [string stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithRange:NSMakeRange(0, string.length)]];
+
+    NSLog(@"%@", [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
+
+    return  [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
 
 - (int)convertToByte {

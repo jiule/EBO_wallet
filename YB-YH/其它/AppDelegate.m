@@ -11,6 +11,7 @@
 #import "RootViewController.h"
 #import "LAContextManger.h"
 
+
 @interface AppDelegate ()
 
 @end
@@ -19,8 +20,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    self.window.rootViewController = [[ViewController alloc]init];
-//    [self.window makeKeyAndVisible];
     [[RootViewController sharedInstance]chooseRootViewControllerWithwindow:self.window];
     return YES;
 }
@@ -34,12 +33,12 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    [LAContextManger applicationDidEnterBackground];
+ //   [LAContextManger applicationDidEnterBackground];
 }
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    [LAContextManger applicationWillEnterForeground:self.window];
+   // [LAContextManger applicationWillEnterForeground:self.window];
 }
 
 

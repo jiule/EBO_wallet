@@ -26,7 +26,8 @@
     NSString *filename = [NSString stringWithFormat:@"%@/%@",[self ImagePath],[url lastPathComponent]];
     data = [NSData dataWithContentsOfFile:filename ];
     if (!data) {
-        data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+       
+        data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString isStringWithChinese:url]]];
         if (data == nil) {
             return nil;
         }

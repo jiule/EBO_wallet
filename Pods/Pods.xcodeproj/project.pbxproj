@@ -474,7 +474,7 @@
 			};
 			name = Debug;
 		};
-		AE19444FEC1C07858C773F8A4508584F /* Debug */ = {
+		6033A2127E806DD5C86A515742F7445E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C1844151CB1EBF1AB28BA69738EB9E38 /* Masonry.xcconfig */;
 			buildSettings = {
@@ -493,12 +493,11 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		AE23865A97FB4FF598BDC9DF9BAAAE30 /* Release */ = {
+		6681B1A324732F8264BB932595DFA69B /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C1844151CB1EBF1AB28BA69738EB9E38 /* Masonry.xcconfig */;
 			buildSettings = {
@@ -517,7 +516,6 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -618,8 +616,8 @@
 		34CAE1CB89EDBF2E53735CC5D4E5E69F /* Build configuration list for PBXNativeTarget "Masonry" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AE19444FEC1C07858C773F8A4508584F /* Debug */,
-				AE23865A97FB4FF598BDC9DF9BAAAE30 /* Release */,
+				6033A2127E806DD5C86A515742F7445E /* Debug */,
+				6681B1A324732F8264BB932595DFA69B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
