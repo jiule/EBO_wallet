@@ -207,6 +207,7 @@
 		84049438210173ED002B0F52 /* DDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84049437210173ED002B0F52 /* DDViewController.m */; };
 		8430854621056C7900821712 /* HomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8430854521056C7900821712 /* HomeVC.m */; };
 		843085492105D2B500821712 /* BaseDDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 843085482105D2B400821712 /* BaseDDView.m */; };
+		84513D2C210B14AF002727A4 /* InvitingCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84513D2B210B14AF002727A4 /* InvitingCardVC.m */; };
 		84CE332A21005FDB00731FF5 /* UIKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CE332821005FDB00731FF5 /* UIKitAdditions.m */; };
 		FF58CB258EF5D9B8B456857A /* libPods-YB-YH.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F81540C3128317C261518E75 /* libPods-YB-YH.a */; };
 /* End PBXBuildFile section */
@@ -615,6 +616,8 @@
 		8430854521056C7900821712 /* HomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeVC.m; sourceTree = "<group>"; };
 		843085472105D2B300821712 /* BaseDDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDDView.h; sourceTree = "<group>"; };
 		843085482105D2B400821712 /* BaseDDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDDView.m; sourceTree = "<group>"; };
+		84513D2A210B14AE002727A4 /* InvitingCardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvitingCardVC.h; sourceTree = "<group>"; };
+		84513D2B210B14AF002727A4 /* InvitingCardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvitingCardVC.m; sourceTree = "<group>"; };
 		84CE332721005FDB00731FF5 /* UIKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKitAdditions.h; sourceTree = "<group>"; };
 		84CE332821005FDB00731FF5 /* UIKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKitAdditions.m; sourceTree = "<group>"; };
 		84E7B81521087740004C7B95 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -991,6 +994,8 @@
 				18944F5920F465BC005601E2 /* 记账本 */,
 				188E8A6620D0BCA7009F253C /* MyInvitationViewController.h */,
 				188E8A6720D0BCA7009F253C /* MyInvitationViewController.m */,
+				84513D2A210B14AE002727A4 /* InvitingCardVC.h */,
+				84513D2B210B14AF002727A4 /* InvitingCardVC.m */,
 			);
 			path = "邀请好友";
 			sourceTree = "<group>";
@@ -2119,6 +2124,7 @@
 				18FECFF520C140B3008E4BE4 /* MJRefreshAutoFooter.m in Sources */,
 				18FED00820C140B3008E4BE4 /* MyNetworkingManager.m in Sources */,
 				189C165F20EB490600887FD3 /* CandyView.m in Sources */,
+				84513D2C210B14AF002727A4 /* InvitingCardVC.m in Sources */,
 				18FECFEE20C140B3008E4BE4 /* MJRefreshAutoNormalFooter.m in Sources */,
 				18FECF1E20C1374B008E4BE4 /* NSDictionary+Helpr.m in Sources */,
 				18FECFF720C140B3008E4BE4 /* UIProgressView+AFNetworking.m in Sources */,

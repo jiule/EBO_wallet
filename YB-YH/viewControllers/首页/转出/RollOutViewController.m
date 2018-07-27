@@ -278,6 +278,12 @@
         return  NO;
     }
     NSString * str = [NSString stringWithFormat:@"%@%@",textField.text,string];
+    ZiCurrencyModel * m  = [CurrencyManager readZiModelWithSpecies:self.curManager.selcurrencyModel.coin_species];
+    if ([m.balance floatValue] < [str floatValue]) {
+        [MYAlertController showNavViewWith:[NSString stringWithFormat:@"%@余额不足",self.curManager.selcurrencyModel.coin_name]];
+        return NO;
+    }
+    
     if ([self.curManager.selcurrencyModel.coin_name isEqual:BI_A0]) {
        _rmbLabel.text = [NSString stringWithFormat:@"%@%@%.2f",FUHAO_YUEDENGYU,FUHAO_RENMINGBI,[str floatValue] / self.curManager.portionModel.ebocny];
      }else {

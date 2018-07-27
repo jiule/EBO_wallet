@@ -198,15 +198,6 @@ XH_ATTRIBUTE(strong, UILabel, lab1);
         make.height.mas_equalTo(40);
     }];
     JNViewStyle(btn, JN_HH(15), COLOR_A1, 1);
-    
-    UIButton * btn1 = [UIKitAdditions buttonWithText:@"兑换比例历史记录" backGroundColor:nil textColor:COLOR_A1 fontSize:0 target:self selector:@selector(historyClick)];
-    [self.bodyView addSubview:btn1];
-    [btn1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.bodyView).offset(-20);
-        make.top.equalTo(btn.mas_bottom).offset(20);
-        make.width.mas_equalTo(150);
-        make.height.mas_equalTo(40);
-    }];
 }
 #pragma mark 兑换按钮点击了
 -(void)valuationClick{
@@ -278,10 +269,20 @@ XH_ATTRIBUTE(strong, UILabel, lab1);
             str  = [NSString stringWithFormat:@"%@%@",textField.text,string];
         }
         if ([self.upLab.text isEqualToString:BI_A0]) {
+            ZiCurrencyModel * m = [CurrencyManager readZiModelWithSpecies:[CurrencyManager readspeciesWithName:BI_A0]];
+            if ([m.balance floatValue] < [str floatValue]) {
+                [MYAlertController showNavViewWith:[NSString stringWithFormat:@"%@余额不足！",BI_A0]];
+                return NO;
+            }
             self.exchangeNumTf.text = [NSString stringWithFormat:@"%f",[str floatValue] / self.curManager.portionModel.propor];
             self.valuationLb.text = [NSString stringWithFormat:@"￥%.2f",[str floatValue] / self.curManager.portionModel.ebocny];
         }
         else{
+            ZiCurrencyModel * m = [CurrencyManager readZiModelWithSpecies:[CurrencyManager readspeciesWithName:BI_A1]];
+            if ([m.balance floatValue] < [str floatValue]) {
+                [MYAlertController showNavViewWith:[NSString stringWithFormat:@"%@余额不足！",BI_A1]];
+                return NO;
+            }
             self.exchangeNumTf.text = [NSString stringWithFormat:@"%f",[str floatValue] * self.curManager.portionModel.propor];
             self.valuationLb.text = [NSString stringWithFormat:@"￥%.2f",[self.exchangeNumTf.text floatValue] / self.curManager.portionModel.ebocny];
         }
@@ -315,14 +316,24 @@ XH_ATTRIBUTE(strong, UILabel, lab1);
         }
         
         if ([self.upLab.text isEqualToString:BI_A0]) {
-            self.numTf.text = [NSString stringWithFormat:@"%f",[str intValue] / self.curManager.portionModel.propor];
-            str = self.numTf.text ;
+            str = [NSString stringWithFormat:@"%f",[str floatValue] * self.curManager.portionModel.propor];
+            ZiCurrencyModel * m = [CurrencyManager readZiModelWithSpecies:[CurrencyManager readspeciesWithName:BI_A0]];
+            if ([m.balance floatValue] < [str floatValue]) {
+                [MYAlertController showNavViewWith:[NSString stringWithFormat:@"%@余额不足！",BI_A0]];
+                return NO;
+            }
+            self.numTf.text = str;
             self.valuationLb.text = [NSString stringWithFormat:@"￥%.2f",[str intValue] / self.curManager.portionModel.ebocny];
         }
         else{
-            self.numTf.text = [NSString stringWithFormat:@"%f",[str intValue] * self.curManager.portionModel.propor];
-            str = self.numTf.text ;
-            self.valuationLb.text = [NSString stringWithFormat:@"￥%.2f",[str intValue] / self.curManager.portionModel.ebocny ];
+            str = [NSString stringWithFormat:@"%f",[str intValue] / self.curManager.portionModel.propor];
+            ZiCurrencyModel * m = [CurrencyManager readZiModelWithSpecies:[CurrencyManager readspeciesWithName:BI_A1]];
+            if ([m.balance floatValue] < [str floatValue]) {
+                [MYAlertController showNavViewWith:[NSString stringWithFormat:@"%@余额不足！",BI_A1]];
+                return NO;
+            }
+            self.numTf.text = str;
+            self.valuationLb.text = [NSString stringWithFormat:@"￥%.2f",[str floatValue] / self.curManager.portionModel.ebocny * self.curManager.portionModel.propor ];
         }
     }
     return YES;

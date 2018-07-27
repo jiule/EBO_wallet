@@ -33,12 +33,12 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
- //   [LAContextManger applicationDidEnterBackground];
+    [LAContextManger applicationDidEnterBackground];
 }
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-   // [LAContextManger applicationWillEnterForeground:self.window];
+    [LAContextManger applicationWillEnterForeground:self.window];
 }
 
 

@@ -138,6 +138,6 @@
 #pragma mark-----邀请卡被点击
 -(void)yaoqingkaClick
 {
-    
+    [self popControllerwithstr:@"InvitingCardVC" title:@""];
 }
 @end
