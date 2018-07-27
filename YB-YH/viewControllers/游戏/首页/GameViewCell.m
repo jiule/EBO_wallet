@@ -40,7 +40,7 @@
 //    UIImage * image = [UIImage makeImageWithView:JnUIView(CGRectMake(JNVIEW_X0, JN_HH(10), JN_HH(60), JN_HH(60)), [[UIColor blackColor]colorWithAlphaComponent:0.5])withSize:CGSizeMake(self.bgImageView.width, self.bgImageView.height * 0.3)];
 //    [self.bgImageView addSubview:JnImageView(CGRectMake(0, self.bgImageView.height * 0.7, self.bgImageView.width, self.bgImageView.height * 0.3), image) ];
 
-     self.hearImageView = JnImageView(CGRectMake(JN_HH(15), JN_HH(10), JN_HH(60), JN_HH(60)), MYimageNamed(@"xb_grh"));
+     self.hearImageView = JnImageView(CGRectMake(JN_HH(15), JN_HH(10), JN_HH(60), JN_HH(60)), nil);
     JNViewStyle(self.hearImageView, JN_HH(5), nil, 0);
     [self addSubview:self.hearImageView];
 
@@ -61,11 +61,9 @@
 {
     [super setTableViewModel:tableViewModel];
     _gameModel = (GameModel *)tableViewModel;
-    [self.hearImageView setimage:MYimageNamed(@"yoxi_icon") withurl:_gameModel.icon];
+    [self.hearImageView setimage:MYimageNamed(@"yoxi_icon") withurl:_gameModel.image_url];
     self.titleLabel.text = _gameModel.name;
-//    NSLog(@"%d",[_gameModel.score intValue]);
     [_pentagramView showScore:[_gameModel.score floatValue]/10.00];
-//    _pentagramView.backgroundColor = [UIColor redColor];
     [self createcell_h:JN_HH(80) BgColor:COLOR_B6 xian_h:1];
 }
 
