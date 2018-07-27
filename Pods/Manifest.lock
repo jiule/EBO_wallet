@@ -1,31 +1,25 @@
 PODS:
-  - Charts (3.1.1):
-    - Charts/Core (= 3.1.1)
-  - Charts/Core (3.1.1)
   - Masonry (1.1.0)
   - UMCAnalytics (5.4.1):
     - UMCCommon
   - UMCCommon (1.5.2)
 
 DEPENDENCIES:
-  - Charts
   - Masonry
   - UMCAnalytics (~> 5.4.1)
   - UMCCommon
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Charts
     - Masonry
     - UMCAnalytics
     - UMCCommon
 
 SPEC CHECKSUMS:
-  Charts: 90a4d61da0f6e06684c591e3bcab11940fe61736
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   UMCAnalytics: 44e0bb2f442b7aaf97d1c924b58798b612f2c13d
   UMCCommon: 4392868ac47ff1b101663106bb114ba616fabbad
 
-PODFILE CHECKSUM: f2a59533958f42d17bfa1837a7d2a22dc33c0d7a
+PODFILE CHECKSUM: 70e440a50dc15d9cdcf3d8f96c7ddeb9ca1171a9
 
 COCOAPODS: 1.5.3

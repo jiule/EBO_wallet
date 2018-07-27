@@ -1,13 +1,10 @@
-EMBEDDED_CONTENT_CONTAINS_SWIFT = YES
 FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/UMCAnalytics" "${PODS_ROOT}/UMCCommon"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Masonry" "${PODS_ROOT}/Headers/Public/UMCAnalytics" "${PODS_ROOT}/Headers/Public/UMCCommon"
-LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Charts" "${PODS_CONFIGURATION_BUILD_DIR}/Masonry"
-OTHER_CFLAGS = $(inherited) -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/Charts/Charts.modulemap" -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/Masonry" -isystem "${PODS_ROOT}/Headers/Public/UMCAnalytics" -isystem "${PODS_ROOT}/Headers/Public/UMCCommon"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"Charts" -l"Masonry" -l"sqlite3" -l"z" -framework "CoreTelephony" -framework "Foundation" -framework "SystemConfiguration" -framework "UIKit" -framework "UMAnalytics" -framework "UMCommon"
-OTHER_SWIFT_FLAGS = $(inherited) -Xcc -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/Charts/Charts.modulemap" $(inherited) "-D" "COCOAPODS"
+LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Masonry"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/Masonry" -isystem "${PODS_ROOT}/Headers/Public/UMCAnalytics" -isystem "${PODS_ROOT}/Headers/Public/UMCCommon"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"Masonry" -l"sqlite3" -l"z" -framework "CoreTelephony" -framework "Foundation" -framework "SystemConfiguration" -framework "UIKit" -framework "UMAnalytics" -framework "UMCommon"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
 PODS_ROOT = ${SRCROOT}/Pods
-SWIFT_INCLUDE_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Charts"

@@ -30,6 +30,7 @@
 		184855FE20C7CE10002767A6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184855FC20C7CE0F002767A6 /* LoginViewController.m */; };
 		1848560120C7D73C002767A6 /* RegisteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1848560020C7D73C002767A6 /* RegisteredViewController.m */; };
 		184C506B20C6247C00B4B8EC /* LAContextManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 184C506A20C6247C00B4B8EC /* LAContextManger.m */; };
+		184F4F89210AEB25001BC02D /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F4F88210AEB25001BC02D /* File.swift */; };
 		1858366920DC862800829152 /* TransferRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1858366820DC862800829152 /* TransferRecordViewController.m */; };
 		1858366C20DC875B00829152 /* TransferRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1858366B20DC875B00829152 /* TransferRecordModel.m */; };
 		1858366F20DC876D00829152 /* TransferRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1858366E20DC876D00829152 /* TransferRecordCell.m */; };
@@ -254,6 +255,8 @@
 		1848560320C7D9CC002767A6 /* RetrievePasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RetrievePasswordViewController.m; sourceTree = "<group>"; };
 		184C506920C6247C00B4B8EC /* LAContextManger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LAContextManger.h; sourceTree = "<group>"; };
 		184C506A20C6247C00B4B8EC /* LAContextManger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LAContextManger.m; sourceTree = "<group>"; };
+		184F4F87210AEB25001BC02D /* YB-YH-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YB-YH-Bridging-Header.h"; sourceTree = "<group>"; };
+		184F4F88210AEB25001BC02D /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		1858366720DC862800829152 /* TransferRecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransferRecordViewController.h; sourceTree = "<group>"; };
 		1858366820DC862800829152 /* TransferRecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransferRecordViewController.m; sourceTree = "<group>"; };
 		1858366A20DC875B00829152 /* TransferRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransferRecordModel.h; sourceTree = "<group>"; };
@@ -1420,6 +1423,7 @@
 		18FECEFC20C10EBE008E4BE4 /* 其它 */ = {
 			isa = PBXGroup;
 			children = (
+				184F4F87210AEB25001BC02D /* YB-YH-Bridging-Header.h */,
 				18FECEFB20C10EB0008E4BE4 /* ybyh.pch */,
 				18FECED520C0ED8C008E4BE4 /* AppDelegate.h */,
 				18FECED620C0ED8C008E4BE4 /* AppDelegate.m */,
@@ -1429,6 +1433,7 @@
 				18FECEE020C0ED92008E4BE4 /* LaunchScreen.storyboard */,
 				18FECEE320C0ED92008E4BE4 /* Info.plist */,
 				18FECEE420C0ED92008E4BE4 /* main.m */,
+				184F4F88210AEB25001BC02D /* File.swift */,
 			);
 			path = "其它";
 			sourceTree = "<group>";
@@ -1911,6 +1916,7 @@
 				TargetAttributes = {
 					18FECED120C0ED8C008E4BE4 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 0940;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 0;
@@ -2000,6 +2006,7 @@
 				18FED01420C14185008E4BE4 /* RootViewController.m in Sources */,
 				18FECFEC20C140B3008E4BE4 /* MJRefreshAutoStateFooter.m in Sources */,
 				18944F5F20F4788F005601E2 /* InvitationlistModel.m in Sources */,
+				184F4F89210AEB25001BC02D /* File.swift in Sources */,
 				189B4C7420EE1C7700B1BB3C /* MyInvitationlistViewController.m in Sources */,
 				18CFB1C020EA169900AA918C /* CurrencyModel.m in Sources */,
 				18FECFF920C140B3008E4BE4 /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -2316,6 +2323,7 @@
 			baseConfigurationReference = A4653356825552DCFDA6A14D /* Pods-YB-YH.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Guan Wei (JG36ZDYAY6)";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: Guan Wei (JG36ZDYAY6)";
 				CODE_SIGN_STYLE = Manual;
@@ -2327,10 +2335,16 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				NEW_SETTING = "";
+				NEW_SETTING1 = "";
+				NEW_SETTING2 = "";
 				PRODUCT_BUNDLE_IDENTIFIER = hk.ebo.www.wallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "74191b38-dfa7-499d-bb03-d4060772ca4f";
 				PROVISIONING_PROFILE_SPECIFIER = "ebogame-dev";
+				SWIFT_OBJC_BRIDGING_HEADER = "YB-YH/其它/YB-YH-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2340,6 +2354,7 @@
 			baseConfigurationReference = C2428BAC5D79D18835E188E2 /* Pods-YB-YH.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Tianjin E-bone Digital Technology Co.,Ltd. (M5CU4A6R6T)";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Tianjin E-bone Digital Technology Co.,Ltd. (M5CU4A6R6T)";
 				CODE_SIGN_STYLE = Manual;
@@ -2351,10 +2366,15 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				NEW_SETTING = "";
+				NEW_SETTING1 = "";
+				NEW_SETTING2 = "";
 				PRODUCT_BUNDLE_IDENTIFIER = hk.ebo.www.wallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "947cb963-26b4-4e11-8be1-416353b7584e";
 				PROVISIONING_PROFILE_SPECIFIER = dishoc;
+				SWIFT_OBJC_BRIDGING_HEADER = "YB-YH/其它/YB-YH-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
