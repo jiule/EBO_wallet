@@ -16,7 +16,7 @@
     UITextField * _yanzhengField;
     UIButton * _yuyinBtn;
 
-       int  _timerIndex;
+     int  _timerIndex;
 }
 @property(nonatomic,assign)NSTimer * timer;
 @property(nonatomic,retain)UIView *upView;

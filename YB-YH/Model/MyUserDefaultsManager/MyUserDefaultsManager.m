@@ -68,6 +68,10 @@ XMGSingletoM
 +(NSString *)readAssets{
   return  [NSString stringWithFormat:@"%@ZiAssets",[PersonalManager readPersonalModel].uid];
 }
++(NSString *)readContextManger
+{
+   return  [NSString stringWithFormat:@"%@ContextManger",[PersonalManager readPersonalModel].uid];
+}
 
 + (void)saveKeychainValue:(NSString *)sValue key:(NSString *)sKey{
     NSMutableDictionary * keychainQuery = [self getKeychainQuery:sKey];

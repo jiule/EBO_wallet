@@ -173,7 +173,7 @@
 -(void)didView:(UIView *)view
 {
     int index = (int)view.tag - 100;
-    if (index < _controllerArrays.count -1)
+    if (index < _controllerArrays.count )
     {
         [self popControllerwithstr:_controllerArrays[index] title:_controllerTitleArrays[index]];
     }else {

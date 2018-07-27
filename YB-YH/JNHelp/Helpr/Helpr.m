@@ -8,6 +8,7 @@
 #import "Helpr.h"
 #import "ETHManager.h"
 #import <UMCommon/UMCommon.h>
+#import "LAContextManger.h"
 
 @implementation Helpr
 
@@ -29,6 +30,7 @@
  //   [[VideoManager sharedInstance] Initialize];
 
     [CurrencyManager exchangeProportion:nil];  //获取比例
+    [LAContextManger Initialize];  //初始化 指纹解锁
 
 #ifdef DEBUG
          [UMConfigure initWithAppkey:@"5b554eabb27b0a10b90000c3" channel:@"App Store DEBUG"];

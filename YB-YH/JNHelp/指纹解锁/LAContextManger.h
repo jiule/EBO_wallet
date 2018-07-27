@@ -19,7 +19,18 @@ typedef enum : NSUInteger
 
 
 @interface LAContextManger : NSObject
+XMGSingletoH
+
++(void)Initialize;
+
+//app进入后台 调用
++(void)applicationDidEnterBackground;
+//app 进入前台调用
++(void)applicationWillEnterForeground:(UIWindow *)window;
 
 +(BOOL)showWithTitle:(NSString *)title  block:(void(^)(LAContextTYPE type))block;
 
+@property(nonatomic,assign)BOOL isopen;
+
 @end
+

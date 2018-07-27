@@ -45,7 +45,7 @@
     h += JN_HH(115);
 
     for (int i = 0;  i < _imageArrays.count; i++) {
-        if ( i >= 2) {
+        if ( i >= 1) {
             return ;
         }
         RealnameButton * btn = [[RealnameButton alloc]initWithFrame:CGRectMake(JN_HH(15), h - JN_HH(20), SCREEN_WIDTH - JN_HH(30), JN_HH(80)) image:_imageArrays[i] selImage:_selImageArrays[i] title:_titleArrays[i] describe:_describeArrays[i]];
