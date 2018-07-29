@@ -380,7 +380,6 @@
 		18B6568320F3557E00E222D6 /* ScreeningBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreeningBtn.m; sourceTree = "<group>"; };
 		18C6A6A520C4D2DB0018771B /* EncryptionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EncryptionManager.h; sourceTree = "<group>"; };
 		18C6A6A620C4D2DB0018771B /* EncryptionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EncryptionManager.m; sourceTree = "<group>"; };
-		18C6A6A820C4D7150018771B /* YB-YH.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "YB-YH.entitlements"; sourceTree = "<group>"; };
 		18C6A6AA20C4E2C80018771B /* MHView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHView.m; sourceTree = "<group>"; };
 		18C6A6AB20C4E2C80018771B /* DTMHScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTMHScrollView.m; sourceTree = "<group>"; };
 		18C6A6AC20C4E2C80018771B /* MHView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHView.h; sourceTree = "<group>"; };
@@ -1385,7 +1384,6 @@
 		18FECED420C0ED8C008E4BE4 /* YB-YH */ = {
 			isa = PBXGroup;
 			children = (
-				18C6A6A820C4D7150018771B /* YB-YH.entitlements */,
 				184584F920E318FF0060DF5F /* ETH */,
 				18FECF8920C140B3008E4BE4 /* 网络请求 */,
 				18FECF7520C1406D008E4BE4 /* Model */,
@@ -2242,6 +2240,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = M5CU4A6R6T;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -2301,6 +2300,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = M5CU4A6R6T;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -2324,8 +2324,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Guan Wei (JG36ZDYAY6)";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: Guan Wei (JG36ZDYAY6)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = M5CU4A6R6T;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/YB-YH/其它/ybyh.pch";
@@ -2335,10 +2335,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = hk.ebo.www.wallet;
+				PRODUCT_BUNDLE_IDENTIFIER = hk.ebogame.www.wallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "74191b38-dfa7-499d-bb03-d4060772ca4f";
-				PROVISIONING_PROFILE_SPECIFIER = "ebogame-dev";
+				PROVISIONING_PROFILE = "168ce473-157f-423d-8a36-48e843ce0175";
+				PROVISIONING_PROFILE_SPECIFIER = ebo_game;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2360,10 +2360,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = hk.ebo.www.wallet;
+				PRODUCT_BUNDLE_IDENTIFIER = hk.ebogame.www.wallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "947cb963-26b4-4e11-8be1-416353b7584e";
-				PROVISIONING_PROFILE_SPECIFIER = dishoc;
+				PROVISIONING_PROFILE = "a88ee4df-215c-4f6f-8ae3-16484c853fcd";
+				"PROVISIONING_PROFILE[sdk=*]" = "dede435f-0fcb-44b5-bf3a-14a2131a2937";
+				PROVISIONING_PROFILE_SPECIFIER = ebo_game_dis;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
