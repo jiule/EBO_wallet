@@ -51,7 +51,7 @@ XMGSingletoH
 +(NSString *)readCoinTypes;
 //保存用户币种余额额
 +(NSString *)readAssets;
-//保存用户是否开通指纹验证
+//保存用户是否开通指纹验证的key
 +(NSString *)readContextManger;
 
 

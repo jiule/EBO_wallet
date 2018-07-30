@@ -50,7 +50,7 @@
     [self addSubview:wView];
     JNViewStyle(wView, JN_HH(10), nil, 0);
 
-    [wView addSubview:JnButtonImageTag(CGRectMake(JN_HH(160), JN_HH(0), JN_HH(40), JN_HH(40)), MYimageNamed(@""), self, @selector(close), 0)];
+    [wView addSubview:JnButtonImageTag(CGRectMake(JN_HH(160), JN_HH(0), JN_HH(40), JN_HH(40)), MYimageNamed(@"sy_tangguoX"), self, @selector(close), 0)];
 
     _imageView = JnImageView(CGRectMake(JN_HH(70), JN_HH(20), JN_HH(60), JN_HH(60)), MYimageNamed(@"sy_wlqtgg"));
     [wView addSubview:_imageView];
