@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "ETHManager.h"
 
+
 @interface LoginViewController () <UITextFieldDelegate>
 {
     UITextField * _iponeField;
@@ -35,6 +36,9 @@
 -(void)createView
 {
     [super createView];
+
+
+
     self.view.backgroundColor = COLOR_WHITE;
    // [self.view addSubview:JnImageView(self.view.bounds, MYimageNamed(@"bg_login"))];
 

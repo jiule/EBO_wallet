@@ -33,6 +33,9 @@
 		1858366920DC862800829152 /* TransferRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1858366820DC862800829152 /* TransferRecordViewController.m */; };
 		1858366C20DC875B00829152 /* TransferRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1858366B20DC875B00829152 /* TransferRecordModel.m */; };
 		1858366F20DC876D00829152 /* TransferRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1858366E20DC876D00829152 /* TransferRecordCell.m */; };
+		185C319B210EF5EE00029967 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185C3198210EF5D400029967 /* Charts.framework */; };
+		185C319C210EF5EE00029967 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 185C3198210EF5D400029967 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		185C31A2210EF61B00029967 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C31A1210EF61B00029967 /* File.swift */; };
 		185D9A4E20C8D03300E26499 /* RetrievePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1848560320C7D9CC002767A6 /* RetrievePasswordViewController.m */; };
 		1863B05620D9DBAF008421E3 /* UIMoneyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863B05520D9DBAF008421E3 /* UIMoneyLabel.m */; };
 		1863B05A20DA4446008421E3 /* TaskDoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863B05920DA4446008421E3 /* TaskDoView.m */; };
@@ -212,6 +215,44 @@
 		FF58CB258EF5D9B8B456857A /* libPods-YB-YH.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F81540C3128317C261518E75 /* libPods-YB-YH.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		185C3197210EF5D400029967 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 185C3192210EF5D400029967 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
+			remoteInfo = Charts;
+		};
+		185C3199210EF5D400029967 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 185C3192210EF5D400029967 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
+			remoteInfo = ChartsTests;
+		};
+		185C319D210EF5EE00029967 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 185C3192210EF5D400029967 /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A58A4ED274A941CA248EA921;
+			remoteInfo = Charts;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		185C319F210EF5EF00029967 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				185C319C210EF5EE00029967 /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1800438620D3466D0050C286 /* MarketOrderdDetailsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarketOrderdDetailsView.h; sourceTree = "<group>"; };
 		1800438720D3466D0050C286 /* MarketOrderdDetailsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarketOrderdDetailsView.m; sourceTree = "<group>"; };
@@ -261,6 +302,9 @@
 		1858366B20DC875B00829152 /* TransferRecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransferRecordModel.m; sourceTree = "<group>"; };
 		1858366D20DC876D00829152 /* TransferRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransferRecordCell.h; sourceTree = "<group>"; };
 		1858366E20DC876D00829152 /* TransferRecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransferRecordCell.m; sourceTree = "<group>"; };
+		185C3192210EF5D400029967 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
+		185C31A0210EF61A00029967 /* YB-YH-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YB-YH-Bridging-Header.h"; sourceTree = "<group>"; };
+		185C31A1210EF61B00029967 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		1863B05420D9DBAF008421E3 /* UIMoneyLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIMoneyLabel.h; sourceTree = "<group>"; };
 		1863B05520D9DBAF008421E3 /* UIMoneyLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIMoneyLabel.m; sourceTree = "<group>"; };
 		1863B05820DA4446008421E3 /* TaskDoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskDoView.h; sourceTree = "<group>"; };
@@ -634,6 +678,7 @@
 				189BBE6020EF624D0003CD8F /* CoreImage.framework in Frameworks */,
 				1845851320E31A210060DF5F /* CoreGraphics.framework in Frameworks */,
 				1845851120E31A1A0060DF5F /* Foundation.framework in Frameworks */,
+				185C319B210EF5EE00029967 /* Charts.framework in Frameworks */,
 				1845850F20E31A150060DF5F /* UIKit.framework in Frameworks */,
 				1845850D20E31A100060DF5F /* WebKit.framework in Frameworks */,
 				FF58CB258EF5D9B8B456857A /* libPods-YB-YH.a in Frameworks */,
@@ -806,6 +851,15 @@
 				18B6567E20F351CF00E222D6 /* 筛选 */,
 			);
 			path = "转账记录";
+			sourceTree = "<group>";
+		};
+		185C3193210EF5D400029967 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				185C3198210EF5D400029967 /* Charts.framework */,
+				185C319A210EF5D400029967 /* ChartsTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		1863B05320D9DB75008421E3 /* UIMoneyLabel */ = {
@@ -1365,6 +1419,7 @@
 		18FECEC920C0ED8C008E4BE4 = {
 			isa = PBXGroup;
 			children = (
+				185C3192210EF5D400029967 /* Charts.xcodeproj */,
 				18FECED420C0ED8C008E4BE4 /* YB-YH */,
 				18FECEDE20C0ED92008E4BE4 /* Assets.xcassets */,
 				18FECED320C0ED8C008E4BE4 /* Products */,
@@ -1432,6 +1487,8 @@
 				18FECEE020C0ED92008E4BE4 /* LaunchScreen.storyboard */,
 				18FECEE320C0ED92008E4BE4 /* Info.plist */,
 				18FECEE420C0ED92008E4BE4 /* main.m */,
+				185C31A1210EF61B00029967 /* File.swift */,
+				185C31A0210EF61A00029967 /* YB-YH-Bridging-Header.h */,
 			);
 			path = "其它";
 			sourceTree = "<group>";
@@ -1893,10 +1950,12 @@
 				18FECECE20C0ED8C008E4BE4 /* Sources */,
 				18FECECF20C0ED8C008E4BE4 /* Frameworks */,
 				18FECED020C0ED8C008E4BE4 /* Resources */,
+				185C319F210EF5EF00029967 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				185C319E210EF5EE00029967 /* PBXTargetDependency */,
 			);
 			name = "YB-YH";
 			productName = "YB-YH";
@@ -1937,12 +1996,35 @@
 			mainGroup = 18FECEC920C0ED8C008E4BE4;
 			productRefGroup = 18FECED320C0ED8C008E4BE4 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 185C3193210EF5D400029967 /* Products */;
+					ProjectRef = 185C3192210EF5D400029967 /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				18FECED120C0ED8C008E4BE4 /* YB-YH */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		185C3198210EF5D400029967 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 185C3197210EF5D400029967 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		185C319A210EF5D400029967 /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = 185C3199210EF5D400029967 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		18FECED020C0ED8C008E4BE4 /* Resources */ = {
@@ -2043,6 +2125,7 @@
 				18DCF93020CF67520092C3FC /* LoginValidationViewController.m in Sources */,
 				18EAF69420E23AD5001ED7FE /* AFHTTPSessionManager.m in Sources */,
 				18FECF2820C13A4E008E4BE4 /* Listeningkeyboard.m in Sources */,
+				185C31A2210EF61B00029967 /* File.swift in Sources */,
 				188E8A7720D0BD21009F253C /* MyQualificationViewController.m in Sources */,
 				18B30A9B20C53F0300213243 /* ShouViewController.m in Sources */,
 				18FECF1220C12267008E4BE4 /* UIImageView+Help.m in Sources */,
@@ -2181,6 +2264,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		185C319E210EF5EE00029967 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = 185C319D210EF5EE00029967 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		18FECEDB20C0ED8C008E4BE4 /* Main.storyboard */ = {
@@ -2322,6 +2413,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A4653356825552DCFDA6A14D /* Pods-YB-YH.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -2339,6 +2431,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "168ce473-157f-423d-8a36-48e843ce0175";
 				PROVISIONING_PROFILE_SPECIFIER = ebo_game;
+				SWIFT_OBJC_BRIDGING_HEADER = "YB-YH/其它/YB-YH-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2347,6 +2442,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C2428BAC5D79D18835E188E2 /* Pods-YB-YH.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Tianjin E-bone Digital Technology Co.,Ltd. (M5CU4A6R6T)";
@@ -2365,6 +2461,8 @@
 				PROVISIONING_PROFILE = "a88ee4df-215c-4f6f-8ae3-16484c853fcd";
 				"PROVISIONING_PROFILE[sdk=*]" = "dede435f-0fcb-44b5-bf3a-14a2131a2937";
 				PROVISIONING_PROFILE_SPECIFIER = ebo_game_dis;
+				SWIFT_OBJC_BRIDGING_HEADER = "YB-YH/其它/YB-YH-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
