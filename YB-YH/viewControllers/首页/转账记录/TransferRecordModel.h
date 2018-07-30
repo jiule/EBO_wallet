@@ -36,6 +36,8 @@
 
 @property(nonatomic,copy)NSString * txid;
 
+@property(nonatomic,copy)NSString * tx_id;
+
 @property(nonatomic,copy)NSString * updated_at;
 
 @property(nonatomic,copy)NSString * user_id;

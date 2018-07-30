@@ -86,7 +86,7 @@
 -(void)DwtableView:(DwTableView *)tableView model:(DwTableViewModel *)myTableViewModel indexPath:(NSIndexPath *)indexPath
 {
     TransferModel  * tranModel = (TransferModel *)myTableViewModel;
-    TranferDetailsViewController * vc = [[TranferDetailsViewController alloc]initWithNavTitle:@"支付订单详情" tranferID:tranModel.txid];
+    TranferDetailsViewController * vc = [[TranferDetailsViewController alloc]initWithNavTitle:@"支付订单详情" tranferID:tranModel.tx_id];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
