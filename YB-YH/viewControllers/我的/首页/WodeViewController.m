@@ -161,10 +161,10 @@
                 NSLog(@"progress is %@",uploadProgress);
             });
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-            NSLog(@"%@",responseObject);
             self->_niceImageView.image = image;
-
-        } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
+            id responseDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+            self.model.avatar = responseDict[@"data"][@"avatar"];
+            } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
             NSLog(@"%@",error);
         } type:@"avatar"];
     }];
@@ -177,7 +177,6 @@
     {
         [self popControllerwithstr:_controllerArrays[index] title:_controllerTitleArrays[index]];
     }else {
-        NSLog(@"没有传入控制器值");
         [[RootViewController sharedInstance]loginOFF];
     }
 }
@@ -212,7 +211,7 @@
         self->_lingBtn.alpha = 0;
         self->_lingquBiLabel.text = @"您已领取糖果";
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-     //   [MYAlertController  showTitltle:@"领取失败"];
+
     }];
 }
 

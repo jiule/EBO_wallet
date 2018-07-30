@@ -39,7 +39,11 @@
     [super setTableViewModel:tableViewModel];
     TransferModel * model = (TransferModel *)tableViewModel;
     _timerLabel.text = model.created_at;
-    _priceLabel.text = model.user_income;
+    if (  [model.coin_name isEqual:BI_A0]) {
+        _priceLabel.text = [NSString stringWithFormat:@"%.2f",[model.user_income floatValue]];
+    }else {
+         _priceLabel.text = [NSString stringWithFormat:@"%.6f",[model.user_income floatValue]];
+    }
     _biNameLabel.text = model.coin_name;
     if ([model.user_income floatValue] > 0) {
          _typeLabel.text = [NSString stringWithFormat:@"转入[%@]",[CurrencyManager readInvite: [model.invite_type intValue ]]];

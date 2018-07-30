@@ -23,7 +23,6 @@
 {
     self = [super initWithNavTitle:str];
     _tranferID = tranferID;
-    NSLog(@"%@",_tranferID);
     if (self) {
         return self;
     }
