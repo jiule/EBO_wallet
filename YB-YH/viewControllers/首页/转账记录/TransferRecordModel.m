@@ -19,8 +19,16 @@
         TransferModel * model = [[TransferModel alloc]initWithDict:transFerArray[i]];
         [self.transFerArrays addObject:model];
     }
+
 }
 @end
 
 @implementation TransferModel
+
+-(void)setDict:(NSMutableDictionary *)dict
+{
+    [super setDict:dict];
+    self.tx_id = dict[@"id"];
+}
+
 @end
