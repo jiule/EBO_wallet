@@ -249,10 +249,11 @@ XH_ATTRIBUTE(strong, UIButton, walletBtn);
     }];
     
     UIImageView * v1 = [UIKitAdditions imageViewWithImageName:@"gamepay"];
+    v1.contentMode =  UIViewContentModeScaleAspectFit;
     [self.containView addSubview:v1];
     [v1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.centerX.equalTo(workBtn);
         make.top.equalTo(commBtn.mas_bottom);
+        make.left.centerX.equalTo(workBtn);
     }];
     [v1 addtapGestureRecognizer:^(UIView * _Nonnull view, UIGestureRecognizer * _Nonnull tap) {
         [MYAlertController showTitltle:@"此功能暂未开放！" vc:self];

@@ -14,14 +14,6 @@ XH_ATTRIBUTE(strong, LAContextManger, lamanager);
 @end
 
 @implementation MySecurityCenterViewController
-
-//-(LAContextManger *)lamanager{
-//    if (!_lamanager) {
-//        _lamanager = [LAContextManger Initialize];
-//    }
-//    return _lamanager;
-//}
-
 -(void)createView{
     [super createView];
     
@@ -49,10 +41,10 @@ XH_ATTRIBUTE(strong, LAContextManger, lamanager);
     UISwitch * sw = [[UISwitch alloc] initWithFrame:CGRectMake(SCREEN_WIDTH * 0.5, h, SCREEN_WIDTH * 0.5, jian)];
     [sw setY: h + (jian - sw.height)/2];
     [sw setX: SCREEN_WIDTH - JNVIEW_X0 - sw.width];
+    [sw setOn:[[MyUserDefaultsManager JNobjectForKey:[MyUserDefaultsManager readContextManger]] boolValue]];
     [self.view addSubview:sw];
     [sw addTarget:self action:@selector(swClick:) forControlEvents:UIControlEventValueChanged];
     h += jian;
-    //    [self.view addUnderscoreWihtFrame:CGRectMake(, h - 1, SCREEN_WIDTH ), 1)];
 }
 
 #pragma mark----密码重置被点击

@@ -25,8 +25,6 @@ XMGSingletoM
 +(void)Initialize
 {
     [LAContextManger sharedInstance].isopen = [[MyUserDefaultsManager JNobjectForKey:[MyUserDefaultsManager readContextManger]] boolValue];
-    NSLog(@"%d",  [LAContextManger sharedInstance].isopen);
-    [LAContextManger sharedInstance].isopen = YES ;
 }
 //app进入后台 调用
 +(void)applicationDidEnterBackground
@@ -39,38 +37,29 @@ XMGSingletoM
 
 }
 //app 进入前台调用
-+(void)applicationWillEnterForeground:(UIWindow *)window
-{
-//    NSLog(@"%d----%d",  [LAContextManger sharedInstance].timerIndex, (int)[[NSDate date] timeIntervalSince1970] );
-    if ((int)[[NSDate date] timeIntervalSince1970] -  [LAContextManger sharedInstance].timerIndex >= 2) {
-        UIView * bgView = JnUIView(window.bounds, COLOR_B(0.9));
-        [window addSubview:bgView];
-        [LAContextManger sharedInstance].is_open = YES;
-        [LAContextManger showWithTitle:@"指纹解锁" block:^(LAContextTYPE type) {
-            [LAContextManger sharedInstance].is_open = NO;
-            [Helpr dispatch_queue_t_timer:1 send:^{
-                [bgView removeFromSuperview];
-                if (type != LAContext_OK) {
-                    [[RootViewController sharedInstance]loginOFF];
-                }
++(void)applicationWillEnterForeground:(UIWindow *)window{
+    if ([[MyUserDefaultsManager JNobjectForKey:[MyUserDefaultsManager readContextManger]] boolValue]) {
+        if ((int)[[NSDate date] timeIntervalSince1970] -  [LAContextManger sharedInstance].timerIndex >= 2) {
+            UIView * bgView = JnUIView(window.bounds, COLOR_B(0.3));
+            [window addSubview:bgView];
+            [LAContextManger sharedInstance].is_open = YES;
+            [LAContextManger showWithTitle:@"指纹解锁" block:^(LAContextTYPE type) {
+                [LAContextManger sharedInstance].is_open = NO;
+                [Helpr dispatch_queue_t_timer:1 send:^{
+                    [bgView removeFromSuperview];
+                    if (type != LAContext_OK) {
+                        [[RootViewController sharedInstance]loginOFF];
+                    }
+                }];
             }];
-        }];
+        }
     }
 }
-
-
-
--(void)setIsopen:(BOOL)isopen
-{
+-(void)setIsopen:(BOOL)isopen{
     _isopen = isopen;
     [MyUserDefaultsManager setJNObject:[NSNumber numberWithBool:_isopen] forkey:[MyUserDefaultsManager readContextManger]];  //保存沙盒
 }
-
-
-+(BOOL)showWithTitle:(NSString *)title  block:(void(^)(LAContextTYPE type))block
-{
-
-
++(BOOL)showWithTitle:(NSString *)title  block:(void(^)(LAContextTYPE type))block{
     LAContext * context = [[LAContext alloc]init];
     context.localizedFallbackTitle = title;
     NSError * error;
