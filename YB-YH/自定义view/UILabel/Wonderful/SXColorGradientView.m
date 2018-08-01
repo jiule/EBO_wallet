@@ -22,7 +22,6 @@
 + (instancetype)createWithColorArray:(NSArray *)colorArray frame:(CGRect)frame direction:(SXGradientDirection)direction{
     return [[self alloc]initWithColorArray:colorArray frame:frame direction:direction];
 }
-
 - (instancetype)initWithColorArray:(NSArray *)colorArray frame:(CGRect)frame direction:(SXGradientDirection)direction{
     if (self = [super initWithFrame:frame]) {
         SXColorGradientView *gradientView = [[SXColorGradientView alloc]initWithFrame:frame];

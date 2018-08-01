@@ -10,7 +10,8 @@
 #import "MarketView.h"
 #import "MarketSlidingView.h"
 #import "IPhoneAlectView.h"
-
+#import "YB-YH-Bridging-Header.h"
+#import <Charts/Charts.h>
 
 #import "MaeketCurveView.h"
 #import "MarketCurveModel.h"
@@ -18,7 +19,7 @@
 #define exchangeStr @"最低兑换数量100"
 #define ETH @"ETH"
 
-@interface MarketViewController ()<JNBaseViewDelegate , UITextFieldDelegate>
+@interface MarketViewController ()<JNBaseViewDelegate , UITextFieldDelegate,ChartViewDelegate>
 {
     
 
@@ -34,9 +35,71 @@ XH_ATTRIBUTE(strong, UILabel, downLb);
 XH_ATTRIBUTE(strong, UILabel, valuationLb);
 XH_ATTRIBUTE(strong, UIImageView, changeImv);
 XH_ATTRIBUTE(strong, UILabel, lab1);
+XH_ATTRIBUTE(strong, LineChartView, chartV);
 @end
 
 @implementation MarketViewController
+
+-(LineChartView *)chartV{
+    if (!_chartV) {
+        _chartV = [[LineChartView alloc] init];
+        _chartV.noDataText = @"暂无数据";
+        _chartV.delegate = self;
+        
+        _chartV.chartDescription.enabled = NO;
+        
+        _chartV.dragEnabled = YES;
+        [_chartV setScaleEnabled:YES];
+        _chartV.pinchZoomEnabled = YES;
+        _chartV.drawGridBackgroundEnabled = NO;
+        
+        // x-axis limit line
+        ChartLimitLine *llXAxis = [[ChartLimitLine alloc] initWithLimit:10.0 label:@"Index 10"];
+        llXAxis.lineWidth = 4.0;
+        llXAxis.lineDashLengths = @[@(10.f), @(10.f), @(0.f)];
+        llXAxis.labelPosition = ChartLimitLabelPositionRightBottom;
+        llXAxis.valueFont = [UIFont systemFontOfSize:10.f];
+        
+        //[_chartV.xAxis addLimitLine:llXAxis];
+        
+        _chartV.xAxis.gridLineDashLengths = @[@10.0, @10.0];
+        _chartV.xAxis.gridLineDashPhase = 0.f;
+        
+        ChartLimitLine *ll1 = [[ChartLimitLine alloc] initWithLimit:150.0 label:@"Upper Limit"];
+        ll1.lineWidth = 4.0;
+        ll1.lineDashLengths = @[@5.f, @5.f];
+        ll1.labelPosition = ChartLimitLabelPositionRightTop;
+        ll1.valueFont = [UIFont systemFontOfSize:10.0];
+        
+        ChartLimitLine *ll2 = [[ChartLimitLine alloc] initWithLimit:-30.0 label:@"Lower Limit"];
+        ll2.lineWidth = 4.0;
+        ll2.lineDashLengths = @[@5.f, @5.f];
+        ll2.labelPosition = ChartLimitLabelPositionRightBottom;
+        ll2.valueFont = [UIFont systemFontOfSize:10.0];
+        
+        ChartYAxis *leftAxis = _chartV.leftAxis;
+        [leftAxis removeAllLimitLines];
+        [leftAxis addLimitLine:ll1];
+        [leftAxis addLimitLine:ll2];
+        leftAxis.axisMaximum = 200.0;
+        leftAxis.axisMinimum = -50.0;
+        leftAxis.gridLineDashLengths = @[@5.f, @5.f];
+        leftAxis.drawZeroLineEnabled = NO;
+        leftAxis.drawLimitLinesBehindDataEnabled = YES;
+        _chartV.rightAxis.enabled = NO;
+        BalloonMarker *marker = [[BalloonMarker alloc]
+                                 initWithColor: [UIColor colorWithWhite:180/255. alpha:1.0]
+                                 font: [UIFont systemFontOfSize:12.0]
+                                 textColor: UIColor.whiteColor
+                                 insets: UIEdgeInsetsMake(8.0, 8.0, 20.0, 8.0)];
+        marker.chartView = _chartV;
+        marker.minimumSize = CGSizeMake(80.f, 40.f);
+        _chartV.marker = marker;
+        _chartV.legend.form = ChartLegendFormLine;
+        [_chartV animateWithXAxisDuration:2.5];
+    }
+    return _chartV;
+}
 
 -(UITextField *)numTf{
     if (!_numTf) {
