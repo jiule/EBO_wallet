@@ -45,6 +45,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 -(instancetype)initWithNavTitle:(nullable NSString *)str;
 
+
+-(instancetype)initWithNavTitle:(nullable NSString *)str data:(id)data;
+
 @property(nonatomic,copy)NSString * titlestr;
 
 /**

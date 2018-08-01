@@ -131,8 +131,6 @@
   //  [_downView addUnderscoreWihtFrame:CGRectMake(0, baseView_h * 5, SCREEN_WIDTH, JN_HH(10))];
 }
 
-
-
 -(void)niceBtnClick:(UIButton *)btn
 {
     btn.selected = !btn.selected;

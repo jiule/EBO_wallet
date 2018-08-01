@@ -44,7 +44,7 @@
     JNViewStyle(logBtn, JN_HH(20), nil, 0);
     [self.view addSubview:logBtn];
 
-    [self.view addSubview:JnButtonColorIndexSize(CGRectMake(SCREEN_WIDTH - JNVIEW_X(120), SCREEN_HEIGHT - self.tab_h - JN_HH(60), JN_HH(105), JN_HH(30)), @"跳过此步骤", JN_HH(14.5), COLOR_A1, [UIColor clearColor], 2, self, @selector(nextClick), 0)];
+    [self.view addSubview:JnButtonColorIndexSize(CGRectMake(SCREEN_WIDTH - JNVIEW_X(120), SCREEN_HEIGHT - self.tab_h - JN_HH(60), JN_HH(105), JN_HH(30)), @"跳过此步骤", JN_HH(14.5), COLOR_A1, [UIColor clearColor], 2, self, @selector(nextClick:), 0)];
      [self.view addSubview:JnButtonImageTag(CGRectMake(SCREEN_WIDTH - JNVIEW_X(10), SCREEN_HEIGHT - self.tab_h - JN_HH(60) + JN_HH(7), JN_HH(10), JN_HH(16)), MYimageNamed(@"dl_tiaoguo"), self, @selector(nextClick), 0)];
 
 }
@@ -59,6 +59,10 @@
     [self postdownDatas:@"user/Profile/userInfo" withdict:@{@"nickname":_nameField.text} index:1];
 }
 
+-(void)nextClick:(UIButton *)btn
+{
+    [[RootViewController sharedInstance]loginOK];
+}
 -(void)readDowndatawithResponseDict:(NSDictionary *)responseDict index:(int)index
 {
     if (index == 1) {

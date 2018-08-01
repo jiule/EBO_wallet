@@ -56,6 +56,10 @@
     }
     return self;
 }
+-(instancetype)initWithNavTitle:(nullable NSString *)str data:(id)data
+{
+    return [self initWithNavTitle:str];
+}
 #pragma mark---Post
 -(void)postdownDatas:(NSString *)str adddict:(nullable NSDictionary *)dict index:(int)index {
     [self postdownDatas:str withdict:[MyNetworkingHelp addSidWithDict:dict] index:index];

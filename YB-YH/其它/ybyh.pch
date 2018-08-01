@@ -81,9 +81,9 @@
 
 #ifdef DEBUG // 调试状态 打开LOG功能
 #define MyLog(...) NSLog(__VA_ARGS__)
-//#define URLIP @"http://1.ximei999.com/"
-//#define URLIP @"http://192.168.8.178/api/"
-#define URLIP @"http://pay.ebogame.com/api/"
+// #define URLIP @"http://1.ximei999.com/"
+ #define URLIP @"http://192.168.8.178/api/"
+// #define URLIP @"http://pay.ebogame.com/api/"
 #define TUPIANURL(STR) [NSString stringWithFormat:@"%@",STR]
 #else // 发布状态, 关闭LOG功能
 #define MyLog(...)
@@ -96,16 +96,12 @@
 #define FUHAO_YUEDENGYU @"≈"
 #define FUHAO_RENMINGBI @"￥"
 
-
 #define BI_A0 @"EBO"
 #define BI_A0STR(STR) [NSString stringWithFormat:@"%@%@",BI_A0,STR]
 #define BI_A0STR1(STR,STR1) [NSString stringWithFormat:@"%@%@%@",STR,BI_A0,STR1]
 #define BI_A1 @"ETH"
 #define BI_A1STR(STR) [NSString stringWithFormat:@"%@%@",BI_A1,STR]
 #define BI_A1STR1(STR,STR1) [NSString stringWithFormat:@"%@%@%@",STR,BI_A1,STR1]
-
-
-
 
 #endif
 
