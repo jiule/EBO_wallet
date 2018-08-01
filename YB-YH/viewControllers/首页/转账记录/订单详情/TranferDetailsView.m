@@ -49,7 +49,7 @@
         [self addSubview:JnLabelType(CGRectMake(x, h + jian * i, self.width * 0.5, jian), UILABEL_2, titleArray[i], 0)];
     }
 
-    _jineLabel = JnLabel(CGRectMake(self.width * 0.5, h, self.width * 0.5 - x, jian), @"10000", JN_HH(25.5), COLOR_A1, 2);
+    _jineLabel = JnLabel(CGRectMake(self.width * 0.5, h, self.width * 0.5 - x, jian), @"0", JN_HH(25.5), COLOR_A1, 2);
     [self addSubview:_jineLabel];
 
     h += jian;
@@ -107,14 +107,14 @@
 -(void)setTranferModel:(TranferDetailsModel *)tranferModel
 {
     _tranferModel = tranferModel;
-    _jineLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.coin_number];
+    _jineLabel.text = [NSString stringWithFormat:@"%.6f",[_tranferModel.coin_number floatValue]];
     _typeLabel.text = [CurrencyManager readInvite: [_tranferModel.invite_type intValue]];
-     _kuanggongLaebl.text = [NSString stringWithFormat:@"%@",_tranferModel.txfee];
-     _querenLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.confirm];
-     _mudiLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.platform_coin_address];
-     _yuanLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.users_coin_address];
-     _timerLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.created_at];
-     _dingdanLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.txid];
+    _kuanggongLaebl.text = [NSString stringWithFormat:@"%@",_tranferModel.txfee];
+    _querenLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.confirm];
+    _mudiLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.platform_coin_address];
+    _yuanLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.users_coin_address];
+    _timerLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.created_at];
+    _dingdanLabel.text = [NSString stringWithFormat:@"%@",_tranferModel.txid];
     if (tranferModel.memo.length > 0) {
         _memoLbael.text = [NSString stringWithFormat:@"备注:%@",_tranferModel.memo];
     }else {

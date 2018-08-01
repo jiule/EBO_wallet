@@ -148,7 +148,7 @@
 
     [headLine3 changeTapMarqueeAction:^(NSInteger index) {
 
-        NSLog(@"你点击了第 %ld 个button！内容：%@", index, headLine3.messageArray[index]);
+      //  NSLog(@"你点击了第 %ld 个button！内容：%@", index, headLine3.messageArray[index]);
 
     }];
     _headLine3 = headLine3;

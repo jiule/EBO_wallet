@@ -76,6 +76,7 @@
 
     _passWordQueField = [UITextField TextFieldPassWordWithframe:CGRectMake(JNVIEW_X(44), y, SCREEN_WIDTH - JNVIEW_W(84), JN_HH(44)) placeholder:@"再次输入登录密码" borderStyle:0];
     _passWordQueField.backgroundColor = [UIColor clearColor];
+
    // _passWordQueField.textColor = COLOR_WHITE;
     [self.baseScollView addSubview:_passWordQueField];
     y += JN_HH(50);
@@ -84,8 +85,7 @@
     [self.baseScollView addSubview:JnImageView(CGRectMake(JNVIEW_X0 , y, JN_HH(44), JN_HH(44)), MYimageNamed(@"dl_yaoqing"))];
     _yaoField = [UITextField TextFieldWithframe:CGRectMake(JNVIEW_X(44), y, SCREEN_WIDTH - JNVIEW_W(84), JN_HH(44)) placeholder:@"输入邀请码(选填)" borderStyle:0];
     _yaoField.backgroundColor = [UIColor clearColor];
- //   _yaoField.keyboardType = UIKeyboardTypeNumberPad;
- //   _yaoField.textColor = COLOR_WHITE;
+    _yaoField.keyboardType = UIKeyboardTypeASCIICapable;
     [self.baseScollView addSubview:_yaoField];
     y += JN_HH(50);
     //分割线
@@ -236,7 +236,7 @@
 -(void)addListeningkeyboard
 {
     [[Listeningkeyboard sharedInstance]startlisteningblockcompletion:^(CGFloat h) {
-        [self.baseScollView setY:self.nav_h - JN_HH(20)];
+        [self.baseScollView setY:self.nav_h - JN_HH(30)];
         [self.navView setcolorStyle:1];
     } keyboard:^(CGFloat h) {
          [self.baseScollView setY:self.nav_h + JN_HH(80)];
