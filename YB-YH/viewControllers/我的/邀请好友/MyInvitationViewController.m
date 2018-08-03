@@ -17,11 +17,30 @@
     NSArray * _titleArrays;  //保存奖励规则的数组
 }
 
-
+XH_ATTRIBUTE(strong, UIView, showV);
 
 @end
 
 @implementation MyInvitationViewController
+
+-(UIView *)showV{
+    if (!_showV) {
+        _showV = [[UIView alloc] initWithFrame:self.view.bounds];
+        _showV.backgroundColor = COLOR_B(0.5);
+        [_showV addtapGestureRecognizer:^(UIView * _Nonnull view, UIGestureRecognizer * _Nonnull tap) {
+            [UIView animateWithDuration:0.5 animations:^{
+                [self.showV removeFromSuperview];
+            }];
+        }];
+        UIImageView * ima = [UIKitAdditions imageViewWithImageName:@"yaoqingtu"];
+        [_showV addSubview:ima];
+        [ima mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.center.equalTo(self.showV);
+            make.top.equalTo(self.showV.mas_top).offset(self.nav_h + 20);
+        }];
+    }
+    return _showV;
+}
 
 -(void)Initialize
 {
@@ -136,8 +155,10 @@
     [self popControllerwithstr:@"MyInvitationlistViewController" title:@"记账本"];
 }
 #pragma mark-----邀请卡被点击
--(void)yaoqingkaClick
-{
-    [self popControllerwithstr:@"InvitingCardVC" title:@""];
+-(void)yaoqingkaClick{
+//    [self popControllerwithstr:@"InvitingCardVC" title:@""];
+    [UIView animateWithDuration:0.5 animations:^{
+        [self.view addSubview:self.showV];
+    }];
 }
 @end
