@@ -12,8 +12,6 @@
 #import "LAContextManger.h"
 #import <JPUSHService.h>
 
-
-
 @interface AppDelegate ()
 
 @end
