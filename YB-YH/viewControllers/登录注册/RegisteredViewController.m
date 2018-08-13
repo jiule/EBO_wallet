@@ -77,7 +77,6 @@
     _passWordQueField = [UITextField TextFieldPassWordWithframe:CGRectMake(JNVIEW_X(44), y, SCREEN_WIDTH - JNVIEW_W(84), JN_HH(44)) placeholder:@"再次输入登录密码" borderStyle:0];
     _passWordQueField.backgroundColor = [UIColor clearColor];
 
-   // _passWordQueField.textColor = COLOR_WHITE;
     [self.baseScollView addSubview:_passWordQueField];
     y += JN_HH(50);
     //分割线
@@ -100,7 +99,6 @@
     [self.baseScollView addSubview:JnButtonImageTag(CGRectMake(SCREEN_WIDTH * 0.5 - JN_HH(81), y, JN_HH(163), JN_HH(13)), MYimageNamed(@"dl_xieyi"), self, @selector(xieyiClick), 1)];
 }
 
-
 #pragma mark----语音按钮被点击
 -(void)yuyinClick:(UIButton *)btn
 {
@@ -110,8 +108,6 @@
         }];
         return ;
     }
-
-//    [btn setTitle:@"验证码已发送" forState:0];
     [self postdownDatas:@"user/VerificationCode" withdict:@{@"username":_iponeField.text} index:1];
 }
 
@@ -128,14 +124,11 @@
     }
 }
 
-
-
 -(void)readDowndatawithResponseDict:(NSDictionary *)responseDict index:(int)index
 {
     if(index == 1){
         _iponeField.userInteractionEnabled = NO;
         [MYAlertController showNavViewWith:@"验证码已发送"];
-
         _yuyinBtn.enabled = NO;
         _timerIndex = 60;
         _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
@@ -144,14 +137,9 @@
     }else if(index == 501)
     {
         NSLog(@"222222------%@=====%@",responseDict,responseDict[@"msg"]);
-
-
     }else if(index == 2)
     {
         [MYAlertController showTitltle:@"注册成功" selButton:^(MYAlertController *AlertController, int index) {
-//            [ RegisteredObj sharedInstance].iphone = self->_iponeField.text;
-//            [ RegisteredObj sharedInstance].password = self->_passWordField.text;
-
             [self postdownDatas:@"/user/login/login" withdict:@{@"username":self->_iponeField.text,@"password":self->_passWordField.text,@"device_type":@"iphone",@"jpush_id":@"1234"} index:3 type:0];
         }];
     }else if(index == 3)
@@ -171,8 +159,6 @@
 
 -(void)registeredClick
 {
-//    [self RealNameView];
-//    return ;
     if (self->_iponeField.text.length != 11) {
         [MYAlertController showTitltle:@"手机号输入错误" selButton:^(MYAlertController *AlertController, int index) {
             [self->_iponeField becomeFirstResponder];
@@ -211,7 +197,6 @@
     }
     [Listeningkeyboard endEditing];
     if (_yaoField.text.length > 0) {
-
         if (_yanzhengField.text.length != 4 ) {
             [MYAlertController showTitltle:@"邀请码输入格式错误"];
                     return ;

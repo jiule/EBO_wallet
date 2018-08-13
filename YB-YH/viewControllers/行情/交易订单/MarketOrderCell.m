@@ -19,8 +19,6 @@
     UILabel * _zhuangtaiLabel;
 }
 
-
-
 @property(nonatomic,retain)MarketOrderModel * markModel;
 
 @property(nonatomic,retain)UIView * bgView;
