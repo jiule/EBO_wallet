@@ -2416,10 +2416,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = M5CU4A6R6T;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 89V237G3A9;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/YB-YH/其它/ybyh.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/YB-YH/其它/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -2427,10 +2427,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = hk.ebogame.www.wallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.EBOWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "168ce473-157f-423d-8a36-48e843ce0175";
-				PROVISIONING_PROFILE_SPECIFIER = ebo_game;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "YB-YH/其它/YB-YH-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -2445,10 +2445,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Tianjin E-bone Digital Technology Co.,Ltd. (M5CU4A6R6T)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Tianjin E-bone Digital Technology Co.,Ltd. (M5CU4A6R6T)";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = M5CU4A6R6T;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 89V237G3A9;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/YB-YH/其它/ybyh.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/YB-YH/其它/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -2456,11 +2456,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = hk.ebogame.www.wallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.EBOWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a88ee4df-215c-4f6f-8ae3-16484c853fcd";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=*]" = "dede435f-0fcb-44b5-bf3a-14a2131a2937";
-				PROVISIONING_PROFILE_SPECIFIER = ebo_game_dis;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "YB-YH/其它/YB-YH-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
