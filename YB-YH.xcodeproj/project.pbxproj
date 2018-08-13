@@ -296,6 +296,7 @@
 		1848560320C7D9CC002767A6 /* RetrievePasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RetrievePasswordViewController.m; sourceTree = "<group>"; };
 		184C506920C6247C00B4B8EC /* LAContextManger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LAContextManger.h; sourceTree = "<group>"; };
 		184C506A20C6247C00B4B8EC /* LAContextManger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LAContextManger.m; sourceTree = "<group>"; };
+		185653232121277E00142E66 /* YB-YH.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "YB-YH.entitlements"; sourceTree = "<group>"; };
 		1858366720DC862800829152 /* TransferRecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransferRecordViewController.h; sourceTree = "<group>"; };
 		1858366820DC862800829152 /* TransferRecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransferRecordViewController.m; sourceTree = "<group>"; };
 		1858366A20DC875B00829152 /* TransferRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransferRecordModel.h; sourceTree = "<group>"; };
@@ -1439,6 +1440,7 @@
 		18FECED420C0ED8C008E4BE4 /* YB-YH */ = {
 			isa = PBXGroup;
 			children = (
+				185653232121277E00142E66 /* YB-YH.entitlements */,
 				184584F920E318FF0060DF5F /* ETH */,
 				18FECF8920C140B3008E4BE4 /* 网络请求 */,
 				18FECF7520C1406D008E4BE4 /* Model */,
@@ -1979,7 +1981,7 @@
 								enabled = 0;
 							};
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -2416,7 +2418,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = "YB-YH/YB-YH.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tianjin E-bone Digital Technology Co.,Ltd. (M5CU4A6R6T)";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 89V237G3A9;
@@ -2445,8 +2448,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Tianjin E-bone Digital Technology Co.,Ltd. (M5CU4A6R6T)";
+				CODE_SIGN_ENTITLEMENTS = "YB-YH/YB-YH.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tianjin E-bone Digital Technology Co.,Ltd. (M5CU4A6R6T)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 89V237G3A9;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/YB-YH/其它/ybyh.pch";
@@ -2459,7 +2463,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.EBOWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=*]" = "dede435f-0fcb-44b5-bf3a-14a2131a2937";
+				"PROVISIONING_PROFILE[sdk=*]" = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "YB-YH/其它/YB-YH-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
