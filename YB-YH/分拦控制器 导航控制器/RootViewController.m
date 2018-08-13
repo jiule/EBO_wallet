@@ -131,5 +131,4 @@ XMGSingletoM
 }
 #pragma clang diagnostic pop
 
-
 @end

@@ -9,18 +9,13 @@
 #ifndef JNViewHelp_h
 #define JNViewHelp_h
 
-
 #import <UIKit/UIKit.h>
-
 #import "Helpr.h"
-
 #import "JNHelpMacro.h"
 #import "JNColor.h"
 #import "Danli.h"
 #import "RuntimeHelpr.h"
-
 #import "NSObject+Helpr.h"
-
 #import "JNHelp.h"
 #import "UILabel+JNHelp.h"
 #import "UIView+Help.h"
@@ -30,13 +25,11 @@
 #import "UIImageView+Help.h"
 #import "UITextField+Help.h"
 #import "UITextView+Help.h"
-
 #import "NSString+Helpr.h"
 #import "UIViewController+Helpr.h"
 #import "NSObject+Helpr.h"
 #import "CALayer+Helpr.h"
 #import "NSDictionary+Helpr.h"
-
 #import "FileManager.h"
 #import "UIKitAdditions.h"
 

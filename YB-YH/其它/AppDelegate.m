@@ -10,6 +10,8 @@
 #import "ViewController.h"
 #import "RootViewController.h"
 #import "LAContextManger.h"
+#import <JPUSHService.h>
+
 
 
 @interface AppDelegate ()

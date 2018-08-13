@@ -31,7 +31,7 @@
 
 -(void)Initialize
 {
-    [super Initialize  ];
+    [super Initialize ];
     _selstate = 0;
 }
 
@@ -57,33 +57,26 @@
         }
     }
 
-
     self.tableView = [DwTableView initWithFrame:CGRectMake(0, self.nav_h + JN_HH(50), SCREEN_WIDTH, SCREEN_HEIGHT - self.nav_h - JN_HH(56)) url:URL(@"/transfer/Wallet/getChangeList") modelName:@"MarketOrderModel" cellName:@"MarketOrderCell" delegate:self];
     [self.view addSubview:self.tableView.readTableView];
-
-
-
     [self tableViewDownWithPage:1];
 }
-
 
 -(void)btnClick:(UIButton *)btn
 {
     if (_selBtn == btn) {
         return ;
     }
-    //  [Listeningkeyboard endEditing];
-    _selBtn.selected = NO;
-    _selBtn.backgroundColor = COLOR_WHITE;
-    JNViewStyle(_selBtn, 0, COLOR_B5, 1);
+    _selBtn.selected = NO ;
+    _selBtn.backgroundColor = COLOR_WHITE ;
+    JNViewStyle(_selBtn, 0, COLOR_B5, 1) ;
     _selBtn = btn ;
-    _selBtn.selected = YES;
-    JNViewStyle(_selBtn, 0, COLOR_A1, 1);
-    _selBtn.backgroundColor = COLOR_A1;
+    _selBtn.selected = YES ;
+    JNViewStyle(_selBtn, 0, COLOR_A1, 1) ;
+    _selBtn.backgroundColor = COLOR_A1 ;
 
     _selstate = (int)btn.tag - 100;
     [self tableViewDownWithPage:1];
-
 }
 
 -(void)DwtableView:(DwTableView *)tableView model:(DwTableViewModel *)myTableViewModel indexPath:(NSIndexPath *)indexPath
@@ -91,12 +84,6 @@
     MarketOrderModel * orModel = (MarketOrderModel *)myTableViewModel;
     MarketOrderdDetailsViewController * vc = [[MarketOrderdDetailsViewController alloc]initWithNavTitle:@"交易订单详情" detailesId:orModel.order_id];
     [self.navigationController pushViewController:vc animated:YES];
-}
-
--(void)downDatas
-{
-    //  [self getDownDatas:@"/transfer/Wallet/getChangeList" withdict:@{@"num":@"10",@"page":@"1"} index:501 type:0];
-    //  [self postdownDatas:@"/transfer/Wallet/getChangeList" withdict:@{@"num":@"10",@"page":@"1"} index:501];
 }
 
 -(void)tableViewDownWithPage:(int)page
@@ -113,15 +100,10 @@
     [self tableViewDownWithPage:page];
 }
 
-
 -(void)readDowndatawithResponseDict:(NSDictionary *)responseDict index:(int)index
 {
-    if (index == 501)
-    {
+    if (index == 501){
         NSLog(@"responseDict========%@",responseDict);
-    }else if(index == 1)
-    {
-
     }
 }
 
